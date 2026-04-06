@@ -287,10 +287,10 @@ export default function Home() {
       <section className={styles.marqueeSection}>
         <div className={styles.marqueeTrack}>
           <div className={styles.marqueeContent}>
-            {["🌽 Maize", "🌾 Wheat", "🌿 Paddy", "🌻 Mustard", "☁️ Cotton", "🥬 Vegetables", "✨ Innovation", "🌱 Sustainability", "🏆 Quality", "🌍 15+ States"].map((item, i) => (
+            {["🌽 Maize", "🌾 Wheat", "🌿 Paddy", "🌻 Mustard", "☁️ Cotton", "🥬 Vegetables", "✨ Innovation", "🌱 Sustainability", "🏆 Quality", "🌍 10+ States"].map((item, i) => (
               <span key={i} className={styles.marqueeItem}>{item}</span>
             ))}
-            {["🌽 Maize", "🌾 Wheat", "🌿 Paddy", "🌻 Mustard", "☁️ Cotton", "🥬 Vegetables", "✨ Innovation", "🌱 Sustainability", "🏆 Quality", "🌍 15+ States"].map((item, i) => (
+            {["🌽 Maize", "🌾 Wheat", "🌿 Paddy", "🌻 Mustard", "☁️ Cotton", "🥬 Vegetables", "✨ Innovation", "🌱 Sustainability", "🏆 Quality", "🌍 10+ States"].map((item, i) => (
               <span key={`dup-${i}`} className={styles.marqueeItem}>{item}</span>
             ))}
           </div>
@@ -372,7 +372,7 @@ export default function Home() {
                 icon={Wheat}
               />
               <StatCounter
-                end={15}
+                end={10}
                 label="States Covered"
                 icon={Globe}
               />

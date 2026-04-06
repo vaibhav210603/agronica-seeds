@@ -42,7 +42,7 @@ const timeline = [
   {
     year: "Today",
     title: "Leading the Future",
-    desc: "Operating across 15 states, empowering growers with cutting-edge seed technology and sustainable agricultural practices.",
+    desc: "Operating across 10 states, empowering growers with cutting-edge seed technology and sustainable agricultural practices.",
   },
 ];
 
@@ -170,7 +170,7 @@ export default function AboutPage() {
             <StatCounter end={500} label="Partner Farmers" icon={Users} />
             <StatCounter end={30000} suffix=" sq ft" label="Plant Area" icon={Factory} />
             <StatCounter end={6} label="Crop Varieties" icon={Wheat} />
-            <StatCounter end={15} label="States Covered" icon={Globe} />
+            <StatCounter end={10} label="States Covered" icon={Globe} />
           </div>
         </div>
       </section>
