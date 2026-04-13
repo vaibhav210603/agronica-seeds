@@ -1,5 +1,54 @@
-1. generaet images for products from gemini, all consistant
-2. put a request quotation button on all products
-3. also fix the numericas area on the homepage its glitching in size when the numbers are loading up
-4. also use relavant background images for hero section rather than just plain blank green bacgkround, it shuold loook like a seeds site
-5. make the site more inteactive.
+1. make a leadership secion on  the home page
+ use image of Ashok.jpeg in public folder for Ashok Singh
+ another leader is Shivendra Singh ( no image right now)
+
+
+2. change the colour scheme to a brigher combo greena nd white
+Also use this font for heading on the site
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+</style>
+
+3. The horozontally moving strip on the home page is looking ugly, please fix it, also there is random text on it, please write sensible text
+
+Make the site more engaging and interactive but also minimalistic and premium
+
+3. Use legit information
+
+07
+Scientists
+
+05
+Trial Centers
+
+04
+Research Centers
+
+10
+States
+
+500
+Grower
+
+25
+Sales Partner
+
+35
+Chanel Partner
+
+
+
+4. Make a contacts page
+
+Call Us
+Phone: 022 - 40156765
+Email
+Info@agronicaseeds.com
+Corporate office
+Block 404, 4th floor, Sagar Tech Plaza, B Wing, Off Andheri Kurla Road, Sakinaka, Andheri East, Mumbai, Maharashtra -400072
+Register Office
+Agronica Seeds GRAM & POST - MAHUWADABAR, Babhnan, Basti, Uttar Pradesh, India, 272161
+
+
+
+5. Product images are not correct, please use winget to get all images from agronicaseeds.com related to products and use them instead

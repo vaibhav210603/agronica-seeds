@@ -39,7 +39,7 @@ const products = [
     id: "maize",
     name: "Maize",
     emoji: "🌽",
-    image: "/images/products/maize.png",
+    image: "/images/products_dl/pros1.jpg",
     shortDesc:
       "World's leading crop and queen of cereals, widely cultivated as cereal grain with highest genetic yield potential.",
     fullDesc:
@@ -59,7 +59,7 @@ const products = [
     id: "wheat-dbw187",
     name: "Wheat (DBW187)",
     emoji: "🌾",
-    image: "/images/products/wheat.png",
+    image: "/images/products_dl/pros2.jpg",
     shortDesc:
       "Versatile crop used in a wide variety of food products with high yield potential under early sown irrigated conditions.",
     fullDesc:
@@ -79,7 +79,7 @@ const products = [
     id: "wheat-hd2967",
     name: "Wheat (HD2967)",
     emoji: "🌾",
-    image: "/images/products/wheat.png",
+    image: "/images/products_dl/pros3.jpg",
     shortDesc:
       "Double dwarf wheat variety with an average plant height of 101 cm, known for high yields.",
     fullDesc:
@@ -99,7 +99,7 @@ const products = [
     id: "paddy",
     name: "Paddy",
     emoji: "🌿",
-    image: "/images/products/paddy.png",
+    image: "/images/products_dl/pros4.jpg",
     shortDesc:
       "Most important and extensively grown food crop, staple food of more than 60% of the world population.",
     fullDesc:
@@ -119,7 +119,7 @@ const products = [
     id: "mustard",
     name: "Mustard",
     emoji: "🌻",
-    image: "/images/products/mustard.png",
+    image: "/images/products_dl/pros5.jpg",
     shortDesc:
       "Rich history documented in ancient literature including Sanskrit and Sumerian texts from 3000 BC.",
     fullDesc:
@@ -138,7 +138,7 @@ const products = [
     id: "cotton",
     name: "Cotton (Agronica BGII)",
     emoji: "☁️",
-    image: "/images/products/cotton.png",
+    image: "/images/products_dl/pros6.jpg",
     shortDesc:
       "Bollgard II is a valuable tool for cotton farmers seeking to improve pest resistance and reduce chemical pesticides.",
     fullDesc:
@@ -287,10 +287,10 @@ export default function Home() {
       <section className={styles.marqueeSection}>
         <div className={styles.marqueeTrack}>
           <div className={styles.marqueeContent}>
-            {["🌽 Maize", "🌾 Wheat", "🌿 Paddy", "🌻 Mustard", "☁️ Cotton", "🥬 Vegetables", "✨ Innovation", "🌱 Sustainability", "🏆 Quality", "🌍 10+ States"].map((item, i) => (
+            {["Premium Seeds", "High-Yield Crops", "Disease Resistant", "Climate Resilient", "Trusted by Farmers", "Sustainable Agriculture", "Innovative Farming"].map((item, i) => (
               <span key={i} className={styles.marqueeItem}>{item}</span>
             ))}
-            {["🌽 Maize", "🌾 Wheat", "🌿 Paddy", "🌻 Mustard", "☁️ Cotton", "🥬 Vegetables", "✨ Innovation", "🌱 Sustainability", "🏆 Quality", "🌍 10+ States"].map((item, i) => (
+            {["Premium Seeds", "High-Yield Crops", "Disease Resistant", "Climate Resilient", "Trusted by Farmers", "Sustainable Agriculture", "Innovative Farming"].map((item, i) => (
               <span key={`dup-${i}`} className={styles.marqueeItem}>{item}</span>
             ))}
           </div>
@@ -350,31 +350,80 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== LEADERSHIP SECTION ===== */}
+      <section className={`section section-dark ${styles.leadership}`}>
+        <div className="container">
+          <AnimatedSection direction="up" className={styles.leadershipHeader} style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <span className="section-label">Our Leadership</span>
+            <h2 className="section-title">
+              Guidance &{" "}
+              <span className={styles.textGradient}>Expertise</span>
+            </h2>
+          </AnimatedSection>
+
+          <div className={styles.leadershipGrid} style={{ display: 'flex', gap: '3rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <AnimatedSection direction="left">
+              <div className={styles.leaderCard} style={{ background: 'var(--white)', padding: '2.5rem', borderRadius: 'var(--radius-lg)', textAlign: 'center', boxShadow: 'var(--shadow-md)', minWidth: '300px' }}>
+                <div style={{ width: '150px', height: '150px', margin: '0 auto 1.5rem', borderRadius: '50%', overflow: 'hidden', border: '4px solid var(--emerald-500)', position: 'relative' }}>
+                  <Image src="/ashok.jpeg" alt="Ashok Singh" fill sizes="150px" style={{ objectFit: 'cover' }} />
+                </div>
+                <h3 style={{ marginBottom: '0.5rem', color: 'var(--dark-800)' }}>Ashok Singh</h3>
+                <p style={{ color: 'var(--emerald-600)', fontWeight: '600' }}>Leader</p>
+              </div>
+            </AnimatedSection>
+            
+            <AnimatedSection direction="right">
+              <div className={styles.leaderCard} style={{ background: 'var(--white)', padding: '2.5rem', borderRadius: 'var(--radius-lg)', textAlign: 'center', boxShadow: 'var(--shadow-md)', minWidth: '300px' }}>
+                <div style={{ width: '150px', height: '150px', margin: '0 auto 1.5rem', borderRadius: '50%', overflow: 'hidden', border: '4px solid var(--emerald-500)', background: 'var(--gray-100)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Users size={64} color="var(--gray-300)" />
+                </div>
+                <h3 style={{ marginBottom: '0.5rem', color: 'var(--dark-800)' }}>Shivendra Singh</h3>
+                <p style={{ color: 'var(--emerald-600)', fontWeight: '600' }}>Leader</p>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
       {/* ===== STATS SECTION ===== */}
       <section className={`section section-emerald ${styles.stats}`}>
         <div className="container">
           <AnimatedSection direction="up">
             <div className={styles.statsGrid}>
               <StatCounter
-                end={500}
-                label="Partner Farmers"
-                icon={Users}
+                end={7}
+                label="Scientists"
+                icon={Lightbulb}
               />
               <StatCounter
-                end={30000}
-                suffix=" sq ft"
-                label="Plant Area"
+                end={5}
+                label="Trial Centers"
+                icon={Target}
+              />
+              <StatCounter
+                end={4}
+                label="Research Centers"
                 icon={Factory}
               />
               <StatCounter
-                end={6}
-                label="Crop Varieties"
-                icon={Wheat}
+                end={10}
+                label="States"
+                icon={Globe}
               />
               <StatCounter
-                end={10}
-                label="States Covered"
-                icon={Globe}
+                end={500}
+                label="Growers"
+                icon={Users}
+              />
+              <StatCounter
+                end={25}
+                label="Sales Partners"
+                icon={Handshake}
+              />
+              <StatCounter
+                end={35}
+                label="Channel Partners"
+                icon={TrendingUp}
               />
             </div>
           </AnimatedSection>

@@ -66,7 +66,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            style={{ color: "#34D399" }}
+            style={{ color: "#093827ff" }}
           >
             About Us
           </motion.span>
