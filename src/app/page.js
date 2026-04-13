@@ -351,34 +351,43 @@ export default function Home() {
       </section>
 
       {/* ===== LEADERSHIP SECTION ===== */}
-      <section className={`section section-dark ${styles.leadership}`}>
+      <section className={`section section-dark`}>
         <div className="container">
-          <AnimatedSection direction="up" className={styles.leadershipHeader} style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <AnimatedSection direction="up" style={{ textAlign: 'center', marginBottom: '1rem' }}>
             <span className="section-label">Our Leadership</span>
             <h2 className="section-title">
               Guidance &{" "}
               <span className={styles.textGradient}>Expertise</span>
             </h2>
+            <p className="section-subtitle" style={{ margin: '0 auto' }}>
+              Led by industry veterans profoundly committed to revolutionising the Indian agricultural landscape.
+            </p>
           </AnimatedSection>
 
-          <div className={styles.leadershipGrid} style={{ display: 'flex', gap: '3rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <AnimatedSection direction="left">
-              <div className={styles.leaderCard} style={{ background: 'var(--white)', padding: '2.5rem', borderRadius: 'var(--radius-lg)', textAlign: 'center', boxShadow: 'var(--shadow-md)', minWidth: '300px' }}>
-                <div style={{ width: '150px', height: '150px', margin: '0 auto 1.5rem', borderRadius: '50%', overflow: 'hidden', border: '4px solid var(--emerald-500)', position: 'relative' }}>
-                  <Image src="/ashok.jpeg" alt="Ashok Singh" fill sizes="150px" style={{ objectFit: 'cover' }} />
+          <div className={styles.leadershipGrid}>
+            <AnimatedSection direction="left" delay={0.1}>
+              <div className={styles.leaderCard}>
+                <div className={styles.leaderAvatarWrap}>
+                  <div className={styles.leaderAvatar}>
+                    <Image src="/ashok.jpeg" alt="Ashok Singh" fill sizes="140px" style={{ objectFit: 'cover' }} />
+                  </div>
                 </div>
-                <h3 style={{ marginBottom: '0.5rem', color: 'var(--dark-800)' }}>Ashok Singh</h3>
-                <p style={{ color: 'var(--emerald-600)', fontWeight: '600' }}>Leader</p>
+                <h3 className={styles.leaderName}>Ashok Singh</h3>
+                <p className={styles.leaderRole}>Visionary Leader</p>
+                <p className={styles.leaderQuote}>"Empowering farmers with high-yield technology to build a food-secure world."</p>
               </div>
             </AnimatedSection>
             
-            <AnimatedSection direction="right">
-              <div className={styles.leaderCard} style={{ background: 'var(--white)', padding: '2.5rem', borderRadius: 'var(--radius-lg)', textAlign: 'center', boxShadow: 'var(--shadow-md)', minWidth: '300px' }}>
-                <div style={{ width: '150px', height: '150px', margin: '0 auto 1.5rem', borderRadius: '50%', overflow: 'hidden', border: '4px solid var(--emerald-500)', background: 'var(--gray-100)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Users size={64} color="var(--gray-300)" />
+            <AnimatedSection direction="right" delay={0.2}>
+              <div className={styles.leaderCard}>
+                <div className={styles.leaderAvatarWrap}>
+                  <div className={styles.leaderAvatar} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Users size={50} color="var(--gray-400)" />
+                  </div>
                 </div>
-                <h3 style={{ marginBottom: '0.5rem', color: 'var(--dark-800)' }}>Shivendra Singh</h3>
-                <p style={{ color: 'var(--emerald-600)', fontWeight: '600' }}>Leader</p>
+                <h3 className={styles.leaderName}>Shivendra Singh</h3>
+                <p className={styles.leaderRole}>Strategic Leader</p>
+                <p className={styles.leaderQuote}>"Sustainability and innovation are the cornerstones of a resilient agricultural ecosystem."</p>
               </div>
             </AnimatedSection>
           </div>

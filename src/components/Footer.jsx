@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import {
   MapPin,
   Phone,
@@ -40,15 +41,12 @@ export default function Footer() {
         {/* Brand */}
         <div className={styles.brand}>
           <div className={styles.brandLogo}>
-            <div className={styles.logoIcon}>
-              <Sprout size={28} />
-            </div>
-            <div>
-              <h3 className={styles.brandName}>Agronica Seeds</h3>
-              <p className={styles.brandTagline}>
-                Spark Private Ltd.
-              </p>
-            </div>
+            <img 
+              src="/web-logo-ft.png" 
+              alt="Agronica Seeds Footer Logo" 
+              width="250"
+              style={{ height: '70px', objectFit: 'contain', filter: 'brightness(0) invert(1)', display: 'block' }} 
+            />
           </div>
           <p className={styles.brandDesc}>
             A fresh and innovative force in the seeds industry. We&apos;re

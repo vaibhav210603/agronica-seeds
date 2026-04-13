@@ -798,6 +798,98 @@
   flex-wrap: wrap;
 }
 
+/* ===== LEADERSHIP ===== */
+.leadershipGrid {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+}
+
+.leaderCard {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  text-align: center;
+  width: 340px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.leaderCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--gradient-emerald);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.leaderCard:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.06);
+}
+
+.leaderCard:hover::before {
+  transform: scaleX(1);
+}
+
+.leaderAvatarWrap {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  padding: 8px;
+  background: linear-gradient(135deg, var(--emerald-100), var(--emerald-50));
+  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.leaderCard:hover .leaderAvatarWrap {
+  transform: scale(1.05);
+  box-shadow: 0 20px 45px rgba(16, 185, 129, 0.15);
+}
+
+.leaderAvatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  background: var(--gray-100);
+}
+
+.leaderName {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--dark-900);
+  margin-bottom: 0.25rem;
+}
+
+.leaderRole {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--emerald-600);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.5rem;
+}
+
+.leaderQuote {
+  font-size: 0.95rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+  font-style: italic;
+  position: relative;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .valuesGrid {

@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Menu,
   X,
@@ -69,13 +70,12 @@ export default function Navbar() {
       >
         <div className={styles.navInner}>
           <Link href="/" className={styles.logo}>
-            <div className={styles.logoIcon}>
-              <Sprout size={24} />
-            </div>
-            <div className={styles.logoText}>
-              <span className={styles.logoBrand}>Agronica</span>
-              <span className={styles.logoSub}>Seeds</span>
-            </div>
+            <img 
+              src="/web-logo.png" 
+              alt="Agronica Seeds Logo" 
+              width="200"
+              style={{ height: '50px', objectFit: 'contain', filter: 'brightness(0) invert(1)', display: 'block' }} 
+            />
           </Link>
 
           <div className={styles.navLinks}>
