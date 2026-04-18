@@ -308,19 +308,23 @@ export default function Home() {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection direction="right" className={styles.aboutVisual}>
-              <div className={styles.aboutCard}>
-                <div className={styles.aboutCardInner}>
+            <AnimatedSection direction="right" className={styles.aboutImageWrap}>
+              <div className={styles.aboutImageInner}>
+                <Image 
+                  src="/images/about-field.png" 
+                  alt="Lush agricultural field at sunset" 
+                  fill 
+                  sizes="(max-width: 768px) 100vw, 50vw" 
+                  style={{ objectFit: 'cover' }} 
+                />
+                <div className={styles.aboutImageBadge}>
                   <div className={styles.aboutIcon}>
-                    <Leaf size={28} />
+                    <Leaf size={24} />
                   </div>
-                  <h4>Our Promise</h4>
-                  <p>
-                    Harnessing the power of seeds to improve lives and the
-                    planet. Building strong relationships with customers,
-                    partners, and communities. Fostering a culture of
-                    innovation, integrity, and social responsibility.
-                  </p>
+                  <div>
+                    <span className={styles.badgeTitle}>Our Promise</span>
+                    <span className={styles.badgeText}>Improving lives & planet</span>
+                  </div>
                 </div>
               </div>
             </AnimatedSection>
@@ -444,14 +448,19 @@ export default function Home() {
               <div className={styles.bentoIcon}><Zap size={28} /></div>
               <h3>Next-Gen Genetics</h3>
               <p>We leverage advanced molecular breeding techniques to develop seeds with superior genetic purity, ensuring robust germination and crop uniformity across all terrains.</p>
-              <div className={styles.bentoGeneticsBg}></div>
+              <div className={styles.bentoGeneticsBg}>
+                <Image src="/images/research-lab.png" alt="Botanical seed research lab" fill sizes="800px" style={{ objectFit: 'cover' }} />
+              </div>
             </AnimatedSection>
             
             <AnimatedSection direction="left" delay={0.1} className={`${styles.bentoItem} ${styles.bentoClimate}`}>
+              <div className={styles.bentoClimateBg}>
+                <Image src="/images/vision-aerial.png" alt="Corporate agriculture fields" fill sizes="400px" style={{ objectFit: 'cover' }} />
+              </div>
               <div className={styles.bentoIcon}><Globe size={28} /></div>
-              <div>
+              <div style={{ position: 'relative', zIndex: 2 }}>
                 <h3>Climate Resilience</h3>
-                <p>Engineered to thrive in unpredictable weather, our seeds exhibit remarkable drought tolerance and heat resistance.</p>
+                <p>Engineered to thrive in unpredictable weather.</p>
               </div>
             </AnimatedSection>
 

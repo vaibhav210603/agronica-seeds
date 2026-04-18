@@ -107,48 +107,71 @@
   margin-top: 2.5rem;
 }
 
-.aboutVisual {
+.aboutImageWrap {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.aboutCard {
-  background: var(--surface);
-  border: 1px solid var(--border);
+.aboutImageInner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
   border-radius: var(--radius-xl);
   overflow: hidden;
+  box-shadow: var(--shadow-lg);
 }
 
-.aboutCardInner {
-  padding: 2.75rem 2.5rem;
-  text-align: center;
+.aboutImageBadge {
+  position: absolute;
+  bottom: 2rem;
+  left: -2rem;
+  background: var(--surface);
+  padding: 1.25rem 1.75rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border);
+  z-index: 2;
+  transform: translateX(2rem); /* Keep it contained on mobile */
+}
+
+@media (min-width: 1024px) {
+  .aboutImageBadge {
+    transform: none; /* Stick out on larger screens */
+  }
 }
 
 .aboutIcon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-lg);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
   background: var(--primary-50);
   color: var(--primary-600);
-  margin-bottom: 1.25rem;
+  flex-shrink: 0;
 }
 
-.aboutCardInner h4 {
+.badgeTitle {
+  display: block;
   font-family: var(--font-heading);
   font-size: 1.25rem;
-  margin-bottom: 0.75rem;
   color: var(--text-primary);
+  margin-bottom: 0.125rem;
 }
 
-.aboutCardInner p {
-  font-size: 0.875rem;
-  line-height: 1.75;
+.badgeText {
+  display: block;
+  font-size: 0.75rem;
   color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* ===== STATS ===== */
@@ -245,19 +268,33 @@
 
 .bentoGeneticsBg {
   position: absolute;
-  right: -2rem;
-  bottom: -2rem;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, var(--primary-50) 0%, transparent 70%);
-  border-radius: 50%;
-  opacity: 0.5;
-  transition: transform 0.5s ease-out;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.bentoGeneticsBg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(15,26,20,0.8) 0%, rgba(15,26,20,0.3) 100%);
 }
 
 .bentoGenetics:hover .bentoGeneticsBg {
-  transform: scale(1.5);
-  opacity: 0.8;
+  opacity: 1;
+}
+
+.bentoGenetics:hover h3, 
+.bentoGenetics:hover p, 
+.bentoGenetics:hover .bentoIcon {
+  color: white;
+  transition: color 0.3s;
+}
+
+.bentoGenetics:hover .bentoIcon {
+  background: rgba(255,255,255,0.2);
+  color: white;
 }
 
 .bentoClimate {
@@ -267,6 +304,24 @@
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 1.5rem;
+  position: relative;
+}
+
+.bentoClimateBg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 40%;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.5s ease-out;
+  mask-image: linear-gradient(to right, transparent, black);
+  -webkit-mask-image: linear-gradient(to right, transparent, black);
+}
+
+.bentoClimate:hover .bentoClimateBg {
+  opacity: 0.8;
 }
 
 .bentoClimate .bentoIcon {
