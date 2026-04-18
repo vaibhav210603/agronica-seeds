@@ -11,11 +11,10 @@ export default function ProductCard({ product, index = 0, onClick }) {
   return (
     <motion.div
       className={styles.card}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
-      whileHover={{ y: -8 }}
+      transition={{ delay: index * 0.08, duration: 0.45 }}
     >
       <div className={styles.imageWrap} onClick={onClick}>
         <div
@@ -48,7 +47,7 @@ export default function ProductCard({ product, index = 0, onClick }) {
         </div>
         <div className={styles.actions}>
           <button className={styles.learnMore} onClick={onClick}>
-            Learn More <ArrowRight size={16} />
+            Learn More <ArrowRight size={14} />
           </button>
           <button
             className={styles.quotationBtn}
@@ -57,12 +56,11 @@ export default function ProductCard({ product, index = 0, onClick }) {
               window.location.href = `/contact?product=${encodeURIComponent(product.name)}`;
             }}
           >
-            <FileText size={14} />
-            Request Quotation
+            <FileText size={13} />
+            Quotation
           </button>
         </div>
       </div>
-      <div className={styles.glowBorder} />
     </motion.div>
   );
 }

@@ -128,7 +128,7 @@ export default function ProductsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            style={{ color: "#34D399" }}
+            style={{ color: "rgba(255,255,255,0.5)" }}
           >
             Our Products
           </motion.span>
@@ -153,7 +153,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Products */}
-      <section className="section" style={{ background: "var(--gray-100)" }}>
+      <section className="section" style={{ background: "var(--bg-alt)" }}>
         <div className="container">
           <div className={styles.filterBar}>
             <Filter size={18} />

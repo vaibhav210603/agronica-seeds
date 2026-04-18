@@ -1,6 +1,6 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -15,22 +15,19 @@ import {
   Globe,
   Sprout,
   Factory,
-  Wheat,
   ChevronRight,
   Lightbulb,
   TreePine,
   Star,
-  Award,
   Handshake,
   Eye,
   Rocket,
   FileText,
-  MousePointer2,
 } from "lucide-react";
-import ParticleField from "@/components/ParticleField";
 import AnimatedSection from "@/components/AnimatedSection";
 import ProductCard from "@/components/ProductCard";
 import StatCounter from "@/components/StatCounter";
+import TextShimmer from "@/components/TextShimmer";
 import styles from "./page.module.css";
 
 /* ===== DATA ===== */
@@ -160,31 +157,31 @@ const values = [
     icon: Lightbulb,
     title: "Innovation",
     desc: "We embrace creativity and innovation in everything we do.",
-    color: "#F59E0B",
+    color: "#B8963E",
   },
   {
     icon: TreePine,
     title: "Sustainability",
     desc: "We prioritize environmental stewardship and social responsibility.",
-    color: "#10B981",
+    color: "#2D7A4C",
   },
   {
     icon: Star,
     title: "Quality",
     desc: "We strive for excellence in our seeds and services.",
-    color: "#8B5CF6",
+    color: "#6B6B6B",
   },
   {
     icon: Shield,
     title: "Integrity",
     desc: "We operate with transparency, honesty, and ethical business practices.",
-    color: "#3B82F6",
+    color: "#1A4D2E",
   },
   {
     icon: Heart,
     title: "Customer-Centricity",
     desc: "We put our customers at the heart of everything we do.",
-    color: "#EF4444",
+    color: "#B8963E",
   },
 ];
 
@@ -205,46 +202,43 @@ export default function Home() {
     <>
       {/* ===== HERO SECTION ===== */}
       <section className={styles.hero}>
-        <Image
-          src="/images/hero/hero-bg.png"
-          alt="Agricultural farmland at golden hour"
-          fill
-          priority
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className={styles.heroBgImage}
-          sizes="100vw"
-        />
-        <ParticleField />
+        >
+          <source src="/ag_hero.mp4" type="video/mp4" />
+        </video>
         <div className={styles.heroOverlay} />
-        <div className={styles.heroOrb1} />
-        <div className={styles.heroOrb2} />
-        <div className={styles.heroOrb3} />
 
         <div className={`container ${styles.heroContent}`}>
           <motion.div
             className={styles.heroBadge}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
           >
-            <Sprout size={14} />A Venture of MRC Agrotech Ltd.
+            <Sprout size={13} />A Venture of MRC Agrotech Ltd.
           </motion.div>
 
           <motion.h1
             className={styles.heroTitle}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
+            transition={{ delay: 0.5, duration: 0.7 }}
           >
-            Empowering the
+            <TextShimmer text="Empowering the" />
             <br />
-            <span className={styles.heroHighlight}>Future of Agriculture</span>
+            <TextShimmer text="Future of Agriculture" />
           </motion.h1>
 
           <motion.p
             className={styles.heroSubtitle}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.7 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
           >
             Developing high-quality, disease-resistant, and climate-resilient
             seed varieties to inspire farmers and transform agricultural produce
@@ -253,13 +247,13 @@ export default function Home() {
 
           <motion.div
             className={styles.heroCtas}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.6 }}
+            transition={{ delay: 0.9, duration: 0.5 }}
           >
             <Link href="/products" className="btn btn-primary">
               Explore Products
-              <ChevronRight size={18} />
+              <ChevronRight size={16} />
             </Link>
             <Link href="/about" className="btn btn-secondary">
               Our Story
@@ -273,27 +267,12 @@ export default function Home() {
             transition={{ delay: 1.5 }}
           >
             <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              animate={{ y: [0, 8, 0] }}
+              transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
             >
-              <ArrowDown size={20} />
+              <ArrowDown size={18} />
             </motion.div>
-            <span>Scroll to explore</span>
           </motion.div>
-        </div>
-      </section>
-
-      {/* ===== SCROLLING MARQUEE ===== */}
-      <section className={styles.marqueeSection}>
-        <div className={styles.marqueeTrack}>
-          <div className={styles.marqueeContent}>
-            {["Premium Seeds", "High-Yield Crops", "Disease Resistant", "Climate Resilient", "Trusted by Farmers", "Sustainable Agriculture", "Innovative Farming"].map((item, i) => (
-              <span key={i} className={styles.marqueeItem}>{item}</span>
-            ))}
-            {["Premium Seeds", "High-Yield Crops", "Disease Resistant", "Climate Resilient", "Trusted by Farmers", "Sustainable Agriculture", "Innovative Farming"].map((item, i) => (
-              <span key={`dup-${i}`} className={styles.marqueeItem}>{item}</span>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -304,8 +283,7 @@ export default function Home() {
             <AnimatedSection direction="left" className={styles.aboutText}>
               <span className="section-label">About Us</span>
               <h2 className="section-title">
-                A Fresh & Innovative Force in the{" "}
-                <span className={styles.textGradient}>Seeds Industry</span>
+                A Fresh & Innovative Force in the Seeds Industry
               </h2>
               <p className="section-subtitle">
                 Agronica Seeds Spark Private Ltd. is a new Venture of MRC
@@ -325,7 +303,7 @@ export default function Home() {
               <div className={styles.aboutCta}>
                 <Link href="/about" className="btn btn-primary">
                   Read Our Full Story
-                  <ChevronRight size={18} />
+                  <ChevronRight size={16} />
                 </Link>
               </div>
             </AnimatedSection>
@@ -333,7 +311,9 @@ export default function Home() {
             <AnimatedSection direction="right" className={styles.aboutVisual}>
               <div className={styles.aboutCard}>
                 <div className={styles.aboutCardInner}>
-                  <div className={styles.aboutLeaf}>🌱</div>
+                  <div className={styles.aboutIcon}>
+                    <Leaf size={28} />
+                  </div>
                   <h4>Our Promise</h4>
                   <p>
                     Harnessing the power of seeds to improve lives and the
@@ -343,21 +323,18 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className={styles.aboutDecor1} />
-              <div className={styles.aboutDecor2} />
             </AnimatedSection>
           </div>
         </div>
       </section>
 
       {/* ===== LEADERSHIP SECTION ===== */}
-      <section className={`section section-dark`}>
+      <section className={`section ${styles.leadershipSection}`}>
         <div className="container">
-          <AnimatedSection direction="up" style={{ textAlign: 'center', marginBottom: '1rem' }}>
+          <AnimatedSection direction="up" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
             <span className="section-label">Our Leadership</span>
             <h2 className="section-title">
-              Guidance &{" "}
-              <span className={styles.textGradient}>Expertise</span>
+              The People Behind Our Vision
             </h2>
             <p className="section-subtitle" style={{ margin: '0 auto' }}>
               Led by industry veterans profoundly committed to revolutionising the Indian agricultural landscape.
@@ -365,29 +342,41 @@ export default function Home() {
           </AnimatedSection>
 
           <div className={styles.leadershipGrid}>
-            <AnimatedSection direction="left" delay={0.1}>
+            <AnimatedSection direction="up" delay={0.1}>
               <div className={styles.leaderCard}>
-                <div className={styles.leaderAvatarWrap}>
-                  <div className={styles.leaderAvatar}>
-                    <Image src="/ashok.jpeg" alt="Ashok Singh" fill sizes="140px" style={{ objectFit: 'cover' }} />
+                <div className={styles.leaderImageWrap}>
+                  <Image src="/ashok.jpeg" alt="Ashok Singh — CEO & Director" fill sizes="280px" style={{ objectFit: 'cover' }} />
+                </div>
+                <div className={styles.leaderInfo}>
+                  <div className={styles.leaderMeta}>
+                    <h3 className={styles.leaderName}>Ashok Singh</h3>
+                    <p className={styles.leaderRole}>CEO & Director</p>
+                  </div>
+                  <div className={styles.leaderQuoteBlock}>
+                    <span className={styles.quoteIcon}>&ldquo;</span>
+                    <p className={styles.leaderQuote}>Empowering farmers with high-yield technology to build a food-secure world.</p>
                   </div>
                 </div>
-                <h3 className={styles.leaderName}>Ashok Singh</h3>
-                <p className={styles.leaderRole}>Visionary Leader</p>
-                <p className={styles.leaderQuote}>"Empowering farmers with high-yield technology to build a food-secure world."</p>
               </div>
             </AnimatedSection>
             
-            <AnimatedSection direction="right" delay={0.2}>
+            <AnimatedSection direction="up" delay={0.2}>
               <div className={styles.leaderCard}>
-                <div className={styles.leaderAvatarWrap}>
-                  <div className={styles.leaderAvatar} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Users size={50} color="var(--gray-400)" />
+                <div className={styles.leaderImageWrap}>
+                  <div className={styles.leaderPlaceholder}>
+                    <Users size={48} />
                   </div>
                 </div>
-                <h3 className={styles.leaderName}>Shivendra Singh</h3>
-                <p className={styles.leaderRole}>Strategic Leader</p>
-                <p className={styles.leaderQuote}>"Sustainability and innovation are the cornerstones of a resilient agricultural ecosystem."</p>
+                <div className={styles.leaderInfo}>
+                  <div className={styles.leaderMeta}>
+                    <h3 className={styles.leaderName}>Shivendra Singh</h3>
+                    <p className={styles.leaderRole}>Director</p>
+                  </div>
+                  <div className={styles.leaderQuoteBlock}>
+                    <span className={styles.quoteIcon}>&ldquo;</span>
+                    <p className={styles.leaderQuote}>Sustainability and innovation are the cornerstones of a resilient agricultural ecosystem.</p>
+                  </div>
+                </div>
               </div>
             </AnimatedSection>
           </div>
@@ -439,14 +428,55 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== INNOVATION BENTO SECTION ===== */}
+      <section className={`section ${styles.innovationSection}`}>
+        <div className="container">
+          <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+            <span className="section-label">R&D Hub</span>
+            <h2 className="section-title">The Science of Superior Seeds</h2>
+            <p className="section-subtitle" style={{ margin: "0 auto", maxWidth: "600px" }}>
+              Our cutting-edge research facilities fuse traditional breeding with advanced biotechnology to create seeds that outperform the rest.
+            </p>
+          </AnimatedSection>
+
+          <div className={styles.bentoGrid}>
+            <AnimatedSection direction="up" className={`${styles.bentoItem} ${styles.bentoGenetics}`}>
+              <div className={styles.bentoIcon}><Zap size={28} /></div>
+              <h3>Next-Gen Genetics</h3>
+              <p>We leverage advanced molecular breeding techniques to develop seeds with superior genetic purity, ensuring robust germination and crop uniformity across all terrains.</p>
+              <div className={styles.bentoGeneticsBg}></div>
+            </AnimatedSection>
+            
+            <AnimatedSection direction="left" delay={0.1} className={`${styles.bentoItem} ${styles.bentoClimate}`}>
+              <div className={styles.bentoIcon}><Globe size={28} /></div>
+              <div>
+                <h3>Climate Resilience</h3>
+                <p>Engineered to thrive in unpredictable weather, our seeds exhibit remarkable drought tolerance and heat resistance.</p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection direction="right" delay={0.2} className={`${styles.bentoItem} ${styles.bentoYield}`}>
+              <div className={styles.bentoIcon}><TrendingUp size={24} /></div>
+              <h3>Maximum Yield Potential</h3>
+              <p>Every seed is optimized to convert nutrients efficiently, delivering heavier harvests and maximizing farmer profitability season after season.</p>
+            </AnimatedSection>
+
+            <AnimatedSection direction="up" delay={0.3} className={`${styles.bentoItem} ${styles.bentoDisease}`}>
+               <div className={styles.bentoIcon}><Shield size={24} /></div>
+              <h3>Disease Shield Tech</h3>
+              <p>In-built resistance against major pests and fungal pathogens, drastically reducing the need for chemical interventions.</p>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
       {/* ===== PRODUCTS SECTION ===== */}
       <section className={`section ${styles.products}`}>
         <div className="container">
           <AnimatedSection direction="up" className={styles.productsHeader}>
             <span className="section-label">Our Products</span>
             <h2 className="section-title">
-              Premium Seed{" "}
-              <span className={styles.textGradient}>Varieties</span>
+              Premium Seed Varieties
             </h2>
             <p className="section-subtitle">
               From field crops to vegetables, we offer a diverse range of
@@ -472,7 +502,7 @@ export default function Home() {
           >
             <Link href="/products" className="btn btn-primary">
               View All Products
-              <ChevronRight size={18} />
+              <ChevronRight size={16} />
             </Link>
           </AnimatedSection>
         </div>
@@ -490,10 +520,10 @@ export default function Home() {
           >
             <motion.div
               className={styles.modalContent}
-              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              initial={{ opacity: 0, scale: 0.96, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 30 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              exit={{ opacity: 0, scale: 0.96, y: 20 }}
+              transition={{ type: "spring", damping: 30, stiffness: 350 }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -528,7 +558,7 @@ export default function Home() {
                   <ul>
                     {selectedProduct.features?.map((f, i) => (
                       <li key={i}>
-                        <Leaf size={14} /> {f}
+                        <Leaf size={13} /> {f}
                       </li>
                     ))}
                   </ul>
@@ -551,7 +581,7 @@ export default function Home() {
                     window.location.href = `/contact?product=${encodeURIComponent(selectedProduct.name)}`;
                   }}
                 >
-                  <FileText size={16} />
+                  <FileText size={15} />
                   Request Quotation
                 </button>
               </div>
@@ -566,10 +596,7 @@ export default function Home() {
           <AnimatedSection direction="up" className={styles.visionHeader}>
             <span className="section-label">Vision & Mission</span>
             <h2 className="section-title">
-              Shaping the Future of{" "}
-              <span className={styles.textGradientGold}>
-                Sustainable Agriculture
-              </span>
+              Shaping the Future of Sustainable Agriculture
             </h2>
           </AnimatedSection>
 
@@ -577,7 +604,7 @@ export default function Home() {
             <AnimatedSection direction="left" delay={0.1}>
               <div className={styles.visionCard}>
                 <div className={styles.visionIcon}>
-                  <Eye size={28} />
+                  <Eye size={24} />
                 </div>
                 <h3>Our Vision</h3>
                 <p>
@@ -601,8 +628,8 @@ export default function Home() {
 
             <AnimatedSection direction="right" delay={0.2}>
               <div className={styles.visionCard}>
-                <div className={`${styles.visionIcon} ${styles.visionIconGold}`}>
-                  <Rocket size={28} />
+                <div className={`${styles.visionIcon} ${styles.visionIconAccent}`}>
+                  <Rocket size={24} />
                 </div>
                 <h3>Our Mission</h3>
                 <p>
@@ -638,8 +665,7 @@ export default function Home() {
           <AnimatedSection direction="up" className={styles.valuesHeader}>
             <span className="section-label">What Drives Us</span>
             <h2 className="section-title">
-              Values, Goals &{" "}
-              <span className={styles.textGradient}>Purpose</span>
+              Values, Goals & Purpose
             </h2>
           </AnimatedSection>
 
@@ -660,10 +686,10 @@ export default function Home() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.25 }}
               className={styles.tabContent}
             >
               {activeTab === "values" && (
@@ -672,18 +698,18 @@ export default function Home() {
                     <motion.div
                       key={v.title}
                       className={styles.valueCard}
-                      initial={{ opacity: 0, y: 30 }}
+                      initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1 }}
+                      transition={{ delay: i * 0.08 }}
                     >
                       <div
                         className={styles.valueIcon}
                         style={{
-                          background: `${v.color}20`,
+                          background: `${v.color}12`,
                           color: v.color,
                         }}
                       >
-                        <v.icon size={24} />
+                        <v.icon size={22} />
                       </div>
                       <h4>{v.title}</h4>
                       <p>{v.desc}</p>
@@ -698,9 +724,9 @@ export default function Home() {
                     <motion.div
                       key={i}
                       className={styles.goalItem}
-                      initial={{ opacity: 0, x: -30 }}
+                      initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 }}
+                      transition={{ delay: i * 0.08 }}
                     >
                       <div className={styles.goalNumber}>{`0${i + 1}`}</div>
                       <p>{g}</p>
@@ -713,11 +739,11 @@ export default function Home() {
                 <div className={styles.purposeWrap}>
                   <motion.div
                     className={styles.purposeCard}
-                    initial={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
                   >
                     <div className={styles.purposeIcon}>
-                      <Globe size={40} />
+                      <Globe size={32} />
                     </div>
                     <h3>Feeding the World Sustainably</h3>
                     <p>
@@ -750,7 +776,7 @@ export default function Home() {
             </h2>
             <p
               className="section-subtitle"
-              style={{ color: "rgba(255,255,255,0.7)", maxWidth: "700px" }}
+              style={{ color: "rgba(255,255,255,0.65)", maxWidth: "640px" }}
             >
               The wide network of 500 farmers along with 30,000 sq ft plant
               area and the state-of-the-art infrastructural facilities enables
@@ -763,7 +789,7 @@ export default function Home() {
           <AnimatedSection direction="up" delay={0.2}>
             <div className={styles.infraCards}>
               <div className={styles.infraCard}>
-                <Factory size={32} />
+                <Factory size={28} />
                 <h4>Processing Plant</h4>
                 <p>
                   30,000 sq ft high-capacity seed processing facility at Basti,
@@ -771,7 +797,7 @@ export default function Home() {
                 </p>
               </div>
               <div className={styles.infraCard}>
-                <Shield size={32} />
+                <Shield size={28} />
                 <h4>Seeds Production</h4>
                 <p>
                   ASSPL adheres to best practices in seed production that
@@ -780,7 +806,7 @@ export default function Home() {
                 </p>
               </div>
               <div className={styles.infraCard}>
-                <Shield size={32} />
+                <Shield size={28} />
                 <h4>Processing & Conditioning</h4>
                 <p>
                   Seeds are processed at Basti, Uttar Pradesh plant with modern
@@ -789,7 +815,7 @@ export default function Home() {
                 </p>
               </div>
               <div className={styles.infraCard}>
-                <Zap size={32} />
+                <Zap size={28} />
                 <h4>Modern Technology</h4>
                 <p>
                   Adopted high-capacity modern technologies for seed processing
@@ -805,10 +831,10 @@ export default function Home() {
       <section className={`section ${styles.ctaSection}`}>
         <div className="container">
           <AnimatedSection direction="up" className={styles.ctaContent}>
-            <h2 className="section-title" style={{ color: "var(--dark-900)" }}>
+            <h2 className="section-title">
               Ready to Transform Your
               <br />
-              <span className={styles.textGradient}>Agricultural Yield?</span>
+              Agricultural Yield?
             </h2>
             <p
               className="section-subtitle"
@@ -820,7 +846,7 @@ export default function Home() {
             <div className={styles.ctaBtns}>
               <Link href="/contact" className="btn btn-primary">
                 Contact Us Today
-                <ChevronRight size={18} />
+                <ChevronRight size={16} />
               </Link>
               <Link href="/products" className="btn btn-gold">
                 Browse Products

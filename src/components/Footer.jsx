@@ -1,17 +1,11 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import {
   MapPin,
   Phone,
   Mail,
-  Sprout,
-  ArrowUpRight,
-  Leaf,
   Globe,
-  MessageCircle,
-  Share2,
-  ExternalLink,
+  ArrowUpRight,
 } from "lucide-react";
 import styles from "./Footer.module.css";
 
@@ -35,7 +29,7 @@ const products = [
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.gradientLine} />
+      <div className={styles.topLine} />
 
       <div className={`container ${styles.footerInner}`}>
         {/* Brand */}
@@ -44,8 +38,8 @@ export default function Footer() {
             <img 
               src="/web-logo-ft.png" 
               alt="Agronica Seeds Footer Logo" 
-              width="250"
-              style={{ height: '70px', objectFit: 'contain', filter: 'brightness(0) invert(1)', display: 'block' }} 
+              width="220"
+              style={{ height: '56px', objectFit: 'contain', filter: 'brightness(0) invert(1)', display: 'block' }} 
             />
           </div>
           <p className={styles.brandDesc}>
@@ -55,16 +49,7 @@ export default function Footer() {
           </p>
           <div className={styles.socials}>
             <a href="#" aria-label="Website" className={styles.socialIcon}>
-              <Globe size={18} />
-            </a>
-            <a href="#" aria-label="Message" className={styles.socialIcon}>
-              <MessageCircle size={18} />
-            </a>
-            <a href="#" aria-label="Share" className={styles.socialIcon}>
-              <Share2 size={18} />
-            </a>
-            <a href="#" aria-label="External" className={styles.socialIcon}>
-              <ExternalLink size={18} />
+              <Globe size={16} />
             </a>
           </div>
         </div>
@@ -77,7 +62,7 @@ export default function Footer() {
               <li key={link.name}>
                 <Link href={link.href} className={styles.link}>
                   {link.name}
-                  <ArrowUpRight size={14} className={styles.linkArrow} />
+                  <ArrowUpRight size={12} className={styles.linkArrow} />
                 </Link>
               </li>
             ))}
@@ -92,7 +77,7 @@ export default function Footer() {
               <li key={link.name}>
                 <Link href={link.href} className={styles.link}>
                   {link.name}
-                  <ArrowUpRight size={14} className={styles.linkArrow} />
+                  <ArrowUpRight size={12} className={styles.linkArrow} />
                 </Link>
               </li>
             ))}
@@ -104,7 +89,7 @@ export default function Footer() {
           <h4 className={styles.colTitle}>Contact Us</h4>
           <div className={styles.contactList}>
             <div className={styles.contactItem}>
-              <MapPin size={16} className={styles.contactIcon} />
+              <MapPin size={14} className={styles.contactIcon} />
               <div>
                 <p className={styles.contactLabel}>Corporate Office</p>
                 <p className={styles.contactText}>
@@ -114,7 +99,7 @@ export default function Footer() {
               </div>
             </div>
             <div className={styles.contactItem}>
-              <MapPin size={16} className={styles.contactIcon} />
+              <MapPin size={14} className={styles.contactIcon} />
               <div>
                 <p className={styles.contactLabel}>Registered Office</p>
                 <p className={styles.contactText}>
@@ -124,11 +109,11 @@ export default function Footer() {
               </div>
             </div>
             <div className={styles.contactItem}>
-              <Phone size={16} className={styles.contactIcon} />
+              <Phone size={14} className={styles.contactIcon} />
               <p className={styles.contactText}>022 - 40156765</p>
             </div>
             <div className={styles.contactItem}>
-              <Mail size={16} className={styles.contactIcon} />
+              <Mail size={14} className={styles.contactIcon} />
               <a
                 href="mailto:Info@agronicaseeds.com"
                 className={styles.contactText}

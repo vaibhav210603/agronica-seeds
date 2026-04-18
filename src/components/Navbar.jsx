@@ -2,15 +2,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import {
   Menu,
   X,
   ChevronDown,
-  Leaf,
-  Sprout,
-  Wheat,
-  Phone,
 } from "lucide-react";
 import styles from "./Navbar.module.css";
 
@@ -66,15 +61,15 @@ export default function Navbar() {
         className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className={styles.navInner}>
           <Link href="/" className={styles.logo}>
             <img 
               src="/web-logo.png" 
               alt="Agronica Seeds Logo" 
-              width="200"
-              style={{ height: '50px', objectFit: 'contain', filter: 'brightness(0) invert(1)', display: 'block' }} 
+              width="180"
+              style={{ height: '42px', objectFit: 'contain', filter: 'brightness(0) invert(1)', display: 'block' }} 
             />
           </Link>
 
@@ -92,7 +87,7 @@ export default function Navbar() {
                   {link.name}
                   {link.dropdown && (
                     <ChevronDown
-                      size={14}
+                      size={13}
                       className={`${styles.chevron} ${
                         activeDropdown === link.name ? styles.chevronActive : ""
                       }`}
@@ -104,10 +99,10 @@ export default function Navbar() {
                   {link.dropdown && activeDropdown === link.name && (
                     <motion.div
                       className={styles.dropdown}
-                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      transition={{ duration: 0.2 }}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.15 }}
                     >
                       {link.dropdown.map((item) => (
                         <Link
@@ -126,9 +121,8 @@ export default function Navbar() {
           </div>
 
           <div className={styles.navActions}>
-            <Link href="/contact" className={`btn btn-primary ${styles.ctaBtn}`}>
-              <Phone size={16} />
-              Get In Touch
+            <Link href="/contact" className={styles.ctaBtn}>
+              Contact Us
             </Link>
           </div>
 
@@ -137,7 +131,7 @@ export default function Navbar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </motion.nav>
@@ -150,22 +144,22 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25 }}
           >
             <motion.div
               className={styles.mobileMenuInner}
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className={styles.mobileMenuContent}>
                 {navLinks.map((link, i) => (
                   <motion.div
                     key={link.name}
-                    initial={{ opacity: 0, x: 30 }}
+                    initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + i * 0.08 }}
+                    transition={{ delay: 0.1 + i * 0.06 }}
                   >
                     <Link
                       href={link.href}
@@ -196,7 +190,7 @@ export default function Navbar() {
                 className={styles.mobileCta}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.45 }}
               >
                 <Link
                   href="/contact"
@@ -204,8 +198,7 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   style={{ width: "100%" }}
                 >
-                  <Phone size={16} />
-                  Get In Touch
+                  Contact Us
                 </Link>
               </motion.div>
             </motion.div>

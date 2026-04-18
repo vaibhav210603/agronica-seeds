@@ -66,7 +66,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            style={{ color: "#093827ff" }}
+            style={{ color: "rgba(255,255,255,0.5)" }}
           >
             About Us
           </motion.span>
@@ -90,7 +90,7 @@ export default function AboutPage() {
       </section>
 
       {/* Company Overview */}
-      <section className="section" style={{ background: "var(--cream)" }}>
+      <section className="section" style={{ background: "var(--bg)" }}>
         <div className="container">
           <div className={styles.overviewGrid}>
             <AnimatedSection direction="left">
@@ -176,7 +176,7 @@ export default function AboutPage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="section" id="vision" style={{ background: "var(--cream)" }}>
+      <section className="section" id="vision" style={{ background: "var(--bg)" }}>
         <div className="container">
           <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "3rem" }}>
             <span className="section-label">Vision & Mission</span>
@@ -253,7 +253,7 @@ export default function AboutPage() {
       </section>
 
       {/* Infrastructure */}
-      <section className="section" id="infrastructure" style={{ background: "var(--cream)" }}>
+      <section className="section" id="infrastructure" style={{ background: "var(--bg)" }}>
         <div className="container">
           <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "3rem" }}>
             <span className="section-label">Plant & Infrastructure</span>

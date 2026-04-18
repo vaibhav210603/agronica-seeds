@@ -39,7 +39,7 @@ export default function StatCounter({
     <div ref={ref} style={counterStyles.wrapper}>
       {Icon && (
         <div style={counterStyles.iconWrap}>
-          <Icon size={24} />
+          <Icon size={20} />
         </div>
       )}
       {/* Invisible placeholder to reserve space and prevent layout shift */}
@@ -61,17 +61,17 @@ export default function StatCounter({
 const counterStyles = {
   wrapper: {
     textAlign: "center",
-    padding: "1.5rem",
+    padding: "1.25rem 1rem",
   },
   iconWrap: {
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    width: "48px",
-    height: "48px",
-    borderRadius: "14px",
-    background: "rgba(16, 185, 129, 0.15)",
-    color: "#10B981",
+    width: "40px",
+    height: "40px",
+    borderRadius: "10px",
+    background: "rgba(255, 255, 255, 0.1)",
+    color: "rgba(255, 255, 255, 0.7)",
     marginBottom: "0.75rem",
   },
   numberContainer: {
@@ -84,9 +84,9 @@ const counterStyles = {
     whiteSpace: "nowrap",
   },
   number: {
-    fontFamily: "'Playfair Display', serif",
-    fontSize: "clamp(2rem, 4vw, 3rem)",
-    fontWeight: 700,
+    fontFamily: "'DM Serif Display', serif",
+    fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
+    fontWeight: 400,
     color: "white",
     lineHeight: 1.1,
     marginBottom: "0.375rem",
@@ -95,12 +95,13 @@ const counterStyles = {
     left: "50%",
     transform: "translateX(-50%)",
     whiteSpace: "nowrap",
+    letterSpacing: "-0.02em",
   },
   label: {
-    fontSize: "0.85rem",
+    fontSize: "0.75rem",
     fontWeight: 500,
-    color: "rgba(255,255,255,0.5)",
+    color: "rgba(255, 255, 255, 0.45)",
     textTransform: "uppercase",
-    letterSpacing: "0.08em",
+    letterSpacing: "0.1em",
   },
 };
