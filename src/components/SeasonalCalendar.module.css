@@ -1,0 +1,219 @@
+/* ===== SEASONAL CALENDAR ===== */
+.calendarSection {
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.calendarWrap {
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.calendarWrap::-webkit-scrollbar {
+  height: 4px;
+}
+
+.calendarWrap::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.calendar {
+  min-width: 900px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Month Header */
+.monthsRow {
+  display: grid;
+  grid-template-columns: 180px repeat(12, 1fr);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-alt);
+}
+
+.monthsLabel {
+  padding: 1rem 1.25rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+}
+
+.monthCell {
+  padding: 0.75rem 0.25rem;
+  text-align: center;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  border-right: 1px solid var(--border-light);
+}
+
+.monthCell:last-child {
+  border-right: none;
+}
+
+.currentMonth {
+  background: var(--primary-50);
+  color: var(--primary-700);
+  font-weight: 700;
+}
+
+/* Crop Rows */
+.cropRow {
+  display: grid;
+  grid-template-columns: 180px repeat(12, 1fr);
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.2s;
+}
+
+.cropRow:last-child {
+  border-bottom: none;
+}
+
+.cropRow:hover {
+  background: rgba(45, 122, 76, 0.02);
+}
+
+.cropInfo {
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-right: 1px solid var(--border);
+}
+
+.cropEmoji {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.cropName {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.cropSeason {
+  font-size: 0.625rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Timeline Cells */
+.timelineCell {
+  position: relative;
+  border-right: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+}
+
+.timelineCell:last-child {
+  border-right: none;
+}
+
+.barSowing {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--primary-400);
+  margin: 0 2px;
+  opacity: 0.85;
+  position: relative;
+}
+
+.barSowing::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: barShimmer 2.5s ease-in-out infinite;
+}
+
+.barHarvest {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--accent-400);
+  margin: 0 2px;
+  opacity: 0.85;
+}
+
+@keyframes barShimmer {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.legendSowing {
+  background: var(--primary-400);
+}
+
+.legendHarvest {
+  background: var(--accent-400);
+}
+
+.legendCurrent {
+  background: var(--primary-50);
+  border: 1px solid var(--primary-200);
+}
+
+.scrollHint {
+  display: none;
+  text-align: center;
+  margin-top: 0.75rem;
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+@media (max-width: 960px) {
+  .scrollHint {
+    display: block;
+  }
+}

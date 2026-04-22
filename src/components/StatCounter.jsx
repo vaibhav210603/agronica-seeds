@@ -4,7 +4,7 @@ import { useInView } from "framer-motion";
 
 export default function StatCounter({
   end,
-  suffix = "",
+  suffix = "+",
   prefix = "",
   duration = 2000,
   label,

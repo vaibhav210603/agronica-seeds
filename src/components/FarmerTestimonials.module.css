@@ -1,0 +1,159 @@
+/* ===== FARMER TESTIMONIALS ===== */
+.section {
+  padding: 4rem 0;
+  background: var(--primary-900);
+  overflow: hidden;
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 30% 30%, rgba(45, 122, 76, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 70%, rgba(184, 150, 62, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.headerLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary-300);
+  margin-bottom: 1rem;
+}
+
+.headerLabel::before {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: var(--primary-400);
+}
+
+.headerTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.headerSub {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Marquee */
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 45s linear infinite;
+  gap: 1.25rem;
+}
+
+.marqueeTrack:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.card {
+  flex-shrink: 0;
+  width: 340px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.quoteText {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
+
+.quoteText::before {
+  content: '\201C';
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--primary-400);
+  line-height: 0;
+  vertical-align: -0.5rem;
+  margin-right: 0.25rem;
+}
+
+.farmerInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.farmerAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-400));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  flex-shrink: 0;
+}
+
+.farmerName {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0.125rem;
+}
+
+.farmerLocation {
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.cropBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1875rem 0.5rem;
+  background: rgba(45, 122, 76, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--primary-300);
+  margin-top: 0.5rem;
+}

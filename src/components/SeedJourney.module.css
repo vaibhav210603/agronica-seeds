@@ -1,0 +1,166 @@
+/* ===== SEED JOURNEY ===== */
+.section {
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.journey {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Connecting line */
+.journey::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: var(--border);
+  z-index: 0;
+}
+
+.step {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem;
+}
+
+/* Step circle */
+.stepIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 2rem;
+  transition: all 0.5s var(--ease-out);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.stepIcon::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid transparent;
+  transition: border-color 0.5s;
+}
+
+.stepActive .stepIcon {
+  background: var(--primary-700);
+  border-color: var(--primary-700);
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(45, 122, 76, 0.25);
+}
+
+.stepActive .stepIcon::after {
+  border-color: var(--primary-200);
+}
+
+.stepNumber {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 0.5rem;
+}
+
+.stepActive .stepNumber {
+  color: var(--primary-600);
+}
+
+.stepTitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  transition: color 0.3s;
+}
+
+.stepActive .stepTitle {
+  color: var(--primary-700);
+}
+
+.stepDesc {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  line-height: 1.65;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.stepActive .stepDesc {
+  color: var(--text-secondary);
+}
+
+/* Progress line fill */
+.progressFill {
+  position: absolute;
+  top: 40px;
+  left: 12.5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-500), var(--primary-300));
+  z-index: 0;
+  transition: width 0.8s var(--ease-out);
+  border-radius: 1px;
+}
+
+@media (max-width: 768px) {
+  .journey {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .journey::before {
+    top: 0;
+    bottom: 0;
+    left: 40px;
+    right: auto;
+    width: 2px;
+    height: auto;
+  }
+
+  .progressFill {
+    top: 0;
+    left: 40px;
+    width: 2px !important;
+    height: var(--progress-height, 0);
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    text-align: left;
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .stepIcon {
+    margin: 0;
+  }
+
+  .stepDesc {
+    max-width: none;
+    margin: 0;
+  }
+}

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -23,11 +23,17 @@ import {
   Eye,
   Rocket,
   FileText,
+  Calendar,
 } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import ProductCard from "@/components/ProductCard";
 import StatCounter from "@/components/StatCounter";
 import TextShimmer from "@/components/TextShimmer";
+import WaveDivider from "@/components/WaveDivider";
+import CropRecommender from "@/components/CropRecommender";
+import SeasonalCalendar from "@/components/SeasonalCalendar";
+import FarmerTestimonials from "@/components/FarmerTestimonials";
+import SeedJourney from "@/components/SeedJourney";
 import styles from "./page.module.css";
 
 /* ===== DATA ===== */
@@ -193,10 +199,46 @@ const goals = [
   "Foster strategic partnerships with industry leaders and research institutions",
 ];
 
+/* ===== HELPERS ===== */
+function getCurrentSeason() {
+  const month = new Date().getMonth(); // 0-indexed
+  // Kharif: Jun-Oct (5-9), Rabi: Nov-Mar (10,11,0,1,2), Zaid: Apr-May (3,4)
+  if (month >= 5 && month <= 9) return { name: "Kharif", color: "Kharif" };
+  if (month >= 10 || month <= 2) return { name: "Rabi", color: "Rabi" };
+  return { name: "Zaid", color: "Kharif" };
+}
+
+function getYearsSince(year) {
+  return new Date().getFullYear() - year;
+}
+
+/* Floating particle data — deterministic to avoid hydration mismatch */
+const particles = [
+  { id: 0, x: "5%", delay: "0s", duration: "12s", size: 3 },
+  { id: 1, x: "12%", delay: "2s", duration: "14s", size: 2 },
+  { id: 2, x: "20%", delay: "4s", duration: "10s", size: 4 },
+  { id: 3, x: "28%", delay: "1s", duration: "16s", size: 2.5 },
+  { id: 4, x: "35%", delay: "6s", duration: "11s", size: 3 },
+  { id: 5, x: "42%", delay: "3s", duration: "13s", size: 2 },
+  { id: 6, x: "50%", delay: "8s", duration: "15s", size: 3.5 },
+  { id: 7, x: "58%", delay: "5s", duration: "12s", size: 2 },
+  { id: 8, x: "65%", delay: "7s", duration: "14s", size: 4 },
+  { id: 9, x: "72%", delay: "1.5s", duration: "10s", size: 3 },
+  { id: 10, x: "78%", delay: "9s", duration: "16s", size: 2.5 },
+  { id: 11, x: "85%", delay: "4.5s", duration: "13s", size: 3 },
+  { id: 12, x: "92%", delay: "2.5s", duration: "11s", size: 2 },
+  { id: 13, x: "15%", delay: "10s", duration: "15s", size: 3.5 },
+  { id: 14, x: "45%", delay: "6.5s", duration: "12s", size: 2 },
+  { id: 15, x: "60%", delay: "11s", duration: "14s", size: 4 },
+  { id: 16, x: "88%", delay: "3.5s", duration: "10s", size: 3 },
+  { id: 17, x: "33%", delay: "7.5s", duration: "16s", size: 2.5 },
+];
+
 /* ===== COMPONENT ===== */
 export default function Home() {
   const [activeTab, setActiveTab] = useState("values");
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const season = getCurrentSeason();
 
   return (
     <>
@@ -212,6 +254,23 @@ export default function Home() {
           <source src="/ag_hero.mp4" type="video/mp4" />
         </video>
         <div className={styles.heroOverlay} />
+
+        {/* Floating particles */}
+        <div className={styles.heroParticles}>
+          {particles.map((p) => (
+            <div
+              key={p.id}
+              className={styles.particle}
+              style={{
+                "--x": p.x,
+                "--delay": p.delay,
+                "--duration": p.duration,
+                width: p.size,
+                height: p.size,
+              }}
+            />
+          ))}
+        </div>
 
         <div className={`container ${styles.heroContent}`}>
           <motion.div
@@ -251,13 +310,24 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.5 }}
           >
-            <Link href="/products" className="btn btn-primary">
-              Explore Products
+            <Link href="/products" className="btn btn-primary" style={{ animation: "gentlePulse 3s ease-in-out infinite" }}>
+              Explore Our Seeds
               <ChevronRight size={16} />
             </Link>
             <Link href="/about" className="btn btn-secondary">
               Our Story
             </Link>
+          </motion.div>
+
+          {/* Live Season Badge */}
+          <motion.div
+            className={styles.seasonBadge}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.5 }}
+          >
+            <span className={`${styles.seasonDot} ${season.color === "Kharif" ? styles.seasonDotKharif : styles.seasonDotRabi}`} />
+            {season.name} Season • {new Date().toLocaleString("en-IN", { month: "long", year: "numeric" })}
           </motion.div>
 
           <motion.div
@@ -281,6 +351,10 @@ export default function Home() {
         <div className="container">
           <div className={styles.aboutGrid}>
             <AnimatedSection direction="left" className={styles.aboutText}>
+              <div className={styles.aboutYearBadge}>
+                <Calendar size={12} />
+                Est. 2023 • {getYearsSince(2023)} Years of Growing Together
+              </div>
               <span className="section-label">About Us</span>
               <h2 className="section-title">
                 A Fresh & Innovative Force in the Seeds Industry
@@ -331,6 +405,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ===== 🌱 CROP RECOMMENDER ===== */}
+      <CropRecommender />
 
       {/* ===== LEADERSHIP SECTION ===== */}
       <section className={`section ${styles.leadershipSection}`}>
@@ -388,6 +465,7 @@ export default function Home() {
       </section>
 
       {/* ===== STATS SECTION ===== */}
+      <WaveDivider color="var(--primary-700)" />
       <section className={`section section-emerald ${styles.stats}`}>
         <div className="container">
           <AnimatedSection direction="up">
@@ -431,6 +509,10 @@ export default function Home() {
           </AnimatedSection>
         </div>
       </section>
+      <WaveDivider color="var(--primary-700)" flip />
+
+      {/* ===== 🌾 SEED TO HARVEST JOURNEY ===== */}
+      <SeedJourney />
 
       {/* ===== INNOVATION BENTO SECTION ===== */}
       <section className={`section ${styles.innovationSection}`}>
@@ -478,6 +560,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ===== 📅 SEASONAL CALENDAR ===== */}
+      <SeasonalCalendar />
 
       {/* ===== PRODUCTS SECTION ===== */}
       <section className={`section ${styles.products}`}>
@@ -776,6 +861,7 @@ export default function Home() {
       </section>
 
       {/* ===== INFRASTRUCTURE ===== */}
+      <WaveDivider color="var(--primary-700)" />
       <section className={`section section-emerald ${styles.infra}`}>
         <div className="container">
           <AnimatedSection direction="up" className={styles.infraContent}>
@@ -835,30 +921,35 @@ export default function Home() {
           </AnimatedSection>
         </div>
       </section>
+      <WaveDivider color="var(--primary-700)" flip />
+
+      {/* ===== 🧑‍🌾 FARMER TESTIMONIALS ===== */}
+      <FarmerTestimonials />
 
       {/* ===== CTA SECTION ===== */}
       <section className={`section ${styles.ctaSection}`}>
         <div className="container">
           <AnimatedSection direction="up" className={styles.ctaContent}>
             <h2 className="section-title">
-              Ready to Transform Your
+              Let&apos;s Grow Something
               <br />
-              Agricultural Yield?
+              Great Together
             </h2>
             <p
               className="section-subtitle"
               style={{ margin: "0 auto 2rem", textAlign: "center" }}
             >
-              Connect with our team to discover the perfect seed solutions for
-              your farming needs. We&apos;re here to help you succeed.
+              Whether you&apos;re a first-time grower or a seasoned farmer,
+              our team is here to help you find the perfect seeds for your soil,
+              season, and goals.
             </p>
             <div className={styles.ctaBtns}>
               <Link href="/contact" className="btn btn-primary">
-                Contact Us Today
+                Talk to Our Team
                 <ChevronRight size={16} />
               </Link>
               <Link href="/products" className="btn btn-gold">
-                Browse Products
+                Browse Our Seeds
               </Link>
             </div>
           </AnimatedSection>

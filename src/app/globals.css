@@ -22,6 +22,16 @@
   --accent-200: #F0DFA8;
   --accent-100: #F8F0D4;
 
+  /* Earth tones — Harvest palette */
+  --earth-700: #6B4423;
+  --earth-500: #8B6914;
+  --earth-300: #C4A35A;
+  --earth-100: #F5E6C8;
+  --sage-600: #4A7C59;
+  --sage-400: #6FA37E;
+  --sage-200: #B8D9C3;
+  --terracotta: #C85A3A;
+
   /* Neutrals — Warm spectrum */
   --bg: #FAFAF8;
   --bg-alt: #F4F4F0;
@@ -269,6 +279,18 @@ img {
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-12px); }
+}
+
+@keyframes gentlePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(45, 122, 76, 0.2); }
+  50% { box-shadow: 0 0 0 8px rgba(45, 122, 76, 0); }
+}
+
+@keyframes floatSeed {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
 }
 
 /* ===== RESPONSIVE HELPERS ===== */
