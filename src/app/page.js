@@ -82,7 +82,7 @@ const products = [
     id: "wheat-hd2967",
     name: "Wheat (HD2967)",
     emoji: "🌾",
-    image: "/images/products_dl/pros3.jpg",
+    image: "/images/products_dl/pros5.jpg",
     shortDesc:
       "Double dwarf wheat variety with an average plant height of 101 cm, known for high yields.",
     fullDesc:
@@ -102,7 +102,7 @@ const products = [
     id: "paddy",
     name: "Paddy",
     emoji: "🌿",
-    image: "/images/products_dl/pros4.jpg",
+    image: "/images/products_dl/pros3.jpg",
     shortDesc:
       "Most important and extensively grown food crop, staple food of more than 60% of the world population.",
     fullDesc:
@@ -122,7 +122,7 @@ const products = [
     id: "mustard",
     name: "Mustard",
     emoji: "🌻",
-    image: "/images/products_dl/pros5.jpg",
+    image: "/images/products_dl/pros4.jpg",
     shortDesc:
       "Rich history documented in ancient literature including Sanskrit and Sumerian texts from 3000 BC.",
     fullDesc:
