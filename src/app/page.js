@@ -366,14 +366,7 @@ export default function Home() {
                 produce and make it profitable with high quality and latest
                 technology.
               </p>
-              <p style={{ marginTop: "1rem" }}>
-                We are dedicated to developing and supplying high-performing,
-                disease-resistant, and climate-resilient seed varieties.
-                Leveraging cutting-edge technology and sustainable practices to
-                reduce our environmental footprint. Building strong
-                relationships with our customers, partners, and the communities
-                we serve.
-              </p>
+             
               <div className={styles.aboutCta}>
                 <Link href="/about" className="btn btn-primary">
                   Read Our Full Story
@@ -383,31 +376,45 @@ export default function Home() {
             </AnimatedSection>
 
             <AnimatedSection direction="right" className={styles.aboutImageWrap}>
-              <div className={styles.aboutImageInner}>
-                <Image 
-                  src="/images/about-field.png" 
-                  alt="Lush agricultural field at sunset" 
-                  fill 
-                  sizes="(max-width: 768px) 100vw, 50vw" 
-                  style={{ objectFit: 'cover' }} 
-                />
-                <div className={styles.aboutImageBadge}>
-                  <div className={styles.aboutIcon}>
-                    <Leaf size={24} />
-                  </div>
-                  <div>
-                    <span className={styles.badgeTitle}>Our Promise</span>
-                    <span className={styles.badgeText}>Improving lives & planet</span>
-                  </div>
-                </div>
+              <div className={styles.aboutImageInner} style={{ aspectRatio: '16/9' }}>
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0 }}
+                >
+                  <source src="/logo_anim.mp4" type="video/mp4" />
+                </video>
+                 
               </div>
             </AnimatedSection>
           </div>
         </div>
       </section>
 
-      {/* ===== 🌱 CROP RECOMMENDER ===== */}
-      <CropRecommender />
+      {/* ===== STATS SECTION ===== */}
+      <WaveDivider color="var(--primary-700)" />
+      <section className={`section section-emerald ${styles.stats}`}>
+        <div className="container">
+          <AnimatedSection direction="up">
+            <div className={styles.statsGrid}>
+              <StatCounter end={7} label="Scientists" icon={Lightbulb} />
+              <StatCounter end={5} label="Trial Centers" icon={Target} />
+              <StatCounter end={4} label="Research Centers" icon={Factory} />
+              <StatCounter end={10} label="States" icon={Globe} />
+              <StatCounter end={500} label="Growers" icon={Users} />
+              <StatCounter end={25} label="Sales Partners" icon={Handshake} />
+              <StatCounter
+                end={35}
+                label="Channel Partners"
+                icon={TrendingUp}
+              />
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+      <WaveDivider color="var(--primary-700)" flip />
 
       {/* ===== LEADERSHIP SECTION ===== */}
       <section className={`section ${styles.leadershipSection}`}>
@@ -426,7 +433,7 @@ export default function Home() {
             <AnimatedSection direction="up" delay={0.1}>
               <div className={styles.leaderCard}>
                 <div className={styles.leaderImageWrap}>
-                  <Image src="/ashok.jpeg" alt="Ashok Singh — CEO & Director" fill sizes="280px" style={{ objectFit: 'cover' }} />
+                  <Image src="/ashok.jpg" alt="Ashok Singh — CEO & Director" fill sizes="280px" style={{ objectFit: 'cover' }} />
                 </div>
                 <div className={styles.leaderInfo}>
                   <div className={styles.leaderMeta}>
@@ -444,9 +451,7 @@ export default function Home() {
             <AnimatedSection direction="up" delay={0.2}>
               <div className={styles.leaderCard}>
                 <div className={styles.leaderImageWrap}>
-                  <div className={styles.leaderPlaceholder}>
-                    <Users size={48} />
-                  </div>
+                  <Image src="/shivendra3.png" alt="Shivendra Singh — Director" fill sizes="280px" style={{ objectFit: 'cover' }} />
                 </div>
                 <div className={styles.leaderInfo}>
                   <div className={styles.leaderMeta}>
@@ -464,52 +469,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== STATS SECTION ===== */}
-      <WaveDivider color="var(--primary-700)" />
-      <section className={`section section-emerald ${styles.stats}`}>
+      {/* ===== PRODUCTS SECTION ===== */}
+      <section className={`section ${styles.products}`}>
         <div className="container">
-          <AnimatedSection direction="up">
-            <div className={styles.statsGrid}>
-              <StatCounter
-                end={7}
-                label="Scientists"
-                icon={Lightbulb}
+          <AnimatedSection direction="up" className={styles.productsHeader}>
+            <span className="section-label">Our Products</span>
+            <h2 className="section-title">
+              Premium Seed Varieties
+            </h2>
+            <p className="section-subtitle">
+              From field crops to vegetables, we offer a diverse range of
+              high-quality seeds designed for maximum yield and resilience.
+            </p>
+          </AnimatedSection>
+
+          <div className={styles.productsGrid}>
+            {products.map((product, i) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                index={i}
+                onClick={() => setSelectedProduct(product)}
               />
-              <StatCounter
-                end={5}
-                label="Trial Centers"
-                icon={Target}
-              />
-              <StatCounter
-                end={4}
-                label="Research Centers"
-                icon={Factory}
-              />
-              <StatCounter
-                end={10}
-                label="States"
-                icon={Globe}
-              />
-              <StatCounter
-                end={500}
-                label="Growers"
-                icon={Users}
-              />
-              <StatCounter
-                end={25}
-                label="Sales Partners"
-                icon={Handshake}
-              />
-              <StatCounter
-                end={35}
-                label="Channel Partners"
-                icon={TrendingUp}
-              />
-            </div>
+            ))}
+          </div>
+
+          <AnimatedSection
+            direction="up"
+            delay={0.3}
+            className={styles.productsCta}
+          >
+            <Link href="/products" className="btn btn-primary">
+              View All Products
+              <ChevronRight size={16} />
+            </Link>
           </AnimatedSection>
         </div>
       </section>
-      <WaveDivider color="var(--primary-700)" flip />
+
+
 
       {/* ===== 🌾 SEED TO HARVEST JOURNEY ===== */}
       <SeedJourney />
@@ -564,43 +562,7 @@ export default function Home() {
       {/* ===== 📅 SEASONAL CALENDAR ===== */}
       <SeasonalCalendar />
 
-      {/* ===== PRODUCTS SECTION ===== */}
-      <section className={`section ${styles.products}`}>
-        <div className="container">
-          <AnimatedSection direction="up" className={styles.productsHeader}>
-            <span className="section-label">Our Products</span>
-            <h2 className="section-title">
-              Premium Seed Varieties
-            </h2>
-            <p className="section-subtitle">
-              From field crops to vegetables, we offer a diverse range of
-              high-quality seeds designed for maximum yield and resilience.
-            </p>
-          </AnimatedSection>
 
-          <div className={styles.productsGrid}>
-            {products.map((product, i) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                index={i}
-                onClick={() => setSelectedProduct(product)}
-              />
-            ))}
-          </div>
-
-          <AnimatedSection
-            direction="up"
-            delay={0.3}
-            className={styles.productsCta}
-          >
-            <Link href="/products" className="btn btn-primary">
-              View All Products
-              <ChevronRight size={16} />
-            </Link>
-          </AnimatedSection>
-        </div>
-      </section>
 
       {/* Product Detail Modal */}
       <AnimatePresence>
@@ -925,6 +887,9 @@ export default function Home() {
 
       {/* ===== 🧑‍🌾 FARMER TESTIMONIALS ===== */}
       <FarmerTestimonials />
+
+      {/* ===== 🌱 CROP RECOMMENDER ===== */}
+      <CropRecommender />
 
       {/* ===== CTA SECTION ===== */}
       <section className={`section ${styles.ctaSection}`}>

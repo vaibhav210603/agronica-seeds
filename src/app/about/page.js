@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import AnimatedSection from "@/components/AnimatedSection";
 import StatCounter from "@/components/StatCounter";
 import {
@@ -118,15 +119,14 @@ export default function AboutPage() {
               </p>
             </AnimatedSection>
             <AnimatedSection direction="right">
-              <div className={styles.overviewVisual}>
-                <div className={styles.overviewCard}>
-                  <div className={styles.overviewEmoji}>🌾</div>
-                  <h4>Shaping the Future of Seeds</h4>
-                  <p>
-                    We&apos;re excited to embark on this journey and contribute
-                    to the growth and development of the agricultural industry.
-                  </p>
-                </div>
+              <div className={styles.overviewVisual} style={{ position: 'relative', width: '100%', maxWidth: '400px', aspectRatio: '4/5' }}>
+                <Image 
+                  src="/hm1.gif" 
+                  alt="Agricultural overview" 
+                  fill 
+                  sizes="(max-width: 768px) 100vw, 50vw" 
+                  style={{ objectFit: 'cover', borderRadius: 'var(--radius-xl)', boxShadow: 'var(--shadow-xl)' }} 
+                />
               </div>
             </AnimatedSection>
           </div>
