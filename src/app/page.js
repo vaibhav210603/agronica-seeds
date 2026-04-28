@@ -288,9 +288,9 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.7 }}
           >
-            <TextShimmer text="Empowering the" />
+            <TextShimmer text="Welcome to " />
             <br />
-            <TextShimmer text="Future of Agriculture" />
+            <TextShimmer text="Agronica Seeds" />
           </motion.h1>
 
           <motion.p
