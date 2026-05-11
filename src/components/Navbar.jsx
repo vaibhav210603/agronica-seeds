@@ -69,7 +69,7 @@ export default function Navbar() {
               src="/web-logo.png" 
               alt="Agronica Seeds Logo" 
               width="180"
-              style={{ height: '42px', objectFit: 'contain', filter: 'brightness(0) invert(1)', display: 'block' }} 
+              style={{ height: '42px', objectFit: 'contain', display: 'block' }} 
             />
           </Link>
 

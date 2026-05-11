@@ -36,21 +36,15 @@ export default function StatCounter({
   }, [isInView, end, duration]);
 
   return (
-    <div ref={ref} style={counterStyles.wrapper}>
-      {Icon && (
-        <div style={counterStyles.iconWrap}>
-          <Icon size={20} />
-        </div>
-      )}
-      {/* Invisible placeholder to reserve space and prevent layout shift */}
-      <div style={counterStyles.numberContainer}>
-        <div style={{ ...counterStyles.number, ...counterStyles.placeholder }} aria-hidden="true">
-          {formattedEnd}
-        </div>
+    <div ref={ref} className="stat-card" style={counterStyles.wrapper}>
+      <div style={counterStyles.topRow}>
+        {Icon && (
+          <div style={counterStyles.iconWrap}>
+            <Icon size={18} strokeWidth={2.5} />
+          </div>
+        )}
         <div style={counterStyles.number}>
-          {prefix}
-          {count.toLocaleString()}
-          {suffix}
+          {prefix}{count.toLocaleString()}{suffix}
         </div>
       </div>
       {label && <div style={counterStyles.label}>{label}</div>}
@@ -60,48 +54,42 @@ export default function StatCounter({
 
 const counterStyles = {
   wrapper: {
-    textAlign: "center",
-    padding: "1.25rem 1rem",
+    textAlign: "left",
+    padding: "0",
+    display: "flex",
+    flexDirection: "column",
+    gap: "0.5rem",
+  },
+  topRow: {
+    display: "flex",
+    alignItems: "center",
+    gap: "0.75rem",
   },
   iconWrap: {
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    width: "40px",
-    height: "40px",
-    borderRadius: "10px",
-    background: "rgba(255, 255, 255, 0.1)",
-    color: "rgba(255, 255, 255, 0.7)",
-    marginBottom: "0.75rem",
-  },
-  numberContainer: {
-    position: "relative",
-    display: "inline-block",
-  },
-  placeholder: {
-    visibility: "hidden",
-    position: "relative",
-    whiteSpace: "nowrap",
+    width: "36px",
+    height: "36px",
+    borderRadius: "8px",
+    background: "rgba(255, 255, 255, 0.08)",
+    color: "rgba(255, 255, 255, 0.8)",
+    flexShrink: 0,
   },
   number: {
     fontFamily: "'DM Serif Display', serif",
-    fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
+    fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
     fontWeight: 400,
     color: "white",
-    lineHeight: 1.1,
-    marginBottom: "0.375rem",
-    position: "absolute",
-    top: 0,
-    left: "50%",
-    transform: "translateX(-50%)",
-    whiteSpace: "nowrap",
-    letterSpacing: "-0.02em",
+    lineHeight: 1,
+    letterSpacing: "-0.01em",
   },
   label: {
-    fontSize: "0.75rem",
-    fontWeight: 500,
-    color: "rgba(255, 255, 255, 0.45)",
+    fontSize: "0.6875rem",
+    fontWeight: 700,
+    color: "rgba(255, 255, 255, 0.4)",
     textTransform: "uppercase",
-    letterSpacing: "0.1em",
+    letterSpacing: "0.08em",
+    paddingLeft: "0.125rem",
   },
 };

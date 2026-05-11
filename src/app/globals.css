@@ -55,7 +55,7 @@
   --font-heading: 'DM Serif Display', Georgia, serif;
 
   /* Spacing */
-  --section-padding: clamp(5rem, 10vw, 9rem);
+  --section-padding: clamp(3rem, 6vw, 5rem);
   --container-width: 1200px;
   --container-padding: clamp(1.25rem, 4vw, 2rem);
 
@@ -180,6 +180,15 @@ img {
   color: rgba(255, 255, 255, 0.7);
 }
 
+.section-emerald h1,
+.section-emerald h2,
+.section-emerald h3,
+.section-emerald h4,
+.section-emerald h5,
+.section-emerald h6 {
+  color: var(--text-inverse);
+}
+
 .section-label {
   display: inline-flex;
   align-items: center;
@@ -249,13 +258,14 @@ img {
 
 .btn-secondary {
   background: transparent;
-  color: var(--text-inverse);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: var(--primary-700);
+  border: 1.5px solid var(--primary-100);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: var(--primary-50);
+  border-color: var(--primary-300);
+  color: var(--primary-800);
 }
 
 .btn-gold {

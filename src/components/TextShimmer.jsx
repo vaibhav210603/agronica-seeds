@@ -22,7 +22,7 @@ export default function TextShimmer({ text, className }) {
                 animate={{
                   color: [
                     "rgba(255, 255, 255, 1)",
-                    "#D4B058", // Warm brass/gold
+                    "#085506ff", // Warm brass/gold
                     "rgba(255, 255, 255, 1)",
                   ],
                   textShadow: [
@@ -32,11 +32,11 @@ export default function TextShimmer({ text, className }) {
                   ],
                 }}
                 transition={{
-                  duration: 2,
+                  duration: 3,
                   repeat: Infinity,
                   delay: index * 0.06, // Smooth wave delay
                   ease: "easeInOut",
-                  repeatDelay: 1, // Pause between waves
+                  repeatDelay: 4, // Pause between waves
                 }}
                 style={{ display: "inline-block" }}
               >

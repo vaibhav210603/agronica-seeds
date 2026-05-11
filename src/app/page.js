@@ -7,8 +7,6 @@ import {
   ArrowDown,
   Leaf,
   Target,
-  Heart,
-  Zap,
   Shield,
   Users,
   TrendingUp,
@@ -17,22 +15,13 @@ import {
   Factory,
   ChevronRight,
   Lightbulb,
-  TreePine,
-  Star,
   Handshake,
-  Eye,
-  Rocket,
   FileText,
-  Calendar,
 } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import ProductCard from "@/components/ProductCard";
 import StatCounter from "@/components/StatCounter";
-import TextShimmer from "@/components/TextShimmer";
 import WaveDivider from "@/components/WaveDivider";
-import CropRecommender from "@/components/CropRecommender";
-import SeasonalCalendar from "@/components/SeasonalCalendar";
-import FarmerTestimonials from "@/components/FarmerTestimonials";
 import SeedJourney from "@/components/SeedJourney";
 import styles from "./page.module.css";
 
@@ -158,46 +147,9 @@ const products = [
   },
 ];
 
-const values = [
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    desc: "We embrace creativity and innovation in everything we do.",
-    color: "#B8963E",
-  },
-  {
-    icon: TreePine,
-    title: "Sustainability",
-    desc: "We prioritize environmental stewardship and social responsibility.",
-    color: "#2D7A4C",
-  },
-  {
-    icon: Star,
-    title: "Quality",
-    desc: "We strive for excellence in our seeds and services.",
-    color: "#6B6B6B",
-  },
-  {
-    icon: Shield,
-    title: "Integrity",
-    desc: "We operate with transparency, honesty, and ethical business practices.",
-    color: "#1A4D2E",
-  },
-  {
-    icon: Heart,
-    title: "Customer-Centricity",
-    desc: "We put our customers at the heart of everything we do.",
-    color: "#B8963E",
-  },
-];
 
-const goals = [
-  "Develop and launch new seed varieties that address specific customer needs",
-  "Achieve a minimum of 20% annual growth in sales revenue",
-  "Expand our customer base in new markets and regions",
-  "Reduce our environmental footprint through sustainable practices",
-  "Foster strategic partnerships with industry leaders and research institutions",
-];
+
+
 
 /* ===== HELPERS ===== */
 function getCurrentSeason() {
@@ -236,23 +188,28 @@ const particles = [
 
 /* ===== COMPONENT ===== */
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("values");
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [showAllProducts, setShowAllProducts] = useState(false);
   const season = getCurrentSeason();
 
   return (
     <>
       {/* ===== HERO SECTION ===== */}
       <section className={styles.hero}>
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className={styles.heroBgImage}
-        >
-          <source src="/ag_hero.mp4" type="video/mp4" />
-        </video>
+        <Image 
+          src="/images/her.png" 
+          alt="Agronica Seeds Hero" 
+          fill 
+          priority 
+          className={styles.heroBackgroundImageDesktop} 
+        />
+        <Image 
+          src="/back.png" 
+          alt="Agronica Seeds Hero Mobile" 
+          fill 
+          priority 
+          className={styles.heroBackgroundImageMobile} 
+        />
         <div className={styles.heroOverlay} />
 
         {/* Floating particles */}
@@ -273,62 +230,81 @@ export default function Home() {
         </div>
 
         <div className={`container ${styles.heroContent}`}>
-          <motion.div
-            className={styles.heroBadge}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            <Sprout size={13} />A Venture of MRC Agrotech Ltd.
-          </motion.div>
+          <div className={styles.heroText}>
+            <motion.div
+              className={styles.heroLogo}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+            >
+              <Image 
+                src="/web-logo.png" 
+                alt="Agronica Seeds Logo" 
+                width={200} 
+                height={50} 
+                style={{ objectFit: 'contain' }} 
+                priority
+              />
+            </motion.div>
 
-          <motion.h1
-            className={styles.heroTitle}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.7 }}
-          >
-            <TextShimmer text="Welcome to " />
-            <br />
-            <TextShimmer text="Agronica Seeds" />
-          </motion.h1>
+           
 
-          <motion.p
-            className={styles.heroSubtitle}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-          >
-            Developing high-quality, disease-resistant, and climate-resilient
-            seed varieties to inspire farmers and transform agricultural produce
-            across India.
-          </motion.p>
+            <motion.h1
+              className={styles.heroTitle}
+            >
+              <motion.span
+                initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ delay: 0.5, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                style={{ display: 'block' }}
+              >
+                Welcome to
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ delay: 0.7, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                style={{ display: 'block', color: 'white' }}
+              >
+                Agronica Seeds
+              </motion.span>
+            </motion.h1>
 
-          <motion.div
-            className={styles.heroCtas}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.5 }}
-          >
-            <Link href="/products" className="btn btn-primary" style={{ animation: "gentlePulse 3s ease-in-out infinite" }}>
-              Explore Our Seeds
-              <ChevronRight size={16} />
-            </Link>
-            <Link href="/about" className="btn btn-secondary">
-              Our Story
-            </Link>
-          </motion.div>
+            <motion.p
+              className={styles.heroSubtitle}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+            >
+              Developing high-quality, disease-resistant, and climate-resilient
+              seed varieties to inspire farmers and transform agricultural produce
+              across India.
+            </motion.p>
 
-          {/* Live Season Badge */}
-          <motion.div
-            className={styles.seasonBadge}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.5 }}
-          >
-            <span className={`${styles.seasonDot} ${season.color === "Kharif" ? styles.seasonDotKharif : styles.seasonDotRabi}`} />
-            {season.name} Season • {new Date().toLocaleString("en-IN", { month: "long", year: "numeric" })}
-          </motion.div>
+            <motion.div
+              className={styles.heroCtas}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.5 }}
+            >
+              <Link href="/products" className="btn btn-primary">
+                Explore Our Seeds
+                <ChevronRight size={16} />
+              </Link>
+              
+            </motion.div>
+
+            {/* Live Season Badge */}
+            <motion.div
+              className={styles.seasonBadge}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.5 }}
+            >
+              <span className={`${styles.seasonDot} ${season.color === "Kharif" ? styles.seasonDotKharif : styles.seasonDotRabi}`} />
+              {season.name} Season • {new Date().toLocaleString("en-IN", { month: "long", year: "numeric" })}
+            </motion.div>
+          </div>
 
           <motion.div
             className={styles.scrollIndicator}
@@ -346,128 +322,63 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== ABOUT SECTION ===== */}
-      <section className={`section ${styles.about}`}>
+      {/* ===== ABOUT & STATS MERGED ===== */}
+      <section className={`section section-emerald ${styles.aboutStats}`}>
         <div className="container">
-          <div className={styles.aboutGrid}>
-            <AnimatedSection direction="left" className={styles.aboutText}>
-              <div className={styles.aboutYearBadge}>
-                <Calendar size={12} />
-                Est. 2023 • {getYearsSince(2023)} Years of Growing Together
-              </div>
-              <span className="section-label">About Us</span>
-              <h2 className="section-title">
-                A Fresh & Innovative Force in the Seeds Industry
-              </h2>
-              <p className="section-subtitle">
-                Agronica Seeds Spark Private Ltd. is a new Venture of MRC
-                Agrotech Ltd. Dedicated to revolutionising agriculture in
-                India, we are inspiring farmers to increase their agricultural
-                produce and make it profitable with high quality and latest
-                technology.
-              </p>
-             
-              <div className={styles.aboutCta}>
-                <Link href="/about" className="btn btn-primary">
-                  Read Our Full Story
-                  <ChevronRight size={16} />
-                </Link>
-              </div>
-            </AnimatedSection>
+          <div className={styles.aboutStatsGrid}>
+            <div className={styles.aboutStatsTextSide}>
+              <AnimatedSection direction="left" className={styles.aboutStatsHeader}>
+                <h2 className="section-title">
+                  3+ Years of Revolution in the Seeds Industry
+                </h2>
+                <p className="section-subtitle">
+                  Agronica Seeds Spark Private Ltd. is a dedicated venture of MRC Agrotech Ltd., 
+                  inspiring farmers to maximize productivity through high-quality seeds and innovative technology.
+                </p>
+              </AnimatedSection>
 
-            <AnimatedSection direction="right" className={styles.aboutImageWrap}>
-              <div className={styles.aboutImageInner} style={{ aspectRatio: '16/9' }}>
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0 }}
-                >
-                  <source src="/logo_anim.mp4" type="video/mp4" />
-                </video>
-                 
+              <div className={styles.aboutStatsImageMobile}>
+                <div className={styles.aboutStatsImageInner}>
+                  <Image 
+                    src="/images/about_visual.png" 
+                    alt="Agronica Seeds Innovation" 
+                    fill 
+                    style={{ objectFit: 'cover' }} 
+                    className={styles.aboutVisualImage}
+                  />
+                </div>
               </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
 
-      {/* ===== STATS SECTION ===== */}
-      <WaveDivider color="var(--primary-700)" />
-      <section className={`section section-emerald ${styles.stats}`}>
-        <div className="container">
-          <AnimatedSection direction="up">
-            <div className={styles.statsGrid}>
-              <StatCounter end={7} label="Scientists" icon={Lightbulb} />
-              <StatCounter end={5} label="Trial Centers" icon={Target} />
-              <StatCounter end={4} label="Research Centers" icon={Factory} />
-              <StatCounter end={10} label="States" icon={Globe} />
-              <StatCounter end={500} label="Growers" icon={Users} />
-              <StatCounter end={25} label="Sales Partners" icon={Handshake} />
-              <StatCounter
-                end={35}
-                label="Channel Partners"
-                icon={TrendingUp}
-              />
+              <div className={styles.statsGridMerged}>
+                <StatCounter end={7} label="Scientists" icon={Lightbulb} />
+                <StatCounter end={5} label="Trial Centers" icon={Target} />
+                <StatCounter end={4} label="Research Centers" icon={Factory} />
+                <StatCounter end={10} label="States" icon={Globe} />
+                <StatCounter end={500} label="Growers" icon={Users} />
+                <StatCounter end={25} label="Sales Partners" icon={Handshake} />
+                <StatCounter end={35} label="Channel Partners" icon={TrendingUp} />
+              </div>
             </div>
-          </AnimatedSection>
+
+            <div className={styles.aboutStatsImageDesktop}>
+              <AnimatedSection direction="right" className={styles.aboutStatsImageSide}>
+                <div className={styles.aboutStatsImageInner}>
+                  <Image 
+                    src="/images/about_visual.png" 
+                    alt="Agronica Seeds Innovation" 
+                    fill 
+                    style={{ objectFit: 'cover' }} 
+                    className={styles.aboutVisualImage}
+                  />
+                </div>
+              </AnimatedSection>
+            </div>
+          </div>
         </div>
       </section>
       <WaveDivider color="var(--primary-700)" flip />
 
-      {/* ===== LEADERSHIP SECTION ===== */}
-      <section className={`section ${styles.leadershipSection}`}>
-        <div className="container">
-          <AnimatedSection direction="up" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-            <span className="section-label">Our Leadership</span>
-            <h2 className="section-title">
-              The People Behind Our Vision
-            </h2>
-            <p className="section-subtitle" style={{ margin: '0 auto' }}>
-              Led by industry veterans profoundly committed to revolutionising the Indian agricultural landscape.
-            </p>
-          </AnimatedSection>
 
-          <div className={styles.leadershipGrid}>
-            <AnimatedSection direction="up" delay={0.1}>
-              <div className={styles.leaderCard}>
-                <div className={styles.leaderImageWrap}>
-                  <Image src="/ashok.jpg" alt="Ashok Singh — CEO & Director" fill sizes="280px" style={{ objectFit: 'cover' }} />
-                </div>
-                <div className={styles.leaderInfo}>
-                  <div className={styles.leaderMeta}>
-                    <h3 className={styles.leaderName}>Ashok Singh</h3>
-                    <p className={styles.leaderRole}>CEO & Director</p>
-                  </div>
-                  <div className={styles.leaderQuoteBlock}>
-                    <span className={styles.quoteIcon}>&ldquo;</span>
-                    <p className={styles.leaderQuote}>Empowering farmers with high-yield technology to build a food-secure world.</p>
-                  </div>
-                </div>
-              </div>
-            </AnimatedSection>
-            
-            <AnimatedSection direction="up" delay={0.2}>
-              <div className={styles.leaderCard}>
-                <div className={styles.leaderImageWrap}>
-                  <Image src="/shivendra3.png" alt="Shivendra Singh — Director" fill sizes="280px" style={{ objectFit: 'cover' }} />
-                </div>
-                <div className={styles.leaderInfo}>
-                  <div className={styles.leaderMeta}>
-                    <h3 className={styles.leaderName}>Shivendra Singh</h3>
-                    <p className={styles.leaderRole}>Director</p>
-                  </div>
-                  <div className={styles.leaderQuoteBlock}>
-                    <span className={styles.quoteIcon}>&ldquo;</span>
-                    <p className={styles.leaderQuote}>Sustainability and innovation are the cornerstones of a resilient agricultural ecosystem.</p>
-                  </div>
-                </div>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
 
       {/* ===== PRODUCTS SECTION ===== */}
       <section className={`section ${styles.products}`}>
@@ -483,7 +394,7 @@ export default function Home() {
             </p>
           </AnimatedSection>
 
-          <div className={styles.productsGrid}>
+          <div className={`${styles.productsGrid} ${showAllProducts ? styles.showAll : ""}`}>
             {products.map((product, i) => (
               <ProductCard
                 key={product.id}
@@ -493,6 +404,17 @@ export default function Home() {
               />
             ))}
           </div>
+
+          {!showAllProducts && (
+            <div className={styles.viewMoreMobileOnly}>
+              <button 
+                className="btn btn-secondary"
+                onClick={() => setShowAllProducts(true)}
+              >
+                View More Products
+              </button>
+            </div>
+          )}
 
           <AnimatedSection
             direction="up"
@@ -512,57 +434,37 @@ export default function Home() {
       {/* ===== 🌾 SEED TO HARVEST JOURNEY ===== */}
       <SeedJourney />
 
-      {/* ===== INNOVATION BENTO SECTION ===== */}
-      <section className={`section ${styles.innovationSection}`}>
+
+
+      {/* ===== CTA SECTION ===== */}
+      <section className={`section ${styles.ctaSection}`}>
         <div className="container">
-          <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-            <span className="section-label">R&D Hub</span>
-            <h2 className="section-title">The Science of Superior Seeds</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto", maxWidth: "600px" }}>
-              Our cutting-edge research facilities fuse traditional breeding with advanced biotechnology to create seeds that outperform the rest.
+          <AnimatedSection direction="up" className={styles.ctaContent}>
+            <h2 className="section-title">
+              Let&apos;s Grow Something
+              <br />
+              Great Together
+            </h2>
+            <p
+              className="section-subtitle"
+              style={{ margin: "0 auto 2rem", textAlign: "center" }}
+            >
+              Whether you&apos;re a first-time grower or a seasoned farmer,
+              our team is here to help you find the perfect seeds for your soil,
+              season, and goals.
             </p>
+            <div className={styles.ctaBtns}>
+              <Link href="/contact" className="btn btn-primary">
+                Talk to Our Team
+                <ChevronRight size={16} />
+              </Link>
+              <Link href="/products" className="btn btn-gold">
+                Browse Our Seeds
+              </Link>
+            </div>
           </AnimatedSection>
-
-          <div className={styles.bentoGrid}>
-            <AnimatedSection direction="up" className={`${styles.bentoItem} ${styles.bentoGenetics}`}>
-              <div className={styles.bentoIcon}><Zap size={28} /></div>
-              <h3>Next-Gen Genetics</h3>
-              <p>We leverage advanced molecular breeding techniques to develop seeds with superior genetic purity, ensuring robust germination and crop uniformity across all terrains.</p>
-              <div className={styles.bentoGeneticsBg}>
-                <Image src="/images/research-lab.png" alt="Botanical seed research lab" fill sizes="800px" style={{ objectFit: 'cover' }} />
-              </div>
-            </AnimatedSection>
-            
-            <AnimatedSection direction="left" delay={0.1} className={`${styles.bentoItem} ${styles.bentoClimate}`}>
-              <div className={styles.bentoClimateBg}>
-                <Image src="/images/vision-aerial.png" alt="Corporate agriculture fields" fill sizes="400px" style={{ objectFit: 'cover' }} />
-              </div>
-              <div className={styles.bentoIcon}><Globe size={28} /></div>
-              <div style={{ position: 'relative', zIndex: 2 }}>
-                <h3>Climate Resilience</h3>
-                <p>Engineered to thrive in unpredictable weather.</p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection direction="right" delay={0.2} className={`${styles.bentoItem} ${styles.bentoYield}`}>
-              <div className={styles.bentoIcon}><TrendingUp size={24} /></div>
-              <h3>Maximum Yield Potential</h3>
-              <p>Every seed is optimized to convert nutrients efficiently, delivering heavier harvests and maximizing farmer profitability season after season.</p>
-            </AnimatedSection>
-
-            <AnimatedSection direction="up" delay={0.3} className={`${styles.bentoItem} ${styles.bentoDisease}`}>
-               <div className={styles.bentoIcon}><Shield size={24} /></div>
-              <h3>Disease Shield Tech</h3>
-              <p>In-built resistance against major pests and fungal pathogens, drastically reducing the need for chemical interventions.</p>
-            </AnimatedSection>
-          </div>
         </div>
       </section>
-
-      {/* ===== 📅 SEASONAL CALENDAR ===== */}
-      <SeasonalCalendar />
-
-
 
       {/* Product Detail Modal */}
       <AnimatePresence>
@@ -645,281 +547,6 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* ===== VISION & MISSION ===== */}
-      <section className={`section section-dark ${styles.vision}`}>
-        <div className="container">
-          <AnimatedSection direction="up" className={styles.visionHeader}>
-            <span className="section-label">Vision & Mission</span>
-            <h2 className="section-title">
-              Shaping the Future of Sustainable Agriculture
-            </h2>
-          </AnimatedSection>
-
-          <div className={styles.visionGrid}>
-            <AnimatedSection direction="left" delay={0.1}>
-              <div className={styles.visionCard}>
-                <div className={styles.visionIcon}>
-                  <Eye size={24} />
-                </div>
-                <h3>Our Vision</h3>
-                <p>
-                  Our vision at Agronica is to be a leading provider of
-                  innovative and sustainable seed solutions, shaping the future
-                  of agriculture and contributing to a food-secure world. We
-                  envision:
-                </p>
-                <ul className={styles.visionList}>
-                  <li>
-                    A world where sustainable agriculture practices are the norm
-                  </li>
-                  <li>Growers achieving improved yields and livelihoods through our seeds and services</li>
-                  <li>Our company being a trusted partner and industry leader in seed technology and sustainability</li>
-                  <li>
-                    A future where our seeds and services make a positive impact on the environment and society
-                  </li>
-                </ul>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection direction="right" delay={0.2}>
-              <div className={styles.visionCard}>
-                <div className={`${styles.visionIcon} ${styles.visionIconAccent}`}>
-                  <Rocket size={24} />
-                </div>
-                <h3>Our Mission</h3>
-                <p>
-                  At Agronica, our mission is to develop and supply high-quality
-                  seeds that exceed our customers' expectations. Empowering
-                  growers to achieve sustainable agricultural practices and
-                  improved profit yields.
-                </p>
-                <ul className={styles.visionList}>
-                  <li>
-                    Develop and supply high-quality seeds that exceed our customers' expectations
-                  </li>
-                  <li>
-                    Empower growers to achieve sustainable agricultural practices and improved
-                    profit yields
-                  </li>
-                  <li>
-                    Foster a culture of innovation, integrity, and social responsibility
-                  </li>
-                  <li>
-                    Build strong relationships with our customers, partners, and the communities we serve
-                  </li>
-                </ul>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== VALUES / GOALS / PURPOSE ===== */}
-      <section className={`section ${styles.valuesSection}`}>
-        <div className="container">
-          <AnimatedSection direction="up" className={styles.valuesHeader}>
-            <span className="section-label">What Drives Us</span>
-            <h2 className="section-title">
-              Values, Goals & Purpose
-            </h2>
-          </AnimatedSection>
-
-          <div className={styles.tabButtons}>
-            {["values", "goals", "purpose"].map((tab) => (
-              <button
-                key={tab}
-                className={`${styles.tabBtn} ${
-                  activeTab === tab ? styles.tabBtnActive : ""
-                }`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </button>
-            ))}
-          </div>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.25 }}
-              className={styles.tabContent}
-            >
-              {activeTab === "values" && (
-                <div className={styles.valuesGrid}>
-                  {values.map((v, i) => (
-                    <motion.div
-                      key={v.title}
-                      className={styles.valueCard}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.08 }}
-                    >
-                      <div
-                        className={styles.valueIcon}
-                        style={{
-                          background: `${v.color}12`,
-                          color: v.color,
-                        }}
-                      >
-                        <v.icon size={22} />
-                      </div>
-                      <h4>{v.title}</h4>
-                      <p>{v.desc}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              )}
-
-              {activeTab === "goals" && (
-                <div className={styles.goalsList}>
-                  {goals.map((g, i) => (
-                    <motion.div
-                      key={i}
-                      className={styles.goalItem}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.08 }}
-                    >
-                      <div className={styles.goalNumber}>{`0${i + 1}`}</div>
-                      <p>{g}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              )}
-
-              {activeTab === "purpose" && (
-                <div className={styles.purposeWrap}>
-                  <motion.div
-                    className={styles.purposeCard}
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                  >
-                    <div className={styles.purposeIcon}>
-                      <Globe size={32} />
-                    </div>
-                    <h3>Feeding the World Sustainably</h3>
-                    <p>
-                      Our purpose at Agronica is to empower growers to feed a
-                      growing world sustainably. We aim to achieve this by
-                      developing and supplying innovative, high-quality seeds
-                      that improve crop yields, disease resistance, and
-                      nutritional value.
-                    </p>
-                    <p style={{ marginTop: "1rem" }}>
-                      We are committed to making a positive impact on the
-                      environment, society, and the economy through our seeds,
-                      services, and partnerships.
-                    </p>
-                  </motion.div>
-                </div>
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </section>
-
-      {/* ===== INFRASTRUCTURE ===== */}
-      <WaveDivider color="var(--primary-700)" />
-      <section className={`section section-emerald ${styles.infra}`}>
-        <div className="container">
-          <AnimatedSection direction="up" className={styles.infraContent}>
-            <span className="section-label">Plant & Infrastructure</span>
-            <h2 className="section-title">
-              State-of-the-Art Facilities
-            </h2>
-            <p
-              className="section-subtitle"
-              style={{ color: "rgba(255,255,255,0.65)", maxWidth: "640px" }}
-            >
-              The wide network of 500 farmers along with 30,000 sq ft plant
-              area and the state-of-the-art infrastructural facilities enables
-              ASSPL to guarantee the best seed supply at local and international
-              levels. We adopt digital technologies to ensure hassle-free and
-              steady supply of seed products.
-            </p>
-          </AnimatedSection>
-
-          <AnimatedSection direction="up" delay={0.2}>
-            <div className={styles.infraCards}>
-              <div className={styles.infraCard}>
-                <Factory size={28} />
-                <h4>Processing Plant</h4>
-                <p>
-                  30,000 sq ft high-capacity seed processing facility at Basti,
-                  Uttar Pradesh
-                </p>
-              </div>
-              <div className={styles.infraCard}>
-                <Shield size={28} />
-                <h4>Seeds Production</h4>
-                <p>
-                  ASSPL adheres to best practices in seed production that
-                  contribute to high quality seeds. Our team of experts work
-                  closely to ensure products meet specific quality standards.
-                </p>
-              </div>
-              <div className={styles.infraCard}>
-                <Shield size={28} />
-                <h4>Processing & Conditioning</h4>
-                <p>
-                  Seeds are processed at Basti, Uttar Pradesh plant with modern
-                  technologies adopted at high-capacity processing units to
-                  ensure the best quality.
-                </p>
-              </div>
-              <div className={styles.infraCard}>
-                <Zap size={28} />
-                <h4>Modern Technology</h4>
-                <p>
-                  Adopted high-capacity modern technologies for seed processing
-                  and packaging
-                </p>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-      <WaveDivider color="var(--primary-700)" flip />
-
-      {/* ===== 🧑‍🌾 FARMER TESTIMONIALS ===== */}
-      <FarmerTestimonials />
-
-      {/* ===== 🌱 CROP RECOMMENDER ===== */}
-      <CropRecommender />
-
-      {/* ===== CTA SECTION ===== */}
-      <section className={`section ${styles.ctaSection}`}>
-        <div className="container">
-          <AnimatedSection direction="up" className={styles.ctaContent}>
-            <h2 className="section-title">
-              Let&apos;s Grow Something
-              <br />
-              Great Together
-            </h2>
-            <p
-              className="section-subtitle"
-              style={{ margin: "0 auto 2rem", textAlign: "center" }}
-            >
-              Whether you&apos;re a first-time grower or a seasoned farmer,
-              our team is here to help you find the perfect seeds for your soil,
-              season, and goals.
-            </p>
-            <div className={styles.ctaBtns}>
-              <Link href="/contact" className="btn btn-primary">
-                Talk to Our Team
-                <ChevronRight size={16} />
-              </Link>
-              <Link href="/products" className="btn btn-gold">
-                Browse Our Seeds
-              </Link>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
     </>
   );
 }
