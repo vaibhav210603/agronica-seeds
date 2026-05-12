@@ -130,7 +130,7 @@ export default function AboutPage() {
             </AnimatedSection>
             
             <AnimatedSection direction="right">
-              <div className={styles.overviewVisual} style={{ position: 'relative', width: '100%', maxWidth: '400px', aspectRatio: '4/5' }}>
+              <div className={styles.overviewVisual} style={{ position: 'relative', width: '100%', maxWidth: '500px', aspectRatio: '1' }}>
                 <Image 
                   src="/istockphoto-543212762-612x612.jpg"
                   alt="Agricultural innovation" 
