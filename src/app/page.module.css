@@ -147,52 +147,6 @@
   background: #D4B058;
 }
 
-/* Floating Particles */
-.heroParticles {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.heroVisual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.visualInner {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  aspect-ratio: 1;
-  background: radial-gradient(circle, var(--primary-50) 0%, transparent 70%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.visualImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border);
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.08));
-}
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--primary-200);
-  animation: floatSeed var(--duration) linear infinite;
-  animation-delay: var(--delay);
-  left: var(--x);
-}
 
 /* ===== ABOUT & STATS MERGED ===== */
 .aboutStats {
@@ -1117,7 +1071,7 @@
   }
 
   .heroContent {
-    transform: translateY(-12%);
+    transform: translateY(-20%);
   }
 
   .productsGrid:not(.showAll) > div:nth-child(n+4) {

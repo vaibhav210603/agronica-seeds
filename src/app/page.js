@@ -164,27 +164,6 @@ function getYearsSince(year) {
   return new Date().getFullYear() - year;
 }
 
-/* Floating particle data — deterministic to avoid hydration mismatch */
-const particles = [
-  { id: 0, x: "5%", delay: "0s", duration: "12s", size: 3 },
-  { id: 1, x: "12%", delay: "2s", duration: "14s", size: 2 },
-  { id: 2, x: "20%", delay: "4s", duration: "10s", size: 4 },
-  { id: 3, x: "28%", delay: "1s", duration: "16s", size: 2.5 },
-  { id: 4, x: "35%", delay: "6s", duration: "11s", size: 3 },
-  { id: 5, x: "42%", delay: "3s", duration: "13s", size: 2 },
-  { id: 6, x: "50%", delay: "8s", duration: "15s", size: 3.5 },
-  { id: 7, x: "58%", delay: "5s", duration: "12s", size: 2 },
-  { id: 8, x: "65%", delay: "7s", duration: "14s", size: 4 },
-  { id: 9, x: "72%", delay: "1.5s", duration: "10s", size: 3 },
-  { id: 10, x: "78%", delay: "9s", duration: "16s", size: 2.5 },
-  { id: 11, x: "85%", delay: "4.5s", duration: "13s", size: 3 },
-  { id: 12, x: "92%", delay: "2.5s", duration: "11s", size: 2 },
-  { id: 13, x: "15%", delay: "10s", duration: "15s", size: 3.5 },
-  { id: 14, x: "45%", delay: "6.5s", duration: "12s", size: 2 },
-  { id: 15, x: "60%", delay: "11s", duration: "14s", size: 4 },
-  { id: 16, x: "88%", delay: "3.5s", duration: "10s", size: 3 },
-  { id: 17, x: "33%", delay: "7.5s", duration: "16s", size: 2.5 },
-];
 
 /* ===== COMPONENT ===== */
 export default function Home() {
@@ -212,22 +191,6 @@ export default function Home() {
         />
         <div className={styles.heroOverlay} />
 
-        {/* Floating particles */}
-        <div className={styles.heroParticles}>
-          {particles.map((p) => (
-            <div
-              key={p.id}
-              className={styles.particle}
-              style={{
-                "--x": p.x,
-                "--delay": p.delay,
-                "--duration": p.duration,
-                width: p.size,
-                height: p.size,
-              }}
-            />
-          ))}
-        </div>
 
         <div className={`container ${styles.heroContent}`}>
           <div className={styles.heroText}>
