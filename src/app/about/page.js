@@ -45,7 +45,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Banner */}
-      <section className={`${styles.hero} ${styles.bgHero}`}>
+      <section className={styles.hero}>
         <div className={styles.heroOverlay} />
         <div className={`container ${styles.heroContent}`}>
           <motion.span
@@ -114,21 +114,15 @@ export default function AboutPage() {
                   <p>Fostering a culture of innovation, integrity, and social responsibility.</p>
                 </div>
               </div>
-
-              <p style={{ marginTop: '1.5rem' }}>
-                We're excited to embark on this journey and contribute to the growth and development 
-                of the agricultural industry. Join us in shaping the future of seeds and sustainable agriculture.
-              </p>
             </AnimatedSection>
             
             <AnimatedSection direction="right">
-              <div className={styles.overviewVisual} style={{ position: 'relative', width: '100%', maxWidth: '400px', aspectRatio: '4/5' }}>
+              <div className={styles.overviewVisual}>
                 <Image 
-                  src="/hm1.gif" 
+                  src="/images/up_farm1.jpg" 
                   alt="Agricultural innovation" 
                   fill 
-                  sizes="(max-width: 768px) 100vw, 50vw" 
-                  style={{ objectFit: 'cover', borderRadius: 'var(--radius-xl)', boxShadow: 'var(--shadow-xl)' }} 
+                  className={styles.roundedImage}
                 />
               </div>
             </AnimatedSection>
@@ -149,60 +143,74 @@ export default function AboutPage() {
       </section>
 
       {/* Section 2: Vision & Mission */}
-      <section className={`section ${styles.bgVision}`} id="vision-mission">
-        <div className={styles.sectionOverlay} />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+      <section className="section" id="vision-mission" style={{ background: "var(--bg-alt)" }}>
+        <div className="container">
           <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "4rem" }}>
             <span className="section-label">Vision & Mission</span>
             <h2>Shaping the <span className={styles.highlight}>Future of Agriculture</span></h2>
           </AnimatedSection>
 
-          <div className={styles.vmGrid}>
-            <AnimatedSection direction="left">
-              <div className={styles.vmCard}>
-                <div className={styles.vmIcon}>
-                  <Eye size={28} />
+          <div className={styles.vmLayout}>
+            {/* Vision Row */}
+            <div className={styles.vmRow}>
+              <AnimatedSection direction="left" className={styles.vmText}>
+                <div className={styles.vmCard}>
+                  <div className={styles.vmIcon}>
+                    <Eye size={28} />
+                  </div>
+                  <h3>Our Vision</h3>
+                  <p>
+                    Our vision at Agronica is to be a leading provider of innovative and sustainable seed solutions, 
+                    shaping the future of agriculture and contributing to a food-secure world. We envision:
+                  </p>
+                  <ul>
+                    <li>A world where sustainable agriculture practices are the norm.</li>
+                    <li>Growers achieving improved yields and livelihoods through our seeds and services.</li>
+                    <li>Our company being a trusted partner and industry leader in seed technology and sustainability.</li>
+                    <li>A future where our seeds and services make a positive impact on the environment and society.</li>
+                  </ul>
                 </div>
-                <h3>Our Vision</h3>
-                <p>
-                  Our vision at Agronica is to be a leading provider of innovative and sustainable seed solutions, 
-                  shaping the future of agriculture and contributing to a food-secure world. We envision:
-                </p>
-                <ul>
-                  <li>A world where sustainable agriculture practices are the norm.</li>
-                  <li>Growers achieving improved yields and livelihoods through our seeds and services.</li>
-                  <li>Our company being a trusted partner and industry leader in seed technology and sustainability.</li>
-                  <li>A future where our seeds and services make a positive impact on the environment and society.</li>
-                </ul>
-              </div>
-            </AnimatedSection>
+              </AnimatedSection>
+              <AnimatedSection direction="right" className={styles.vmImage}>
+                <div className={styles.visualWrapper}>
+                  <Image src="/images/vis.jpg" alt="Our Vision" fill className={styles.roundedImage} />
+                </div>
+              </AnimatedSection>
+            </div>
 
-            <AnimatedSection direction="right">
-              <div className={styles.vmCard}>
-                <div className={`${styles.vmIcon} ${styles.vmIconGold}`}>
-                  <Rocket size={28} />
+            {/* Mission Row */}
+            <div className={`${styles.vmRow} ${styles.vmRowReverse}`}>
+              <AnimatedSection direction="right" className={styles.vmText}>
+                <div className={styles.vmCard}>
+                  <div className={`${styles.vmIcon} ${styles.vmIconGold}`}>
+                    <Rocket size={28} />
+                  </div>
+                  <h3>Our Mission</h3>
+                  <p>At Agronica, our mission is to:</p>
+                  <ul>
+                    <li>Develop and supply high-quality seeds that exceed our customers&apos; expectations.</li>
+                    <li>Empower growers to achieve sustainable agricultural practices and improved profit yields.</li>
+                    <li>Foster a culture of innovation, integrity, and social responsibility.</li>
+                    <li>Build strong relationships with our customers, partners, and the communities we serve.</li>
+                  </ul>
+                  <p style={{ marginTop: '1rem', fontSize: '0.875rem', fontStyle: 'italic' }}>
+                    We strive to make a positive impact on the environment, society, and the economy through our seeds and services.
+                  </p>
                 </div>
-                <h3>Our Mission</h3>
-                <p>At Agronica, our mission is to:</p>
-                <ul>
-                  <li>Develop and supply high-quality seeds that exceed our customers&apos; expectations.</li>
-                  <li>Empower growers to achieve sustainable agricultural practices and improved profit yields.</li>
-                  <li>Foster a culture of innovation, integrity, and social responsibility.</li>
-                  <li>Build strong relationships with our customers, partners, and the communities we serve.</li>
-                </ul>
-                <p style={{ marginTop: '1rem', fontSize: '0.875rem', fontStyle: 'italic' }}>
-                  We strive to make a positive impact on the environment, society, and the economy through our seeds and services.
-                </p>
-              </div>
-            </AnimatedSection>
+              </AnimatedSection>
+              <AnimatedSection direction="left" className={styles.vmImage}>
+                <div className={styles.visualWrapper}>
+                  <Image src="/images/miss.jpg" alt="Our Mission" fill className={styles.roundedImage} />
+                </div>
+              </AnimatedSection>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Section 3: Values, Goals & Purpose */}
-      <section className={`section ${styles.bgValues}`} id="values-goals">
-        <div className={styles.sectionOverlay} />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+      <section className="section section-dark" id="values-goals">
+        <div className="container">
           <div className={styles.vgpGrid}>
             {/* Values Sub-section */}
             <div className={styles.valuesSub}>
@@ -263,9 +271,8 @@ export default function AboutPage() {
       </section>
 
       {/* Plant & Infrastructure */}
-      <section className={`section ${styles.bgInfra}`} id="infrastructure">
-        <div className={styles.sectionOverlay} />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+      <section className="section" id="infrastructure" style={{ background: "var(--bg)" }}>
+        <div className="container">
           <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "4rem" }}>
             <span className="section-label">Plant & Infrastructure</span>
             <h2>In Tune with <span className={styles.highlight}>Industry Standards</span></h2>
@@ -274,41 +281,49 @@ export default function AboutPage() {
             </p>
           </AnimatedSection>
 
-          <div className={styles.infraGrid}>
-            <AnimatedSection direction="up" delay={0.1}>
-              <div className={styles.infraCard}>
-                <div className={styles.infraIcon}>
-                  <Shield size={24} />
+          <div className={styles.infraMain}>
+             <div className={styles.infraGrid}>
+                <AnimatedSection direction="up" delay={0.1}>
+                <div className={styles.infraCard}>
+                    <div className={styles.infraIcon}>
+                    <Shield size={24} />
+                    </div>
+                    <h4>Seeds Production</h4>
+                    <p>
+                    ASSPL to best practices in seed production that contribute to high quality seeds. Our team of experts work closely to ensure the products meet specific quality standards. The entire process of seed production is rigorously monitored through training and providing crop management materials to farmers.
+                    </p>
                 </div>
-                <h4>Seeds Production</h4>
-                <p>
-                  ASSPL to best practices in seed production that contribute to high quality seeds. Our team of experts work closely to ensure the products meet specific quality standards. The entire process of seed production is rigorously monitored through training and providing crop management materials to farmers.
-                </p>
-              </div>
-            </AnimatedSection>
+                </AnimatedSection>
 
-            <AnimatedSection direction="up" delay={0.2}>
-              <div className={styles.infraCard}>
-                <div className={styles.infraIcon}>
-                  <Zap size={24} />
+                <AnimatedSection direction="up" delay={0.2}>
+                <div className={styles.infraCard}>
+                    <div className={styles.infraIcon}>
+                    <Zap size={24} />
+                    </div>
+                    <h4>Processing & Conditioning</h4>
+                    <p>
+                    The seeds are processed at Basti Uttar Pradesh Plant with Modern technologies like adopted at high-capacity processing units to ensure the best quality.
+                    </p>
                 </div>
-                <h4>Processing & Conditioning</h4>
-                <p>
-                  The seeds are processed at Basti Uttar Pradesh Plant with Modern technologies like adopted at high-capacity processing units to ensure the best quality.
-                </p>
-              </div>
-            </AnimatedSection>
+                </AnimatedSection>
 
-            <AnimatedSection direction="up" delay={0.3}>
-              <div className={styles.infraCard}>
-                <div className={styles.infraIcon}>
-                  <Factory size={24} />
+                <AnimatedSection direction="up" delay={0.3}>
+                <div className={styles.infraCard}>
+                    <div className={styles.infraIcon}>
+                    <Factory size={24} />
+                    </div>
+                    <h4>Quality Assurance</h4>
+                    <p>
+                    Our processing units are equipped with advanced grading and cleaning machinery, ensuring every batch meets our stringent purity and germination standards before reaching the farmer.
+                    </p>
                 </div>
-                <h4>Quality Assurance</h4>
-                <p>
-                  Our processing units are equipped with advanced grading and cleaning machinery, ensuring every batch meets our stringent purity and germination standards before reaching the farmer.
-                </p>
-              </div>
+                </AnimatedSection>
+            </div>
+            
+            <AnimatedSection direction="up" delay={0.4} className={styles.infraVisual}>
+                <div className={styles.infraImageWrapper}>
+                    <Image src="/images/mh_farm3.jpg" alt="Our Infrastructure" fill className={styles.roundedImage} />
+                </div>
             </AnimatedSection>
           </div>
         </div>
