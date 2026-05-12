@@ -22,25 +22,13 @@ const navLinks = [
     ],
   },
   {
-    name: "Field Crops",
+    name: "Crop Seeds",
     href: "/products",
-    dropdown: [
-      { name: "Maize", href: "/products#maize" },
-      { name: "Wheat", href: "/products#wheat-dbw187" },
-      { name: "Paddy", href: "/products#paddy" },
-      { name: "Mustard", href: "/products#mustard" },
-      { name: "Cotton", href: "/products#cotton" },
-    ],
   },
   {
-    name: "Vegetable Crops",
+    name: "Vegetable Seeds",
     href: "/products",
-    dropdown: [
-      { name: "All Vegetables", href: "/products" },
-      { name: "Vegetable Seeds", href: "/products#vegetable" },
-    ],
   },
-  { name: "Infrastructure", href: "/about#infrastructure" },
   { name: "Contact", href: "/contact" },
 ];
 

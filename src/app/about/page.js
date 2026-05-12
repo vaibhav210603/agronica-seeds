@@ -23,7 +23,16 @@ import {
   FileText,
   Sprout
 } from "lucide-react";
+import ImageCarousel from "@/components/ImageCarousel";
 import styles from "./about.module.css";
+
+const infraImages = [
+  "/bori.jpg",
+  "/fc1.jpg",
+  "/fc2.jpg",
+  "/fc3.jpg",
+  "/fc4.jpg"
+];
 
 const values = [
   { icon: Lightbulb, title: "Innovation", desc: "We embrace creativity and innovation in everything we do.", color: "#F59E0B" },
@@ -95,23 +104,19 @@ export default function AboutPage() {
                 <span className={styles.highlight}>Innovation</span>
               </h2>
               <p>
-                Agronica Seeds Spark Private Ltd. is a new Venture of MRC Agrotech Ltd. 
-                Dedicated to revolutionising agriculture in India, we proudly state that 
-                we are inspiring farmers to increase their agricultural produce and 
-                make it profitable with high quality and latest technology.
-              </p>
-              <p>
-                Our story began with a simple idea: to harness the power of seeds to improve lives and the planet.
+                As a new venture of MRC Agrotech Ltd., we are dedicated to revolutionising agriculture in India. 
+                Our story began with a simple idea: to harness the power of seeds to improve lives and the planet by 
+                inspiring farmers to increase their produce through high-quality seeds and latest technology.
               </p>
               
               <div className={styles.focusPoints}>
                 <div className={styles.focusPoint}>
                   <div className={styles.focusIcon}><Sprout size={18} /></div>
-                  <p>Dedicated to developing and supplying high-performing, disease-resistant, and climate-resilient seed varieties.</p>
+                  <p>Developing high-performing, disease-resistant, and climate-resilient seed varieties.</p>
                 </div>
                 <div className={styles.focusPoint}>
                   <div className={styles.focusIcon}><Zap size={18} /></div>
-                  <p>Leveraging cutting-edge technology and sustainable practices to reduce our environmental footprint.</p>
+                  <p>Leveraging cutting-edge technology and sustainable practices to reduce environmental footprint.</p>
                 </div>
                 <div className={styles.focusPoint}>
                   <div className={styles.focusIcon}><Handshake size={18} /></div>
@@ -122,15 +127,10 @@ export default function AboutPage() {
                   <p>Fostering a culture of innovation, integrity, and social responsibility.</p>
                 </div>
               </div>
-
-              <p style={{ marginTop: '1.5rem' }}>
-                We're excited to embark on this journey and contribute to the growth and development 
-                of the agricultural industry. Join us in shaping the future of seeds and sustainable agriculture.
-              </p>
             </AnimatedSection>
             
             <AnimatedSection direction="right">
-              <div className={styles.overviewVisual} style={{ position: 'relative', width: '100%', maxWidth: '500px', aspectRatio: '1' }}>
+              <div className={styles.overviewVisual} style={{ position: 'relative', width: '100%', maxWidth: '100%', aspectRatio: '1' }}>
                 <Image 
                   src="/istockphoto-543212762-612x612.jpg"
                   alt="Agricultural innovation" 
@@ -159,49 +159,77 @@ export default function AboutPage() {
       {/* Section 2: Vision & Mission */}
       <section className="section" id="vision-mission" style={{ background: "var(--bg-alt)" }}>
         <div className="container">
-          <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "4rem" }}>
+          <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "5rem" }}>
             <span className="section-label">Vision & Mission</span>
             <h2>Shaping the <span className={styles.highlight}>Future of Agriculture</span></h2>
           </AnimatedSection>
 
-          <div className={styles.vmGrid}>
-            <AnimatedSection direction="left">
-              <div className={styles.vmCard}>
-                <div className={styles.vmIcon}>
-                  <Eye size={28} />
+          <div className={styles.vmRows}>
+            {/* Vision Row */}
+            <div className={styles.vmRow}>
+              <AnimatedSection direction="left" className={styles.vmImageSide}>
+                <div className={styles.vmImageWrapper}>
+                  <Image 
+                    src="/images/vis.jpg" 
+                    alt="Our Vision" 
+                    fill 
+                    style={{ objectFit: 'cover' }} 
+                  />
+                  <div className={styles.vmImageOverlay}>
+                    <Eye size={40} />
+                  </div>
                 </div>
-                <h3>Our Vision</h3>
-                <p>
-                  Our vision at Agronica is to be a leading provider of innovative and sustainable seed solutions, 
-                  shaping the future of agriculture and contributing to a food-secure world. We envision:
-                </p>
-                <ul>
-                  <li>A world where sustainable agriculture practices are the norm.</li>
-                  <li>Growers achieving improved yields and livelihoods through our seeds and services.</li>
-                  <li>Our company being a trusted partner and industry leader in seed technology and sustainability.</li>
-                  <li>A future where our seeds and services make a positive impact on the environment and society.</li>
-                </ul>
-              </div>
-            </AnimatedSection>
+              </AnimatedSection>
+              <AnimatedSection direction="right" className={styles.vmTextSide}>
+                <div className={styles.vmContent}>
+                  <span className={styles.vmCategory}>Our Vision</span>
+                  <h3>Providing Sustainable Solutions</h3>
+                  <p>
+                    Our vision at Agronica is to be a leading provider of innovative and sustainable seed solutions, 
+                    shaping the future of agriculture and contributing to a food-secure world. We envision:
+                  </p>
+                  <ul className={styles.vmList}>
+                    <li>A world where sustainable agriculture practices are the norm.</li>
+                    <li>Growers achieving improved yields and livelihoods through our seeds and services.</li>
+                    <li>A trusted partner and industry leader in seed technology and sustainability.</li>
+                    <li>A future where our seeds and services make a positive impact on the environment.</li>
+                  </ul>
+                </div>
+              </AnimatedSection>
+            </div>
 
-            <AnimatedSection direction="right">
-              <div className={styles.vmCard}>
-                <div className={`${styles.vmIcon} ${styles.vmIconGold}`}>
-                  <Rocket size={28} />
+            {/* Mission Row */}
+            <div className={`${styles.vmRow} ${styles.vmRowReverse}`}>
+              <AnimatedSection direction="right" className={styles.vmImageSide}>
+                <div className={styles.vmImageWrapper}>
+                  <Image 
+                    src="/images/miss.jpg" 
+                    alt="Our Mission" 
+                    fill 
+                    style={{ objectFit: 'cover' }} 
+                  />
+                  <div className={`${styles.vmImageOverlay} ${styles.vmImageOverlayGold}`}>
+                    <Rocket size={40} />
+                  </div>
                 </div>
-                <h3>Our Mission</h3>
-                <p>At Agronica, our mission is to:</p>
-                <ul>
-                  <li>Develop and supply high-quality seeds that exceed our customers&apos; expectations.</li>
-                  <li>Empower growers to achieve sustainable agricultural practices and improved profit yields.</li>
-                  <li>Foster a culture of innovation, integrity, and social responsibility.</li>
-                  <li>Build strong relationships with our customers, partners, and the communities we serve.</li>
-                </ul>
-                <p style={{ marginTop: '1rem', fontSize: '0.875rem', fontStyle: 'italic' }}>
-                  We strive to make a positive impact on the environment, society, and the economy through our seeds and services.
-                </p>
-              </div>
-            </AnimatedSection>
+              </AnimatedSection>
+              <AnimatedSection direction="left" className={styles.vmTextSide}>
+                <div className={styles.vmContent}>
+                  <span className={styles.vmCategory}>Our Mission</span>
+                  <h3>Empowering the Growers</h3>
+                  <p>At Agronica, our mission is to develop and supply high-quality seeds that exceed our customers&apos; expectations:</p>
+                  <ul className={styles.vmList}>
+                    <li>Develop and supply high-quality seeds that exceed expectations.</li>
+                    <li>Empower growers to achieve sustainable practices and improved yields.</li>
+                    <li>Foster a culture of innovation, integrity, and social responsibility.</li>
+                    <li>Build strong relationships with our customers, partners, and communities.</li>
+                  </ul>
+                  <p style={{ marginTop: '1.5rem', fontSize: '0.875rem', color: 'var(--text-secondary)', fontStyle: 'italic' }}>
+                    We strive to make a positive impact on the environment, society, and the economy through our seeds and services.
+                  </p>
+                </div>
+              </AnimatedSection>
+            </div>
           </div>
         </div>
       </section>
@@ -268,16 +296,29 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Plant & Infrastructure */}
+      {/* Section 4: Plant & Infrastructure */}
       <section className="section" id="infrastructure" style={{ background: "var(--bg)" }}>
         <div className="container">
-          <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <span className="section-label">Plant & Infrastructure</span>
-            <h2>In Tune with <span className={styles.highlight}>Industry Standards</span></h2>
-            <p className="section-subtitle" style={{ margin: "0 auto", maxWidth: "900px" }}>
-              The wide network of 500 farmers along with 30,000 sq feet Plant area and the state-of-the-art infrastructural facilities enables ASSPL to guarantee the best seed supply at local and international levels with every stage of processes, technology, and equipment is standardised to international norms and quality. We adopt digital technologies to ensure hassle free and steady supply of seed products from our location plants for different crops and products.
-            </p>
-          </AnimatedSection>
+          <div className={styles.infraHeaderGrid}>
+            <AnimatedSection direction="left">
+              <span className="section-label">Plant & Infrastructure</span>
+              <h2>In Tune with <span className={styles.highlight}>Industry Standards</span></h2>
+              <p className="section-subtitle" style={{ textAlign: "left", margin: "1.5rem 0 0" }}>
+                The wide network of 500 farmers along with 30,000 sq feet Plant area and the state-of-the-art infrastructural facilities enables ASSPL to guarantee the best seed supply at local and international levels. We adopt digital technologies to ensure hassle-free and steady supply of seed products.
+              </p>
+              <div style={{ marginTop: '2rem' }}>
+                <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                  Our location plants are standardized to international norms and quality, ensuring every stage of processing is monitored for excellence.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection direction="right">
+              <div style={{ maxWidth: '600px', marginLeft: 'auto' }}>
+                <ImageCarousel images={infraImages} />
+              </div>
+            </AnimatedSection>
+          </div>
 
           <div className={styles.infraGrid}>
             <AnimatedSection direction="up" delay={0.1}>

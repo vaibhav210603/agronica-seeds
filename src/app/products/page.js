@@ -121,6 +121,14 @@ export default function ProductsPage() {
     <>
       {/* Hero */}
       <section className={styles.hero}>
+        <Image 
+          src="/sarso.jpg"
+          alt="Premium Mustard Fields"
+          fill
+          priority
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
+          className={styles.heroBg}
+        />
         <div className={styles.heroOverlay} />
         <div className={`container ${styles.heroContent}`}>
           <motion.span

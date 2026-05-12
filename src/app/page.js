@@ -17,13 +17,23 @@ import {
   Lightbulb,
   Handshake,
   FileText,
+  Wheat,
 } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import ProductCard from "@/components/ProductCard";
 import StatCounter from "@/components/StatCounter";
 import WaveDivider from "@/components/WaveDivider";
 import SeedJourney from "@/components/SeedJourney";
+import ImageCarousel from "@/components/ImageCarousel";
 import styles from "./page.module.css";
+
+const infraImages = [
+  "/bori.jpg",
+  "/fc1.jpg",
+  "/fc2.jpg",
+  "/fc3.jpg",
+  "/fc4.jpg"
+];
 
 /* ===== DATA ===== */
 const products = [
@@ -286,56 +296,36 @@ export default function Home() {
       </section>
 
       {/* ===== ABOUT & STATS MERGED ===== */}
-      <section className={`section section-emerald ${styles.aboutStats}`}>
+      <section className={`section section-emerald ${styles.aboutStats}`} id="about">
         <div className="container">
           <div className={styles.aboutStatsGrid}>
-            <div className={styles.aboutStatsTextSide}>
-              <AnimatedSection direction="left" className={styles.aboutStatsHeader}>
-                <h2 className="section-title">
-                  3+ Years of Revolution in the Seeds Industry
-                </h2>
-                <p className="section-subtitle">
-                  Agronica Seeds Spark Private Ltd. is a dedicated venture of MRC Agrotech Ltd., 
-                  inspiring farmers to maximize productivity through high-quality seeds and innovative technology.
-                </p>
-              </AnimatedSection>
-
-              <div className={styles.aboutStatsImageMobile}>
-                <div className={styles.aboutStatsImageInner}>
-                  <Image 
-                    src="/images/about_visual.png" 
-                    alt="Agronica Seeds Innovation" 
-                    fill 
-                    style={{ objectFit: 'cover' }} 
-                    className={styles.aboutVisualImage}
-                  />
-                </div>
-              </div>
-
+            <AnimatedSection direction="left">
+              <span className="section-label">3+ Years of Revolution</span>
+              <h2 className="section-title" style={{ color: 'white' }}>
+                Shaping the Future of <span style={{ color: 'var(--primary-300)' }}>Seeds Industry</span>
+              </h2>
+              <p className="section-subtitle" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                Agronica Seeds Spark Private Ltd. is a dedicated venture of MRC Agrotech Ltd., 
+                inspiring farmers to maximize productivity through high-quality seeds and 
+                innovative technology.
+              </p>
+              
               <div className={styles.statsGridMerged}>
+                <StatCounter end={500} label="Growers" icon={Users} />
+                <StatCounter end={30000} suffix=" sq ft" label="Plant Area" icon={Factory} />
+                <StatCounter end={4} label="Research Centers" icon={Factory} />
+                <StatCounter end={6} label="Crop Varieties" icon={Wheat} />
+                <StatCounter end={10} label="States" icon={Globe} />
                 <StatCounter end={7} label="Scientists" icon={Lightbulb} />
                 <StatCounter end={5} label="Trial Centers" icon={Target} />
-                <StatCounter end={4} label="Research Centers" icon={Factory} />
-                <StatCounter end={10} label="States" icon={Globe} />
-                <StatCounter end={500} label="Growers" icon={Users} />
                 <StatCounter end={25} label="Sales Partners" icon={Handshake} />
                 <StatCounter end={35} label="Channel Partners" icon={TrendingUp} />
               </div>
-            </div>
+            </AnimatedSection>
 
-            <div className={styles.aboutStatsImageDesktop}>
-              <AnimatedSection direction="right" className={styles.aboutStatsImageSide}>
-                <div className={styles.aboutStatsImageInner}>
-                  <Image 
-                    src="/images/about_visual.png" 
-                    alt="Agronica Seeds Innovation" 
-                    fill 
-                    style={{ objectFit: 'cover' }} 
-                    className={styles.aboutVisualImage}
-                  />
-                </div>
-              </AnimatedSection>
-            </div>
+            <AnimatedSection direction="right" className={styles.aboutStatsVisual}>
+              <ImageCarousel images={infraImages} />
+            </AnimatedSection>
           </div>
         </div>
       </section>
