@@ -204,7 +204,8 @@
 /* Responsive */
 @media (max-width: 900px) {
   .navLinks,
-  .navActions {
+  .navActions,
+  .logo {
     display: none;
   }
   .menuBtn {
