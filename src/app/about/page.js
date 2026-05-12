@@ -46,6 +46,14 @@ export default function AboutPage() {
     <>
       {/* Hero Banner */}
       <section className={styles.hero}>
+        <Image 
+          src="/potato-plantations-grow-field-vegetable-rows-farming-agriculture-landscape-agricultural-land-crops-potato-plantations-123313972.jpg"
+          alt="Agronica Seeds Fields"
+          fill
+          priority
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
+          className={styles.heroBg}
+        />
         <div className={styles.heroOverlay} />
         <div className={`container ${styles.heroContent}`}>
           <motion.span
