@@ -252,39 +252,53 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Infrastructure */}
+      {/* Plant & Infrastructure */}
       <section className="section" id="infrastructure" style={{ background: "var(--bg)" }}>
         <div className="container">
-          <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "3rem" }}>
+          <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "4rem" }}>
             <span className="section-label">Plant & Infrastructure</span>
-            <h2>State-of-the-Art <span className={styles.highlight}>Facilities</span></h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>
-              The wide network of 500 farmers along with 30,000 sq ft plant
-              area and the state-of-the-art infrastructural facilities enables
-              ASSPL to guarantee the best seed supply at local and international
-              levels.
+            <h2>In Tune with <span className={styles.highlight}>Industry Standards</span></h2>
+            <p className="section-subtitle" style={{ margin: "0 auto", maxWidth: "900px" }}>
+              The wide network of 500 farmers along with 30,000 sq feet Plant area and the state-of-the-art infrastructural facilities enables ASSPL to guarantee the best seed supply at local and international levels with every stage of processes, technology, and equipment is standardised to international norms and quality. We adopt digital technologies to ensure hassle free and steady supply of seed products from our location plants for different crops and products.
             </p>
           </AnimatedSection>
 
           <div className={styles.infraGrid}>
-            {[
-              { icon: Factory, title: "Processing Plant", desc: "30,000 sq ft high-capacity seed processing facility at Basti, Uttar Pradesh" },
-              { icon: Shield, title: "Seeds Production", desc: "ASSPL adheres to best practices in seed production that contribute to high quality seeds. Our team of experts work closely to ensure products meet specific quality standards." },
-              { icon: Zap, title: "Processing & Conditioning", desc: "Seeds are processed at Basti, Uttar Pradesh plant with modern technologies adopted at high-capacity processing units to ensure the best quality." },
-              { icon: MapPin, title: "Strategic Locations", desc: "Corporate office at Sagar Tech Plaza, Andheri East, Mumbai and registered office in Basti, Uttar Pradesh" },
-              { icon: Handshake, title: "Farmer Network", desc: "Wide network of 500 partner farmers across India" },
-              { icon: Globe, title: "Digital Technologies", desc: "We adopt digital technologies to ensure hassle-free and steady supply of seed products from our location plants" },
-            ].map((item, i) => (
-              <AnimatedSection key={item.title} direction="up" delay={i * 0.08}>
-                <div className={styles.infraCard}>
-                  <div className={styles.infraIcon}>
-                    <item.icon size={24} />
-                  </div>
-                  <h4>{item.title}</h4>
-                  <p>{item.desc}</p>
+            <AnimatedSection direction="up" delay={0.1}>
+              <div className={styles.infraCard}>
+                <div className={styles.infraIcon}>
+                  <Shield size={24} />
                 </div>
-              </AnimatedSection>
-            ))}
+                <h4>Seeds Production</h4>
+                <p>
+                  ASSPL to best practices in seed production that contribute to high quality seeds. Our team of experts work closely to ensure the products meet specific quality standards. The entire process of seed production is rigorously monitored through training and providing crop management materials to farmers.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection direction="up" delay={0.2}>
+              <div className={styles.infraCard}>
+                <div className={styles.infraIcon}>
+                  <Zap size={24} />
+                </div>
+                <h4>Processing & Conditioning</h4>
+                <p>
+                  The seeds are processed at Basti Uttar Pradesh Plant with Modern technologies like adopted at high-capacity processing units to ensure the best quality.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection direction="up" delay={0.3}>
+              <div className={styles.infraCard}>
+                <div className={styles.infraIcon}>
+                  <Factory size={24} />
+                </div>
+                <h4>Quality Assurance</h4>
+                <p>
+                  Our processing units are equipped with advanced grading and cleaning machinery, ensuring every batch meets our stringent purity and germination standards before reaching the farmer.
+                </p>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
