@@ -47,7 +47,7 @@ export default function AboutPage() {
       {/* Hero Banner */}
       <section className={styles.hero}>
         <Image 
-          src="/potato-plantations-grow-field-vegetable-rows-farming-agriculture-landscape-agricultural-land-crops-potato-plantations-123313972.jpg"
+          src="/ChatGPT Image May 12, 2026, 03_08_08 PM.png"
           alt="Agronica Seeds Fields"
           fill
           priority
