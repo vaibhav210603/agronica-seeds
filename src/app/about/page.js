@@ -45,7 +45,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Banner */}
-      <section className={styles.hero}>
+      <section className={`${styles.hero} ${styles.bgHero}`}>
         <div className={styles.heroOverlay} />
         <div className={`container ${styles.heroContent}`}>
           <motion.span
@@ -149,8 +149,9 @@ export default function AboutPage() {
       </section>
 
       {/* Section 2: Vision & Mission */}
-      <section className="section" id="vision-mission" style={{ background: "var(--bg-alt)" }}>
-        <div className="container">
+      <section className={`section ${styles.bgVision}`} id="vision-mission">
+        <div className={styles.sectionOverlay} />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "4rem" }}>
             <span className="section-label">Vision & Mission</span>
             <h2>Shaping the <span className={styles.highlight}>Future of Agriculture</span></h2>
@@ -199,8 +200,9 @@ export default function AboutPage() {
       </section>
 
       {/* Section 3: Values, Goals & Purpose */}
-      <section className="section section-dark" id="values-goals">
-        <div className="container">
+      <section className={`section ${styles.bgValues}`} id="values-goals">
+        <div className={styles.sectionOverlay} />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className={styles.vgpGrid}>
             {/* Values Sub-section */}
             <div className={styles.valuesSub}>
@@ -261,8 +263,9 @@ export default function AboutPage() {
       </section>
 
       {/* Plant & Infrastructure */}
-      <section className="section" id="infrastructure" style={{ background: "var(--bg)" }}>
-        <div className="container">
+      <section className={`section ${styles.bgInfra}`} id="infrastructure">
+        <div className={styles.sectionOverlay} />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "4rem" }}>
             <span className="section-label">Plant & Infrastructure</span>
             <h2>In Tune with <span className={styles.highlight}>Industry Standards</span></h2>
