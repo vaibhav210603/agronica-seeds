@@ -1,54 +1,59 @@
-1. make a leadership secion on  the home page
- use image of Ashok.jpeg in public folder for Ashok Singh
- another leader is Shivendra Singh ( no image right now)
+About Us _ TITLE
+Home
+About Us
+Agronica Seeds Spark Private Ltd. is new Venture of Mrc Agrotech Ltd to Dedicated to revolutionising agricultural in India we would like to proudly state that we are inspiring formers to increase their agricultural produce and make it profitable with high Quality and latest technology.
 
+Our story began with a simple idea to harnes the power of seeds to improve lives and the planet.
 
-2. change the colour scheme to a brigher combo greena nd white
-Also use this font for heading on the site
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
-</style>
+We are dedicated to Developing and supplying high-performing, disease-resistant, and climate-resilient seed varieties.
 
-3. The horozontally moving strip on the home page is looking ugly, please fix it, also there is random text on it, please write sensible text
+Leveraging cutting-edge technology and sustainable practices to reduce our environmental footprint.
 
-Make the site more engaging and interactive but also minimalistic and premium
+Building strong relationships with our customers, partners, and the communities we serve
 
-3. Use legit information
+Fostering a culture of innovation, integrity, and social responsibility.
 
-07
-Scientists
-
-05
-Trial Centers
-
-04
-Research Centers
-
-10
-States
-
-500
-Grower
-
-25
-Sales Partner
-
-35
-Chanel Partner
+We're excited to embark on this journey and contribute to the growth and development of the agricultural industry. Join us in shaping the future of seeds and sustainable agriculture.
 
 
 
-4. Make a contacts page
-
-Call Us
-Phone: 022 - 40156765
-Email
-Info@agronicaseeds.com
-Corporate office
-Block 404, 4th floor, Sagar Tech Plaza, B Wing, Off Andheri Kurla Road, Sakinaka, Andheri East, Mumbai, Maharashtra -400072
-Register Office
-Agronica Seeds GRAM & POST - MAHUWADABAR, Babhnan, Basti, Uttar Pradesh, India, 272161
 
 
+Values, Goals & Purpose -- TITLE
+Home
+Values, Goals & Purpose
+Values
+Innovation: We embrace creativity and innovation in everything we do.
+Sustainability: We prioritize environmental stewardship and social responsibility.
+Quality: We strive for excellence in our seeds and services.
+Integrity: We operate with transparency, honesty, and ethical business practices.
+Customer-centricity: We put our customers at the heart of everything we do.
+Goals
+Develop and launch new seed varieties that address specific customer needs.
+Achieve a minimum of 20% annual growth in sales revenue.
+Expand our customer base in new markets and regions.
+Reduce our environmental footprint through sustainable practices.
+Foster strategic partnerships with industry leaders and research institutions.
+Purpose
+Our purpose at Agronica is to empower growers to feed a growing world sustainably. We aim to achieve this by developing and supplying innovative, high-quality seeds that improve crop yields, disease resistance, and nutritional value. We are committed to making a positive impact on the environment, society, and the economy through our seeds, services, and partnerships."
 
-5. Product images are not correct, please use winget to get all images from agronicaseeds.com related to products and use them instead
+
+
+
+Vision & Mission -- TITLE
+Vision
+Our vision at Agronica is to be a leading provider of innovative and sustainable seed solutions, shaping the future of agriculture and contributing to a food-secure world. We envision:
+
+A world where sustainable agriculture practices are the norm.
+Growers achieving improved yields and livelihoods through our seeds and services.
+Our company being a trusted partner and industry leader in seed technology and sustainability.
+A future where our seeds and services make a positive impact on the environment and society.
+
+Mission
+At Agronica, our mission is to:
+
+Develop and supply high-quality seeds that exceed our customers' expectations.
+Empower growers to achieve sustainable agricultural practices and improved profit yields.
+Foster a culture of innovation, integrity, and social responsibility.
+Build strong relationships with our customers, partners, and the communities we serve.
+We strive to make a positive impact on the environment, society, and the economy through our seeds and services.

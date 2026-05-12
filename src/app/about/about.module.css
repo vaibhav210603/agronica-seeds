@@ -288,6 +288,137 @@
   line-height: 1.6;
 }
 
+/* Focus Points */
+.focusPoints {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.focusPoint {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.focusIcon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--primary-50);
+  color: var(--primary-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.focusPoint p {
+  margin-bottom: 0;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+}
+
+/* VGP Grid */
+.vgpGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.valuesGridSmall {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.valueCardSmall {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.valueIconSmall {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.valueCardSmall h4 {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  color: white;
+}
+
+.valueCardSmall p {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.goalsCard, .purposeCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.goalsCard h3, .purposeCard h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.goalsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.goalsList li {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.goalIcon {
+  flex-shrink: 0;
+  color: var(--accent-400);
+  margin-top: 0.25rem;
+}
+
+.purposeCard {
+  margin-bottom: 0;
+}
+
+.purposeIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--accent-500);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.purposeCard p {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+}
+
 /* Infra */
 .infraGrid {
   display: grid;
@@ -343,6 +474,7 @@
   .overviewGrid { grid-template-columns: 1fr; gap: 2rem; }
   .statsGrid { grid-template-columns: repeat(2, 1fr); }
   .vmGrid { grid-template-columns: 1fr; }
+  .vgpGrid { grid-template-columns: 1fr; gap: 3rem; }
   .valuesGrid { grid-template-columns: repeat(2, 1fr); }
   .infraGrid { grid-template-columns: 1fr; }
 }

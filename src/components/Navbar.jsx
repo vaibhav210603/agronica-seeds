@@ -15,9 +15,10 @@ const navLinks = [
     name: "About",
     href: "/about",
     dropdown: [
-      { name: "Our Story", href: "/about" },
-      { name: "Vision & Mission", href: "/about#vision" },
-      { name: "Values & Purpose", href: "/about#values" },
+      { name: "About Us", href: "/about#about-us" },
+      { name: "Vision & Mission", href: "/about#vision-mission" },
+      { name: "Values, Goals & Purpose", href: "/about#values-goals" },
+      { name: "Infrastructure", href: "/about#infrastructure" },
     ],
   },
   {
