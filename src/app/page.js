@@ -204,7 +204,7 @@ export default function Home() {
           className={styles.heroBackgroundImageDesktop} 
         />
         <Image 
-          src="/back.png" 
+          src="/images/her.png" 
           alt="Agronica Seeds Hero Mobile" 
           fill 
           priority 

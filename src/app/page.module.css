@@ -26,6 +26,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 75%;
   z-index: 0;
   opacity: 1;
 }
@@ -1113,6 +1114,10 @@
 
   .heroOverlay {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.5) 100%);
+  }
+
+  .heroContent {
+    transform: translateY(-12%);
   }
 
   .productsGrid:not(.showAll) > div:nth-child(n+4) {
