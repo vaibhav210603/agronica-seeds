@@ -28,11 +28,12 @@ import ImageCarousel from "@/components/ImageCarousel";
 import styles from "./page.module.css";
 
 const infraImages = [
-  "/bori.jpg",
   "/fc1.jpg",
   "/fc2.jpg",
   "/fc3.jpg",
-  "/fc4.jpg"
+  "/fc4.jpg",
+  "/seeds.jpeg",
+  "/factory.jpeg"
 ];
 
 /* ===== DATA ===== */

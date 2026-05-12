@@ -5,27 +5,60 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function ImageCarousel({ images }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [[page, direction], setPage] = useState([0, 0]);
+
+  const currentIndex = ((page % images.length) + images.length) % images.length;
+
+  const paginate = (newDirection) => {
+    setPage([page + newDirection, newDirection]);
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 5000);
+      paginate(1);
+    }, 2000);
     return () => clearInterval(timer);
-  }, [images.length]);
+  }, [page]); // Reset timer on page change to avoid double jumps
 
-  const next = () => setCurrentIndex((prev) => (prev + 1) % images.length);
-  const prev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  const variants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 1.1
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.5 },
+        scale: { duration: 0.8 }
+      }
+    },
+    exit: (direction) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 0.9,
+      transition: {
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.5 }
+      }
+    })
+  };
 
   return (
-    <div className="carousel-wrapper" style={{ position: 'relative', width: '100%', height: 'clamp(300px, 50vw, 600px)', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: 'var(--shadow-2xl)' }}>
-      <AnimatePresence mode="wait">
+    <div className="carousel-wrapper" style={{ position: 'relative', width: '100%', height: 'clamp(300px, 50vw, 600px)', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: 'var(--shadow-2xl)', background: '#1a2e1a' }}>
+      <AnimatePresence initial={false} custom={direction}>
         <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
+          key={page}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
           style={{ position: 'absolute', inset: 0 }}
         >
           <Image
@@ -33,22 +66,27 @@ export default function ImageCarousel({ images }) {
             alt={`Infrastructure ${currentIndex + 1}`}
             fill
             style={{ objectFit: 'cover' }}
+            priority={currentIndex === 0}
           />
         </motion.div>
       </AnimatePresence>
 
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 40%)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 40%)', pointerEvents: 'none' }} />
 
       <button 
-        onClick={prev}
-        style={{ position: 'absolute', left: '1.5rem', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.3)', color: 'white', padding: '0.75rem', borderRadius: '50%', cursor: 'pointer', zIndex: 10 }}
+        onClick={() => paginate(-1)}
+        style={{ position: 'absolute', left: '1.5rem', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.2)', color: 'white', padding: '0.75rem', borderRadius: '50%', cursor: 'pointer', zIndex: 10, transition: 'all 0.3s' }}
+        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
       >
         <ChevronLeft size={24} />
       </button>
 
       <button 
-        onClick={next}
-        style={{ position: 'absolute', right: '1.5rem', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.3)', color: 'white', padding: '0.75rem', borderRadius: '50%', cursor: 'pointer', zIndex: 10 }}
+        onClick={() => paginate(1)}
+        style={{ position: 'absolute', right: '1.5rem', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.2)', color: 'white', padding: '0.75rem', borderRadius: '50%', cursor: 'pointer', zIndex: 10, transition: 'all 0.3s' }}
+        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
+        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
       >
         <ChevronRight size={24} />
       </button>
@@ -57,8 +95,15 @@ export default function ImageCarousel({ images }) {
         {images.map((_, i) => (
           <div 
             key={i} 
-            onClick={() => setCurrentIndex(i)}
-            style={{ width: i === currentIndex ? '24px' : '8px', height: '8px', borderRadius: '4px', background: i === currentIndex ? 'white' : 'rgba(255,255,255,0.4)', transition: 'all 0.3s', cursor: 'pointer' }} 
+            onClick={() => setPage([i, i > currentIndex ? 1 : -1])}
+            style={{ 
+              width: i === currentIndex ? '32px' : '8px', 
+              height: '8px', 
+              borderRadius: '4px', 
+              background: i === currentIndex ? 'white' : 'rgba(255,255,255,0.4)', 
+              transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)', 
+              cursor: 'pointer' 
+            }} 
           />
         ))}
       </div>
