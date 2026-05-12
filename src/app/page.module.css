@@ -1067,11 +1067,11 @@
   }
 
   .heroOverlay {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.5) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
   }
 
   .heroContent {
-    transform: translateY(-20%);
+    transform: translateY(0);
   }
 
   .productsGrid:not(.showAll) > div:nth-child(n+4) {
