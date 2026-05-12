@@ -163,12 +163,12 @@ img {
 }
 
 .section-dark {
-  background: var(--bg-alt);
-  color: var(--text-primary);
+  background: var(--primary-900);
+  color: var(--text-inverse);
 }
 
 .section-dark p {
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .section-emerald {
@@ -180,6 +180,12 @@ img {
   color: rgba(255, 255, 255, 0.7);
 }
 
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4,
+.section-dark h5,
+.section-dark h6,
 .section-emerald h1,
 .section-emerald h2,
 .section-emerald h3,
