@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -172,6 +172,30 @@ const cropCards = [
   { id: "cotton", href: "/products#cotton", image: "/images/products_dl/pros6.jpg", badge: "Kharif", name: "Cotton BGII", duration: "Fiber Crop" },
 ];
 
+const heroSlides = [
+  {
+    image: "/images/her.png",
+    label: "Welcome",
+    title: "Welcome to\nAgronica Seeds",
+    subtitle: "Developing high-quality, disease-resistant, and climate-resilient seed varieties to inspire farmers and transform agricultural produce across India.",
+    cta: { text: "Explore Our Seeds", href: "/products" },
+  },
+  {
+    image: "/wheat_back.jpg",
+    label: "Field Crops",
+    title: "Premium Maize\n& Wheat Seeds",
+    subtitle: "World-class hybrid varieties delivering superior yields with exceptional disease tolerance — tested across 10 states.",
+    cta: { text: "View Field Crops", href: "/products" },
+  },
+  {
+    image: "/bori.jpg",
+    label: "Infrastructure",
+    title: "Grown in India,\nFor India",
+    subtitle: "500+ partner farmers and 30,000 sq ft of state-of-the-art processing infrastructure, built to deliver quality at every scale.",
+    cta: { text: "Our Story", href: "/about" },
+  },
+];
+
 /* ===== HELPERS ===== */
 function getCurrentSeason() {
   const month = new Date().getMonth(); // 0-indexed
@@ -190,29 +214,44 @@ function getYearsSince(year) {
 export default function Home() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showAllProducts, setShowAllProducts] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const season = getCurrentSeason();
+
+  const prevSlide = useCallback(() => setCurrentSlide(s => (s - 1 + heroSlides.length) % heroSlides.length), []);
+  const nextSlide = useCallback(() => setCurrentSlide(s => (s + 1) % heroSlides.length), []);
+
+  useEffect(() => {
+    const t = setInterval(nextSlide, 5000);
+    return () => clearInterval(t);
+  }, [nextSlide]);
 
   return (
     <>
-      {/* ===== HERO SECTION ===== */}
+      {/* ===== HERO SLIDER ===== */}
       <section className={styles.hero}>
-        <Image 
-          src="/images/her.png" 
-          alt="Agronica Seeds Hero" 
-          fill 
-          priority 
-          className={styles.heroBackgroundImageDesktop} 
-        />
-        <Image 
-          src="/images/her.png" 
-          alt="Agronica Seeds Hero Mobile" 
-          fill 
-          priority 
-          className={styles.heroBackgroundImageMobile} 
-        />
+        {/* Slides */}
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={currentSlide}
+            className={styles.heroSlide}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.9 }}
+          >
+            <Image
+              src={heroSlides[currentSlide].image}
+              alt={heroSlides[currentSlide].title}
+              fill
+              priority
+              style={{ objectFit: "cover", objectPosition: "center 75%" }}
+            />
+          </motion.div>
+        </AnimatePresence>
+
         <div className={styles.heroOverlay} />
 
-
+        {/* Content */}
         <div className={`container ${styles.heroContent}`}>
           <div className={styles.heroText}>
             <motion.div
@@ -221,93 +260,76 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              <Image 
-                src="/web-logo.png" 
-                alt="Agronica Seeds Logo" 
-                width={200} 
-                height={50} 
-                style={{ objectFit: 'contain' }} 
-                priority
-              />
+              <Image src="/web-logo.png" alt="Agronica Seeds Logo" width={200} height={50} style={{ objectFit: "contain" }} priority />
             </motion.div>
 
-           
-
-            <motion.h1
-              className={styles.heroTitle}
-            >
-              <motion.span
-                initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ delay: 0.5, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                style={{ display: 'block' }}
+            <AnimatePresence mode="wait">
+              <motion.h1
+                key={`title-${currentSlide}`}
+                className={styles.heroTitle}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                Welcome to
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ delay: 0.7, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                style={{ display: 'block', color: 'white' }}
+                {heroSlides[currentSlide].title.split("\n").map((line, i) => (
+                  <span key={i} style={{ display: "block" }}>{line}</span>
+                ))}
+              </motion.h1>
+            </AnimatePresence>
+
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={`sub-${currentSlide}`}
+                className={styles.heroSubtitle}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.45, delay: 0.1 }}
               >
-                Agronica Seeds
-              </motion.span>
-            </motion.h1>
+                {heroSlides[currentSlide].subtitle}
+              </motion.p>
+            </AnimatePresence>
 
-            <motion.p
-              className={styles.heroSubtitle}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-            >
-              Developing high-quality, disease-resistant, and climate-resilient
-              seed varieties to inspire farmers and transform agricultural produce
-              across India.
-            </motion.p>
-
-            <motion.div
-              className={styles.heroCtas}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9, duration: 0.5 }}
-            >
-              <Link href="/products" className="btn btn-primary">
-                Explore Our Seeds
+            <motion.div className={styles.heroCtas} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.5 }}>
+              <Link href={heroSlides[currentSlide].cta.href} className="btn btn-primary">
+                {heroSlides[currentSlide].cta.text}
                 <ChevronRight size={16} />
               </Link>
-              
             </motion.div>
 
             {/* Live Season Badge */}
-            <motion.div
-              className={styles.seasonBadge}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.5 }}
-            >
+            <motion.div className={styles.seasonBadge} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>
               <span className={`${styles.seasonDot} ${season.color === "Kharif" ? styles.seasonDotKharif : styles.seasonDotRabi}`} />
               {season.name} Season • {new Date().toLocaleString("en-IN", { month: "long", year: "numeric" })}
             </motion.div>
           </div>
+        </div>
 
-          <motion.div
-            className={styles.scrollIndicator}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-          >
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-            >
-              <ArrowDown size={18} />
-            </motion.div>
-          </motion.div>
+        {/* Prev / Next arrows */}
+        <button className={`${styles.heroArrow} ${styles.heroArrowPrev}`} onClick={prevSlide} aria-label="Previous slide">
+          <ChevronRight size={22} style={{ transform: "rotate(180deg)" }} />
+        </button>
+        <button className={`${styles.heroArrow} ${styles.heroArrowNext}`} onClick={nextSlide} aria-label="Next slide">
+          <ChevronRight size={22} />
+        </button>
+
+        {/* Dots */}
+        <div className={styles.heroDots}>
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              className={`${styles.heroDot} ${i === currentSlide ? styles.heroDotActive : ""}`}
+              onClick={() => setCurrentSlide(i)}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
         </div>
       </section>
 
       {/* ===== STATS STRIP ===== */}
       <section className={styles.statsStrip} id="about">
+        <div className={styles.statsStripOuter}>
         <div className={styles.statsStripTrack}>
           <StatCounter end={500} label="Growers" icon={Users} />
           <StatCounter end={30} suffix="K+" label="Sq Ft Area" icon={Factory} />
@@ -318,6 +340,12 @@ export default function Home() {
           <StatCounter end={5} label="Trial Centers" icon={Target} />
           <StatCounter end={25} label="Sales Partners" icon={Handshake} />
           <StatCounter end={35} label="Channel Partners" icon={TrendingUp} />
+        </div>
+        <div className={styles.statsScrollHint}>
+          <ChevronRight size={13} style={{ transform: "rotate(180deg)", opacity: 0.5 }} />
+          <span>swipe to explore</span>
+          <ChevronRight size={13} style={{ opacity: 0.5 }} />
+        </div>
         </div>
       </section>
 
