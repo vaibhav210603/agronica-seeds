@@ -25,6 +25,7 @@ import StatCounter from "@/components/StatCounter";
 import WaveDivider from "@/components/WaveDivider";
 import SeedJourney from "@/components/SeedJourney";
 import ImageCarousel from "@/components/ImageCarousel";
+import ProductStripCarousel from "@/components/ProductStripCarousel";
 import styles from "./page.module.css";
 
 const infraImages = [
@@ -162,6 +163,15 @@ const products = [
 
 
 
+const cropCards = [
+  { id: "maize", href: "/products#maize", image: "/images/products_dl/pros1.jpg", badge: "Kharif / Rabi", name: "Maize", duration: "105–115 Days" },
+  { id: "wheat-dbw187", href: "/products#wheat-dbw187", image: "/images/products_dl/pros2.jpg", badge: "Rabi", name: "Wheat DBW187", duration: "120 Days" },
+  { id: "paddy", href: "/products#paddy", image: "/images/products_dl/pros3.jpg", badge: "Kharif", name: "Paddy", duration: "115–140 Days" },
+  { id: "mustard", href: "/products#mustard", image: "/images/products_dl/pros4.jpg", badge: "Rabi", name: "Mustard", duration: "Oilseed Crop" },
+  { id: "wheat-hd2967", href: "/products#wheat-hd2967", image: "/images/products_dl/pros5.jpg", badge: "Rabi", name: "Wheat HD2967", duration: "129–143 Days" },
+  { id: "cotton", href: "/products#cotton", image: "/images/products_dl/pros6.jpg", badge: "Kharif", name: "Cotton BGII", duration: "Fiber Crop" },
+];
+
 /* ===== HELPERS ===== */
 function getCurrentSeason() {
   const month = new Date().getMonth(); // 0-indexed
@@ -296,43 +306,127 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== ABOUT & STATS MERGED ===== */}
-      <section className={`section section-emerald ${styles.aboutStats}`} id="about">
+      {/* ===== STATS STRIP ===== */}
+      <section className={styles.statsStrip} id="about">
+        <div className={styles.statsStripTrack}>
+          <StatCounter end={500} label="Growers" icon={Users} />
+          <StatCounter end={30} suffix="K+" label="Sq Ft Area" icon={Factory} />
+          <StatCounter end={4} label="Research Centers" icon={Factory} />
+          <StatCounter end={6} label="Crop Varieties" icon={Wheat} />
+          <StatCounter end={10} label="States" icon={Globe} />
+          <StatCounter end={7} label="Scientists" icon={Lightbulb} />
+          <StatCounter end={5} label="Trial Centers" icon={Target} />
+          <StatCounter end={25} label="Sales Partners" icon={Handshake} />
+          <StatCounter end={35} label="Channel Partners" icon={TrendingUp} />
+        </div>
+      </section>
+
+      {/* ===== PRODUCT STRIP ===== */}
+      <ProductStripCarousel crops={cropCards} />
+
+      {/* ===== ABOUT CARDS ===== */}
+      <section className={`section ${styles.aboutCardsSection}`}>
         <div className="container">
-          <div className={styles.aboutStatsGrid}>
-            <AnimatedSection direction="left">
-              <span className="section-label">3+ Years of Revolution</span>
-              <h2 className="section-title" style={{ color: 'white' }}>
-                Shaping the Future of <span style={{ color: 'var(--primary-300)' }}>Seeds Industry</span>
-              </h2>
-              <p className="section-subtitle" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                Agronica Seeds Spark Private Ltd. is a dedicated venture of MRC Agrotech Ltd., 
-                inspiring farmers to maximize productivity through high-quality seeds and 
-                innovative technology.
-              </p>
-              
-              <div className={styles.statsGridMerged}>
-                <StatCounter end={500} label="Growers" icon={Users} />
-                <StatCounter end={30000} suffix=" sq ft" label="Plant Area" icon={Factory} />
-                <StatCounter end={4} label="Research Centers" icon={Factory} />
-                <StatCounter end={6} label="Crop Varieties" icon={Wheat} />
-                <StatCounter end={10} label="States" icon={Globe} />
-                <StatCounter end={7} label="Scientists" icon={Lightbulb} />
-                <StatCounter end={5} label="Trial Centers" icon={Target} />
-                <StatCounter end={25} label="Sales Partners" icon={Handshake} />
-                <StatCounter end={35} label="Channel Partners" icon={TrendingUp} />
+          <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <span className="section-label">Who We Are</span>
+            <h2 className="section-title">The <span style={{ color: "var(--primary-600)" }}>Agronica</span> Story</h2>
+            <p className="section-subtitle">Rooted in purpose, driven by innovation — explore the values, vision, and infrastructure behind every seed we grow.</p>
+          </AnimatedSection>
+          <div className={styles.aboutCardsGrid}>
+            {[
+              {
+                href: "/about#about-us",
+                image: "/istockphoto-543212762-612x612.jpg",
+                tag: "Our Story",
+                title: "Revolutionizing Agriculture with Innovation",
+                desc: "As a new venture of MRC Agrotech Ltd., we harness the power of seeds to improve lives and empower farmers with high-quality varieties.",
+              },
+              {
+                href: "/about#vision-mission",
+                image: "/images/vis.jpg",
+                tag: "Vision & Mission",
+                title: "Shaping the Future of Agriculture",
+                desc: "Our vision is to be a leading provider of sustainable seed solutions, contributing to a food-secure world and improved grower livelihoods.",
+              },
+              {
+                href: "/about#values-goals",
+                image: "/images/miss.jpg",
+                tag: "Values & Goals",
+                title: "What We Stand For",
+                desc: "We operate with innovation, integrity, and a customer-first mindset — committed to sustainability and 20%+ annual growth in impact.",
+              },
+              {
+                href: "/about#infrastructure",
+                image: "/fc1.jpg",
+                tag: "Infrastructure",
+                title: "In Tune with Industry Standards",
+                desc: "30,000 sq ft processing facility in Basti, UP, with modern grading and conditioning units supplying quality seeds at scale.",
+              },
+            ].map((card, i) => (
+              <AnimatedSection key={card.href} direction="up" delay={i * 0.1}>
+                <Link href={card.href} className={styles.aboutCard}>
+                  <div className={styles.aboutCardImageWrap}>
+                    <Image src={card.image} alt={card.title} fill className={styles.aboutCardImg} sizes="(max-width: 768px) 100vw, 25vw" />
+                    <div className={styles.aboutCardOverlay} />
+                    <span className={styles.aboutCardTag}>{card.tag}</span>
+                  </div>
+                  <div className={styles.aboutCardBody}>
+                    <h4>{card.title}</h4>
+                    <p>{card.desc}</p>
+                    <span className={styles.aboutCardLink}>Read More →</span>
+                  </div>
+                </Link>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== FACILITY SHOWCASE ===== */}
+      <section className={`section ${styles.facilitySection}`}>
+        <div className="container">
+          <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <span className="section-label">Plant & Infrastructure</span>
+            <h2 className="section-title">Built for <span style={{ color: "var(--primary-600)" }}>Scale & Precision</span></h2>
+            <p className="section-subtitle">State-of-the-art processing facilities across Uttar Pradesh, equipped with modern grading, cleaning, and conditioning technology.</p>
+          </AnimatedSection>
+          <div className={styles.facilityGrid}>
+            <AnimatedSection direction="up" delay={0.1}>
+              <div className={styles.facilityCard}>
+                <div className={styles.facilityImageWrap}>
+                  <Image src="/fc1.jpg" alt="Advanced Processing Infrastructure" fill className={styles.facilityImg} sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.facilityBody}>
+                  <h4>Advanced Processing Infrastructure</h4>
+                  <p>The wide network of 500 farmers along with 30000 sq feet Plant area and the state-of-the-art infrastructural facilities..</p>
+                </div>
               </div>
             </AnimatedSection>
-
-            <AnimatedSection direction="right" className={styles.aboutStatsVisual}>
-              <ImageCarousel images={infraImages} />
+            <AnimatedSection direction="up" delay={0.2}>
+              <div className={styles.facilityCard}>
+                <div className={styles.facilityImageWrap}>
+                  <Image src="/fc2.jpg" alt="Quality Assurance & Best Practices" fill className={styles.facilityImg} sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.facilityBody}>
+                  <h4>Quality Assurance & Best Practices</h4>
+                  <p>ASSPL to best practices in seed production that contribute to high quality seeds. Our team of experts work closely..</p>
+                </div>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection direction="up" delay={0.3}>
+              <div className={styles.facilityCard}>
+                <div className={styles.facilityImageWrap}>
+                  <Image src="/fc3.jpg" alt="State-of-the-Art Technology" fill className={styles.facilityImg} sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.facilityBody}>
+                  <h4>State-of-the-Art Technology</h4>
+                  <p>Seeds are processed at Basti Uttar Pradesh Plant with modern technologies adopted at high-capacity processing units..</p>
+                </div>
+              </div>
             </AnimatedSection>
           </div>
         </div>
       </section>
-      <WaveDivider color="var(--primary-700)" flip />
-
-
 
       {/* ===== PRODUCTS SECTION ===== */}
       <section className={`section ${styles.products}`}>
@@ -382,11 +476,6 @@ export default function Home() {
           </AnimatedSection>
         </div>
       </section>
-
-
-
-      {/* ===== 🌾 SEED TO HARVEST JOURNEY ===== */}
-      <SeedJourney />
 
 
 
