@@ -320,40 +320,64 @@ export default function AboutPage() {
             </AnimatedSection>
           </div>
 
-          <div className={styles.infraGrid}>
+          <div className={styles.facilitiesGrid}>
             <AnimatedSection direction="up" delay={0.1}>
-              <div className={styles.infraCard}>
-                <div className={styles.infraIcon}>
-                  <Shield size={24} />
+              <div className={styles.facilityCard}>
+                <div className={styles.facilityImageWrap}>
+                  <Image
+                    src="/fc1.jpg"
+                    alt="Processing facility with modern equipment"
+                    fill
+                    className={styles.facilityImage}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
-                <h4>Seeds Production</h4>
-                <p>
-                  ASSPL to best practices in seed production that contribute to high quality seeds. Our team of experts work closely to ensure the products meet specific quality standards. The entire process of seed production is rigorously monitored through training and providing crop management materials to farmers.
-                </p>
+                <div className={styles.facilityContent}>
+                  <h4>Advanced Processing Infrastructure</h4>
+                  <p>
+                    The wide network of 500 farmers along with 30000 sq feet Plant area and the state-of-the-art infrastructural facilities..
+                  </p>
+                </div>
               </div>
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.2}>
-              <div className={styles.infraCard}>
-                <div className={styles.infraIcon}>
-                  <Zap size={24} />
+              <div className={styles.facilityCard}>
+                <div className={styles.facilityImageWrap}>
+                  <Image
+                    src="/fc2.jpg"
+                    alt="Seed processing and conditioning equipment"
+                    fill
+                    className={styles.facilityImage}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
-                <h4>Processing & Conditioning</h4>
-                <p>
-                  The seeds are processed at Basti Uttar Pradesh Plant with Modern technologies like adopted at high-capacity processing units to ensure the best quality.
-                </p>
+                <div className={styles.facilityContent}>
+                  <h4>Quality Assurance & Best Practices</h4>
+                  <p>
+                    ASSPL to best practices in seed production that contribute to high quality seeds. Our team of experts work closely..
+                  </p>
+                </div>
               </div>
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.3}>
-              <div className={styles.infraCard}>
-                <div className={styles.infraIcon}>
-                  <Factory size={24} />
+              <div className={styles.facilityCard}>
+                <div className={styles.facilityImageWrap}>
+                  <Image
+                    src="/fc3.jpg"
+                    alt="Basti Uttar Pradesh modern processing plant"
+                    fill
+                    className={styles.facilityImage}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
-                <h4>Quality Assurance</h4>
-                <p>
-                  Our processing units are equipped with advanced grading and cleaning machinery, ensuring every batch meets our stringent purity and germination standards before reaching the farmer.
-                </p>
+                <div className={styles.facilityContent}>
+                  <h4>State-of-the-Art Technology</h4>
+                  <p>
+                    He seeds are processed at Basti Uttar Pradesh Plant with Modern technologies like adopted at high-capacity..
+                  </p>
+                </div>
               </div>
             </AnimatedSection>
           </div>
