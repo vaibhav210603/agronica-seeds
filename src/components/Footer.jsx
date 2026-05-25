@@ -43,9 +43,9 @@ export default function Footer() {
             />
           </div>
           <p className={styles.brandDesc}>
-            A fresh and innovative force in the seeds industry. We&apos;re
-            empowering growers and contributing to a sustainable food future
-            through high-quality, innovative seeds.
+            Pioneering the future of seeds — empowering growers with
+            world-class hybrid varieties and contributing to a sustainable
+            food future across India.
           </p>
           <div className={styles.socials}>
             <a href="#" aria-label="Website" className={styles.socialIcon}>

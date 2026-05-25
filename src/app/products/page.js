@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -87,17 +88,56 @@ const products = [
     geography: "Gujarat, Maharashtra, Telangana, Andhra Pradesh, Karnataka",
   },
   {
-    id: "vegetable",
-    name: "Vegetable Seeds",
-    emoji: "🥬",
-    image: "/images/products_dl/prodcts-main.jpg",
+    id: "tomato",
+    name: "Premium Tomato Seeds",
+    emoji: "🍅",
+    image: "/images/generated/prod_tomato.png",
     category: "vegetable",
-    shortDesc: "Premium vegetable seed varieties for diverse climatic conditions and higher yields.",
-    fullDesc: "Our vegetable seed portfolio covers a wide range of premium varieties optimized for Indian growing conditions.",
-    tags: ["All Seasons", "High Germination", "Hybrid"],
-    gradient: "linear-gradient(135deg, #BBF7D0 0%, #22C55E 100%)",
-    features: ["High germination rate", "Disease resistant hybrids", "Excellent shelf life", "Verified quality standards"],
-    geography: "Pan-India",
+    shortDesc: "High-yield, disease-resistant tomato seeds. Produces vibrant, juicy tomatoes perfect for commercial and home farming.",
+    fullDesc: "Our premium tomato seeds are meticulously engineered for high germination rates and outstanding disease resistance against early blight and leaf curl virus. The resulting plants are highly vigorous and yield uniform, deep-red, firm, and juicy tomatoes. Excellent storage and transport capabilities make them the ideal choice for both commercial growers and home garden enthusiasts across diverse Indian regions.",
+    tags: ["Vegetable", "High Yield", "Hybrid"],
+    gradient: "linear-gradient(135deg, #FF6B6B 0%, #C92A2A 100%)",
+    features: ["Vigorous growth with high genetic yield potential", "Strong resistance to early blight and leaf curl virus", "Produces highly uniform, firm, deep-red fruits", "Outstanding shelf life and excellent transportability"],
+    geography: "Uttar Pradesh, Bihar, Karnataka, Maharashtra, Andhra Pradesh, Gujarat, Haryana & West Bengal",
+  },
+  {
+    id: "chili",
+    name: "Spicy Chili Pepper",
+    emoji: "🌶️",
+    image: "/images/generated/prod_chili.png",
+    category: "vegetable",
+    shortDesc: "Vibrant red chili seeds yielding plants with an incredible kick. Perfect for warm climates and high-density planting.",
+    fullDesc: "Our premium hot chili seeds are specifically hybrid-bred to thrive in warm, semi-arid Indian climates. The plants exhibit excellent heat tolerance and compact growth, making them perfect for high-density farming. The peppers develop a highly glossy, vibrant deep-red skin with uniform heat (pungency) levels, satisfying both fresh markets and spice-processing industries.",
+    tags: ["Spice", "Fast Growth", "Heat Tolerant"],
+    gradient: "linear-gradient(135deg, #FF8787 0%, #E03131 100%)",
+    features: ["High pungency (SHU) and rich glossy red coloring", "Superior heat tolerance suited for warm Indian summers", "Compact plant structure optimized for high-density planting", "Thrives across both irrigated and rain-fed conditions"],
+    geography: "Andhra Pradesh, Telangana, Karnataka, Maharashtra, Rajasthan, Madhya Pradesh & Tamil Nadu",
+  },
+  {
+    id: "onion",
+    name: "Golden Onion Seeds",
+    emoji: "🧅",
+    image: "/images/generated/prod_onion.png",
+    category: "vegetable",
+    shortDesc: "Premium onion seeds for large, crisp bulbs. Excellent storage capability and uniform size.",
+    fullDesc: "Our elite onion seeds produce large, attractive, uniform bulbs with clean golden-brown papery skins and solid, crisp inner rings. Selected for outstanding storage longevity (reducing post-harvest losses) and high bolting tolerance, these seeds deliver high commercial payouts for rabi and kharif cultivation cycles.",
+    tags: ["Vegetable", "Long Shelf-life", "Rabi/Kharif"],
+    gradient: "linear-gradient(135deg, #FCC419 0%, #E67700 100%)",
+    features: ["Excellent bulb storage and holding capacity (up to 5 months)", "Highly uniform globe bulbs with rich golden skin", "Outstanding bolting resistance under variable temperatures", "Strong root development for nutrient-poor soils"],
+    geography: "Maharashtra (Nashik), Madhya Pradesh, Karnataka, Gujarat, Rajasthan, Bihar & Uttar Pradesh",
+  },
+  {
+    id: "watermelon",
+    name: "Sugar Watermelon",
+    emoji: "🍉",
+    image: "/images/generated/prod_watermelon.png",
+    category: "vegetable",
+    shortDesc: "Produce sweet, massive watermelons with our premium seeds. Excellent drought tolerance and rapid vine growth.",
+    fullDesc: "Developed for the ultimate summer harvest, our Sugar Watermelon seeds produce heavy, uniform, blocky-round fruits with attractive dark-green stripes. The deep-red flesh is exceptionally sweet (high Brix content), crisp, and nearly seedless, making it highly demanded in retail and wholesale agricultural markets.",
+    tags: ["Fruit", "Summer Crop", "High Brix"],
+    gradient: "linear-gradient(135deg, #69DB7C 0%, #2B8A3E 100%)",
+    features: ["Superior sweetness with high Brix sugar index", "Excellent tolerance to anthracnose and fusarium wilt", "Rapid vine coverage and heavy crop setting", "Thick rind ensuring zero breakage during long transport"],
+    geography: "Tamil Nadu, Karnataka, Andhra Pradesh, Maharashtra, Uttar Pradesh, West Bengal & Haryana",
   },
 ];
 
@@ -108,9 +148,18 @@ const categories = [
   { id: "fibre", name: "Fibre" },
 ];
 
-export default function ProductsPage() {
+function ProductsContent() {
+  const searchParams = useSearchParams();
+  const catParam = searchParams.get("category");
+
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+  useEffect(() => {
+    if (catParam) {
+      setActiveCategory(catParam);
+    }
+  }, [catParam]);
 
   const filtered =
     activeCategory === "all"
@@ -277,5 +326,13 @@ export default function ProductsPage() {
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div style={{ minHeight: '100vh', background: 'var(--bg-alt)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-secondary)', fontFamily: 'var(--font-body)' }}>Loading...</div>}>
+      <ProductsContent />
+    </Suspense>
   );
 }

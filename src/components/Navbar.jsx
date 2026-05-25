@@ -34,6 +34,8 @@ const navLinks = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
 
@@ -44,6 +46,13 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 1024);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -51,85 +60,148 @@ export default function Navbar() {
     }
   }, [mobileOpen]);
 
+  const isExpanded = scrolled || hovered || isMobile;
+
+  const navbarVariants = {
+    top: {
+      top: 24,
+      width: "240px",
+      maxWidth: "240px",
+      borderRadius: 50,
+      background: "rgba(255, 255, 255, 0.95)",
+      boxShadow: "0 12px 32px rgba(0, 0, 0, 0.15)",
+      border: "1px solid rgba(255,255,255,0.2)",
+      x: "-50%",
+      backdropFilter: "blur(20px)",
+    },
+    expanded: {
+      top: 24,
+      width: "90%",
+      maxWidth: "1200px",
+      borderRadius: 32,
+      background: "rgba(255, 255, 255, 0.96)",
+      boxShadow: "0 16px 40px rgba(0, 0, 0, 0.12)",
+      border: "1px solid rgba(0, 0, 0, 0.06)",
+      x: "-50%",
+      backdropFilter: "blur(20px)",
+    }
+  };
+
   return (
     <>
       <motion.nav
-        className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className={styles.navbar}
+        variants={navbarVariants}
+        initial="top"
+        animate={isExpanded ? "expanded" : "top"}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        transition={{ type: "tween", duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        layout
       >
-        <div className={styles.navInner}>
-          <Link href="/" className={styles.logo}>
-            <img 
-              src="/web-logo.png" 
-              alt="Agronica Seeds Logo" 
-              width="180"
-              style={{ height: '42px', objectFit: 'contain', display: 'block' }} 
-            />
-          </Link>
-
-          <div className={styles.navLinks}>
-            {navLinks.map((link) => (
-              <div
-                key={link.name}
-                className={styles.navItem}
-                onMouseEnter={() =>
-                  link.dropdown && setActiveDropdown(link.name)
-                }
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <Link href={link.href} className={styles.navLink}>
-                  {link.name}
-                  {link.dropdown && (
-                    <ChevronDown
-                      size={13}
-                      className={`${styles.chevron} ${
-                        activeDropdown === link.name ? styles.chevronActive : ""
-                      }`}
-                    />
-                  )}
-                </Link>
-
-                <AnimatePresence>
-                  {link.dropdown && activeDropdown === link.name && (
-                    <motion.div
-                      className={styles.dropdown}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
-                      transition={{ duration: 0.15 }}
-                    >
-                      {link.dropdown.map((item) => (
-                        <Link
-                          key={item.name}
-                          href={item.href}
-                          className={styles.dropdownLink}
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.navActions}>
-            <Link href="/contact" className={styles.ctaBtn}>
-              Contact Us
-            </Link>
-          </div>
-
-          <button
-            className={styles.menuBtn}
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+        <motion.div className={styles.navInner} layout>
+          <motion.div 
+            layout
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: isExpanded ? 'flex-start' : 'center',
+              flex: isExpanded ? 'none' : 1,
+            }}
           >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
+            <Link href="/" className={styles.logo}>
+              <motion.img 
+                src="/web-logo.png" 
+                alt="Agronica Seeds Logo" 
+                style={{ height: '42px', objectFit: 'contain', display: 'block', width: 'auto' }} 
+                layout
+              />
+            </Link>
+          </motion.div>
+
+          {isExpanded && (
+            <motion.div 
+              className={styles.navLinks}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.25 }}
+              layout
+            >
+              {navLinks.map((link) => (
+                <div
+                  key={link.name}
+                  className={styles.navItem}
+                  onMouseEnter={() =>
+                    link.dropdown && setActiveDropdown(link.name)
+                  }
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <Link href={link.href} className={styles.navLink}>
+                    {link.name}
+                    {link.dropdown && (
+                      <ChevronDown
+                        size={13}
+                        className={`${styles.chevron} ${
+                          activeDropdown === link.name ? styles.chevronActive : ""
+                        }`}
+                      />
+                    )}
+                  </Link>
+
+                  <AnimatePresence>
+                    {link.dropdown && activeDropdown === link.name && (
+                      <motion.div
+                        className={styles.dropdown}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 8 }}
+                        transition={{ duration: 0.15 }}
+                      >
+                        {link.dropdown.map((item) => (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            className={styles.dropdownLink}
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </motion.div>
+          )}
+
+          {isExpanded && (
+            <motion.div 
+              className={styles.navActions}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.25 }}
+              layout
+            >
+              <Link href="/contact" className={styles.ctaBtn}>
+                Get in Touch
+              </Link>
+            </motion.div>
+          )}
+
+          {isExpanded && (
+            <motion.button
+              className={styles.menuBtn}
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+              initial={{ opacity: 0, rotate: -30 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              transition={{ duration: 0.25 }}
+              layout
+            >
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </motion.button>
+          )}
+        </motion.div>
       </motion.nav>
 
       {/* Mobile Menu */}

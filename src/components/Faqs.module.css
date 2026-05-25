@@ -1,0 +1,314 @@
+/* ===== FAQ SECTION DESIGN SYSTEM ===== */
+.faqSection {
+  padding: var(--section-padding) 0;
+  position: relative;
+  background: radial-gradient(circle at 10% 20%, rgba(230, 251, 245, 0.3) 0%, rgba(255, 255, 255, 1) 90%);
+  overflow: hidden;
+}
+
+/* Background blob decorations for glassmorphic depth */
+.blob1 {
+  position: absolute;
+  top: 10%;
+  left: -5%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(0, 200, 150, 0.08) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob2 {
+  position: absolute;
+  bottom: 10%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.05) 0%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  position: relative;
+  z-index: 1;
+}
+
+/* Header Styles */
+.header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.headerLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary-600);
+  margin-bottom: 1rem;
+}
+
+.headerLabel::before {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 2px;
+  background: var(--primary-500);
+  border-radius: var(--radius-full);
+}
+
+.headerTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: var(--primary-900);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.headerHighlight {
+  color: var(--primary-500);
+  position: relative;
+  display: inline-block;
+}
+
+.headerHighlight::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(0, 200, 150, 0.12);
+  z-index: -1;
+  border-radius: 4px;
+}
+
+.headerSub {
+  font-size: clamp(0.95rem, 1.2vw, 1.0625rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Accordion Layout */
+.accordionContainer {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Individual Accordion Items */
+.faqItem {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 181, 132, 0.12);
+  border-left: 4px solid transparent;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 61, 42, 0.02);
+}
+
+.faqItem:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 181, 132, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 61, 42, 0.05);
+}
+
+.faqItemActive {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(0, 181, 132, 0.3);
+  border-left-color: var(--primary-500);
+  box-shadow: 0 12px 40px rgba(0, 61, 42, 0.08);
+}
+
+/* Question Trigger Button */
+.questionButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 1.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 1.5rem;
+  transition: padding 0.3s ease;
+}
+
+.questionContent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.questionIcon {
+  color: var(--primary-400);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.faqItemActive .questionIcon {
+  color: var(--primary-500);
+}
+
+.questionText {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-weight: 700;
+  color: var(--primary-900);
+  line-height: 1.45;
+  transition: color 0.3s ease;
+}
+
+.faqItemActive .questionText {
+  color: var(--primary-700);
+}
+
+/* Chevron Icon Wrapper */
+.chevronWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 181, 132, 0.05);
+  color: var(--primary-600);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.questionButton:hover .chevronWrapper {
+  background: rgba(0, 181, 132, 0.1);
+  color: var(--primary-500);
+}
+
+.faqItemActive .chevronWrapper {
+  background: var(--primary-500);
+  color: white;
+}
+
+.chevron {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chevronActive {
+  transform: rotate(180deg);
+}
+
+/* Answer Body */
+.answerWrapper {
+  overflow: hidden;
+}
+
+.answerContent {
+  padding: 0 1.75rem 1.75rem 4.25rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.2vw, 0.98rem);
+  line-height: 1.75;
+  color: var(--text-secondary);
+  border-top: 1px solid rgba(0, 181, 132, 0.05);
+  margin-top: -0.25rem;
+  padding-top: 1.25rem;
+}
+
+.answerHighlight {
+  font-weight: 600;
+  color: var(--primary-700);
+}
+
+/* Info Banner below Accordion */
+.infoBanner {
+  margin-top: 3.5rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(0, 181, 132, 0.08);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem 2rem;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  box-shadow: 0 4px 20px rgba(0, 61, 42, 0.01);
+}
+
+.infoIcon {
+  color: var(--primary-500);
+  flex-shrink: 0;
+}
+
+.infoText {
+  font-family: var(--font-body);
+  font-size: 0.925rem;
+  color: var(--text-secondary);
+  text-align: left;
+  line-height: 1.5;
+}
+
+.infoLink {
+  color: var(--primary-600);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.infoLink:hover {
+  color: var(--primary-500);
+}
+
+/* Responsive adjustment for padding and layout */
+@media (max-width: 640px) {
+  .questionButton {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+  
+  .questionContent {
+    gap: 0.75rem;
+  }
+
+  .answerContent {
+    padding: 0 1.25rem 1.25rem 1.25rem;
+    border-top: none;
+    padding-top: 0.5rem;
+  }
+  
+  .infoBanner {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+    gap: 0.75rem;
+  }
+  
+  .infoText {
+    text-align: center;
+  }
+}
