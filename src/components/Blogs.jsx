@@ -242,7 +242,7 @@ export default function Blogs() {
                   </div>
 
                   <h3 className={styles.cardTitle}>{blog.title}</h3>
-                  <p className={styles.excerpt}>{blog.excerpt}</p>
+
 
                   <div className={styles.cardFooter}>
                     <div className={styles.metaItem}>
