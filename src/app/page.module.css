@@ -1239,12 +1239,29 @@
 .mainWrapper :global([class*="conclusionText"]),
 .mainWrapper :global([class*="leadParagraph"]),
 .mainWrapper :global([class*="headerSub"]),
-.mainWrapper :global([class*="subtitle"]),
-.mainWrapper :global([class*="cardDescription"]),
-.mainWrapper :global([class*="swipeHint"]),
 .mainWrapper :global([class*="infoText"]),
 .mainWrapper :global([class*="answerContent"]) p {
   font-weight: 700 !important;
   font-size: clamp(1.15rem, 1.4vw, 1.3rem) !important;
 }
+
+/* Explicitly restore certifications to their natural, highly authentic/professional styling */
+.mainWrapper :global([class*="Certifications_cardDescription"]) {
+  font-weight: 400 !important;
+  font-size: 0.875rem !important;
+  color: #4A5D55 !important;
+}
+
+.mainWrapper :global([class*="Certifications_subtitle"]) {
+  font-weight: 400 !important;
+  font-size: clamp(0.9375rem, 1.2vw, 1.0625rem) !important;
+  color: #4A5D55 !important;
+}
+
+.mainWrapper :global([class*="Certifications_swipeHint"]) {
+  font-weight: 500 !important;
+  font-size: 0.75rem !important;
+  color: #4A5D55 !important;
+}
+
 
