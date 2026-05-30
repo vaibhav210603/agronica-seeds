@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { Calendar, Clock, User, X, ArrowRight, BookOpen, Sparkles, ChevronRight, Award, ShieldCheck, Leaf } from "lucide-react";
+import { Calendar, Clock, X, ArrowRight, BookOpen, Sparkles, ChevronRight, Award, ShieldCheck, Leaf } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Blogs.module.css";
 
@@ -104,7 +104,7 @@ const BLOG_POSTS = [
     readTime: "7 min read",
     author: "Er. Rajesh V. Patil (Agricultural Extension Specialist)",
     excerpt: "Climate change is driving unpredictable weather, causing frequent droughts and floods. Learn how Agronica's climate-smart hybrid maize and rice seeds utilize deep-rooting traits and stress-tolerant genes to secure stable yields.",
-    image: "/images/generated/blog_climate_hybrid.png",
+    image: "/images/miss.jpg",
     cardBadge: "Innovation",
     icon: "climate",
     content: {
@@ -245,9 +245,9 @@ export default function Blogs() {
                   <p className={styles.excerpt}>{blog.excerpt}</p>
 
                   <div className={styles.cardFooter}>
-                    <div className={styles.authorRow}>
-                      <User size={12} className={styles.authorIcon} />
-                      <span className={styles.authorName}>{blog.author.split(" (")[0]}</span>
+                    <div className={styles.metaItem}>
+                      <Calendar size={12} />
+                      <span>{blog.date}</span>
                     </div>
                     <button
                       onClick={() => setSelectedBlog(blog)}
@@ -317,22 +317,6 @@ export default function Blogs() {
 
                   {/* Article Header info */}
                   <div className={styles.modalArticleHeader}>
-                    <div className={styles.authorBadge}>
-                      <div className={styles.avatarCircle}>
-                        {selectedBlog.author
-                          .split(" ")
-                          .filter(n => n.includes(".") || n.length > 2)
-                          .slice(0, 2)
-                          .map(n => n.replace(".", "")[0])
-                          .join("")
-                          .toUpperCase() || "AG"}
-                      </div>
-                      <div className={styles.authorDetails}>
-                        <span className={styles.authorLabel}>WRITTEN BY</span>
-                        <span className={styles.authorNameText}>{selectedBlog.author}</span>
-                      </div>
-                    </div>
-
                     <div className={styles.modalDateRow}>
                       <Calendar size={14} />
                       <span>Published on {selectedBlog.date}</span>

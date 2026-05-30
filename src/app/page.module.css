@@ -91,7 +91,7 @@
 }
 
 .heroBold {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 900;
   font-size: clamp(3.5rem, 8vw, 6.5rem);
   line-height: 1.05;
@@ -149,7 +149,7 @@
 
 .cropNavItem {
   color: #fff;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1.25rem;
   display: flex;
   align-items: center;
@@ -389,6 +389,7 @@
 
 .sectionDesc {
   font-size: 1.0625rem;
+  font-weight: 600;
   color: #4B5563;
   max-width: 560px;
   line-height: 1.8;
@@ -480,15 +481,16 @@
 
 .cardName {
   font-family: var(--font-heading);
-  font-size: 1.0625rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 800;
   color: #0D1117;
   margin-bottom: 0.5rem;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
 }
 
 .cardDesc {
-  font-size: 0.875rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: #6B7280;
   line-height: 1.65;
   flex: 1;
@@ -658,6 +660,7 @@
 
 .innovDesc {
   font-size: 1.0625rem;
+  font-weight: 600;
   color: #4B5563;
   line-height: 1.82;
   margin-bottom: 2rem;
@@ -676,7 +679,7 @@
   align-items: center;
   gap: 0.875rem;
   font-size: 0.9375rem;
-  font-weight: 500;
+  font-weight: 700;
   color: #374151;
 }
 
@@ -908,6 +911,7 @@
 
 .catSub {
   font-size: 0.8125rem;
+  font-weight: 600;
   color: rgba(255,255,255,0.68);
   line-height: 1.5;
   margin-bottom: 1.375rem;
@@ -1041,6 +1045,7 @@
 
 .ctaDesc {
   font-size: 1.0625rem;
+  font-weight: 600;
   color: rgba(255,255,255,0.6);
   line-height: 1.78;
   margin-bottom: 2.75rem;
@@ -1178,3 +1183,68 @@
   .heroSwiper :global(.swiper-pagination) { bottom: 100px; }
   .hero { aspect-ratio: unset; min-height: 100svh; }
 }
+
+/* ── HOME PAGE PARAGRAPH TEXT BOLD & FONT SIZE INCREASE ────────────────── */
+.mainWrapper p,
+.mainWrapper .heroDesc,
+.mainWrapper .sectionDesc,
+.mainWrapper .cardDesc,
+.mainWrapper .catSub,
+.mainWrapper .innovDesc,
+.mainWrapper .ctaDesc,
+.mainWrapper .statLabel,
+.mainWrapper .featureItem,
+.mainWrapper .heroBadge {
+  font-weight: 700 !important;
+}
+
+.mainWrapper p {
+  font-size: clamp(1.2rem, 1.5vw, 1.35rem) !important;
+}
+
+.mainWrapper .heroDesc {
+  font-size: clamp(1.25rem, 1.8vw, 1.45rem) !important;
+}
+
+.mainWrapper .sectionDesc,
+.mainWrapper .innovDesc,
+.mainWrapper .ctaDesc {
+  font-size: clamp(1.2rem, 1.5vw, 1.35rem) !important;
+}
+
+.mainWrapper .cardDesc {
+  font-size: clamp(1.15rem, 1.35vw, 1.25rem) !important;
+}
+
+.mainWrapper .catSub {
+  font-size: clamp(1.05rem, 1.25vw, 1.2rem) !important;
+}
+
+.mainWrapper .featureItem {
+  font-size: clamp(1.1rem, 1.3vw, 1.25rem) !important;
+}
+
+.mainWrapper .heroBadge {
+  font-size: clamp(0.9rem, 1.1vw, 1rem) !important;
+}
+
+.mainWrapper .statLabel {
+  font-size: clamp(0.9rem, 1.1vw, 1rem) !important;
+}
+
+/* Make sure all text paragraphs inside dynamic component classes on homepage are also targeted */
+.mainWrapper :global([class*="excerpt"]),
+.mainWrapper :global([class*="bulletText"]),
+.mainWrapper :global([class*="bodyParagraph"]),
+.mainWrapper :global([class*="conclusionText"]),
+.mainWrapper :global([class*="leadParagraph"]),
+.mainWrapper :global([class*="headerSub"]),
+.mainWrapper :global([class*="subtitle"]),
+.mainWrapper :global([class*="cardDescription"]),
+.mainWrapper :global([class*="swipeHint"]),
+.mainWrapper :global([class*="infoText"]),
+.mainWrapper :global([class*="answerContent"]) p {
+  font-weight: 700 !important;
+  font-size: clamp(1.15rem, 1.4vw, 1.3rem) !important;
+}
+

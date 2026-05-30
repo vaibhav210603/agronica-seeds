@@ -373,7 +373,26 @@ export default function Home() {
       </div>
 
       {/* ═══════════════════════════════════════════
-          3. SEED CATEGORIES (Explore by Crop Type - Moved UP!)
+          2. NUMBER STRIP — Stats
+          ═══════════════════════════════════════════ */}
+      <section className={styles.statsSection}>
+        <motion.div className={styles.statsBg} aria-hidden style={{ y: yStats }} />
+        <div className="container">
+          <div className={styles.statsGrid}>
+            {stats.map((s) => (
+              <StatItem key={s.label} {...s} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          3. BLOGS
+          ═══════════════════════════════════════════ */}
+      <Blogs />
+
+      {/* ═══════════════════════════════════════════
+          4. SEED CATEGORIES — Explore by Crop Type
           ═══════════════════════════════════════════ */}
       <section className={styles.catsSection}>
         <div className="container">
@@ -397,10 +416,7 @@ export default function Home() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
               >
-                <Link
-                  href={cat.href}
-                  className={styles.catCard}
-                >
+                <Link href={cat.href} className={styles.catCard}>
                   {cat.image && (
                     <Image
                       src={cat.image}
@@ -410,17 +426,12 @@ export default function Home() {
                       sizes="(max-width: 768px) 100vw, 25vw"
                     />
                   )}
-                  <div 
-                    className={styles.catCardOverlay} 
-                    style={{ background: cat.gradient }} 
-                  />
+                  <div className={styles.catCardOverlay} style={{ background: cat.gradient }} />
                   <div className={styles.catCardInner}>
                     <span className={styles.catCount}>{cat.count}</span>
                     <h3 className={styles.catName}>{cat.name}</h3>
                     <p className={styles.catSub}>{cat.subtitle}</p>
-                    <div className={styles.catArrow}>
-                      <ArrowRight size={18} />
-                    </div>
+                    <div className={styles.catArrow}><ArrowRight size={18} /></div>
                   </div>
                   <div className={styles.catShine} />
                 </Link>
@@ -431,7 +442,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          4. PRODUCTS SHOWCASE (Signature Seed Varieties)
+          5. SIGNATURE SEED VARIETIES — Products
           ═══════════════════════════════════════════ */}
       <section className={styles.productsSection}>
         <div className="container">
@@ -460,10 +471,7 @@ export default function Home() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.6, delay: i * 0.08 }}
               >
-                {/* Colour accent bar at top */}
                 <div className={styles.cardAccent} style={{ background: product.gradient }} />
-
-                {/* Image */}
                 <div className={styles.cardImageWrap}>
                   <Image
                     src={product.image}
@@ -479,8 +487,6 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-
-                {/* Body */}
                 <div className={styles.cardBody}>
                   <h3 className={styles.cardName}>{product.name}</h3>
                   <p className={styles.cardDesc}>{product.shortDesc}</p>
@@ -488,10 +494,7 @@ export default function Home() {
                     <Link href="/products" className={styles.cardBtn}>
                       Learn More <ArrowRight size={14} />
                     </Link>
-                    <Link
-                      href={`/contact?product=${product.id}`}
-                      className={styles.cardBtnSecondary}
-                    >
+                    <Link href={`/contact?product=${product.id}`} className={styles.cardBtnSecondary}>
                       Get Quote
                     </Link>
                   </div>
@@ -509,128 +512,12 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          5. STATS
-          ═══════════════════════════════════════════ */}
-      <section className={styles.statsSection}>
-        <motion.div className={styles.statsBg} aria-hidden style={{ y: yStats }} />
-        <div className="container">
-          <div className={styles.statsGrid}>
-            {stats.map((s) => (
-              <StatItem key={s.label} {...s} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
-          6. CERTIFICATIONS & REGULATORY STANDARDS (Moved UP!)
+          6. CERTIFICATIONS
           ═══════════════════════════════════════════ */}
       <Certifications />
 
       {/* ═══════════════════════════════════════════
-          7. INNOVATION / SCIENCE (Science Meets Nature)
-          ═══════════════════════════════════════════ */}
-      <section className={styles.innovSection}>
-        <div className="container">
-          <div className={styles.innovGrid}>
-
-            {/* Text side */}
-            <motion.div
-              className={styles.innovContent}
-              initial={{ opacity: 0, x: -44 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className={styles.sectionLabel}>Science Meets Nature</span>
-              <h2 className={styles.innovTitle}>
-                Engineered for<br />Maximum Yield
-              </h2>
-              <p className={styles.innovDesc}>
-                Every Agronica seed undergoes rigorous multi-stage development —
-                from genetic breeding to field validation — to ensure peak
-                performance across India&apos;s diverse agro-climatic zones.
-              </p>
-              <ul className={styles.featureList}>
-                {innovFeatures.map((f) => (
-                  <li key={f} className={styles.featureItem}>
-                    <CheckCircle2 size={20} className={styles.featureIcon} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/about" className={styles.innovBtn}>
-                About Our Process <ArrowRight size={16} />
-              </Link>
-            </motion.div>
-
-            {/* Scientific Research Image Slider */}
-            <motion.div
-              className={styles.innovVisual}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.18 }}
-            >
-              <div className={styles.imageFrame}>
-                <Swiper
-                  modules={[EffectFade, Pagination, Autoplay]}
-                  effect="fade"
-                  loop={true}
-                  autoplay={{
-                    delay: 4500,
-                    disableOnInteraction: false,
-                  }}
-                  pagination={{ clickable: true }}
-                  className={styles.innovSwiper}
-                >
-                  <SwiperSlide>
-                    <div className={styles.innovSlideWrap}>
-                      <Image
-                        src="/images/generated/innov_lab_indian.png"
-                        alt="Indian agricultural scientist conducting genetic crop breeding research in lab"
-                        fill
-                        className={styles.innovImg}
-                        sizes="(max-width: 768px) 100vw, 45vw"
-                      />
-                      <div className={styles.slideLabel}>Stage 1: Genetic Breeding</div>
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className={styles.innovSlideWrap}>
-                      <Image
-                        src="/images/generated/innov_field_indian.png"
-                        alt="Indian agronomist inspecting green maize crops on outdoor trial field"
-                        fill
-                        className={styles.innovImg}
-                        sizes="(max-width: 768px) 100vw, 45vw"
-                      />
-                      <div className={styles.slideLabel}>Stage 2: Field Testing</div>
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className={styles.innovSlideWrap}>
-                      <Image
-                        src="/images/generated/innov_quality_control.png"
-                        alt="Macro close-up of golden hybrid crop seeds being inspected under quality control light"
-                        fill
-                        className={styles.innovImg}
-                        sizes="(max-width: 768px) 100vw, 45vw"
-                      />
-                      <div className={styles.slideLabel}>Stage 3: Quality Control</div>
-                    </div>
-                  </SwiperSlide>
-                </Swiper>
-                <div className={styles.imageFrameShine} />
-              </div>
-            </motion.div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
-          8. FACILITY / INFRASTRUCTURE (World-Class Facilities)
+          7. INFRASTRUCTURE — Factory Photos & Innovation
           ═══════════════════════════════════════════ */}
       <section className={styles.facilitySection}>
         <div className="container">
@@ -673,13 +560,83 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════
-          9. LATEST AGRONOMIC INSIGHTS & BLOGS
-          ═══════════════════════════════════════════ */}
-      <Blogs />
+      {/* Science / Innovation — below facility photos */}
+      <section className={styles.innovSection}>
+        <div className="container">
+          <div className={styles.innovGrid}>
+            <motion.div
+              className={styles.innovContent}
+              initial={{ opacity: 0, x: -44 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className={styles.sectionLabel}>Science Meets Nature</span>
+              <h2 className={styles.innovTitle}>
+                Engineered for<br />Maximum Yield
+              </h2>
+              <p className={styles.innovDesc}>
+                Every Agronica seed undergoes rigorous multi-stage development —
+                from genetic breeding to field validation — to ensure peak
+                performance across India&apos;s diverse agro-climatic zones.
+              </p>
+              <ul className={styles.featureList}>
+                {innovFeatures.map((f) => (
+                  <li key={f} className={styles.featureItem}>
+                    <CheckCircle2 size={20} className={styles.featureIcon} />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/about" className={styles.innovBtn}>
+                About Our Process <ArrowRight size={16} />
+              </Link>
+            </motion.div>
+
+            <motion.div
+              className={styles.innovVisual}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.18 }}
+            >
+              <div className={styles.imageFrame}>
+                <Swiper
+                  modules={[EffectFade, Pagination, Autoplay]}
+                  effect="fade"
+                  loop={true}
+                  autoplay={{ delay: 4500, disableOnInteraction: false }}
+                  pagination={{ clickable: true }}
+                  className={styles.innovSwiper}
+                >
+                  <SwiperSlide>
+                    <div className={styles.innovSlideWrap}>
+                      <Image src="/images/generated/innov_lab_indian.png" alt="Indian agricultural scientist conducting genetic crop breeding research in lab" fill className={styles.innovImg} sizes="(max-width: 768px) 100vw, 45vw" />
+                      <div className={styles.slideLabel}>Stage 1: Genetic Breeding</div>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div className={styles.innovSlideWrap}>
+                      <Image src="/images/generated/innov_field_indian.png" alt="Indian agronomist inspecting green maize crops on outdoor trial field" fill className={styles.innovImg} sizes="(max-width: 768px) 100vw, 45vw" />
+                      <div className={styles.slideLabel}>Stage 2: Field Testing</div>
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div className={styles.innovSlideWrap}>
+                      <Image src="/images/generated/innov_quality_control.png" alt="Macro close-up of golden hybrid crop seeds being inspected under quality control light" fill className={styles.innovImg} sizes="(max-width: 768px) 100vw, 45vw" />
+                      <div className={styles.slideLabel}>Stage 3: Quality Control</div>
+                    </div>
+                  </SwiperSlide>
+                </Swiper>
+                <div className={styles.imageFrameShine} />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* ═══════════════════════════════════════════
-          10. INTERACTIVE FARMER & CUSTOMER FAQS
+          8. FAQS
           ═══════════════════════════════════════════ */}
       <Faqs />
 
