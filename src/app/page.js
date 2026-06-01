@@ -278,10 +278,11 @@ export default function Home() {
         {/* Hero Slider — advances only when video finishes */}
         <Swiper
           key={hasMounted ? (isMobile ? "mobile" : "desktop") : "initial"}
-          modules={[EffectFade, Pagination]}
+          modules={[EffectFade, Pagination, Autoplay]}
           effect="fade"
-          loop={hasMounted && !isMobile}
+          loop={hasMounted}
           allowTouchMove={true}
+          autoplay={hasMounted && isMobile ? { delay: 3500, disableOnInteraction: false } : false}
           pagination={(hasMounted && !isMobile) ? { clickable: true } : false}
           onSwiper={(s) => { swiperRef.current = s; }}
           onSlideChange={handleSlideChange}
