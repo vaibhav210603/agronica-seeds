@@ -184,12 +184,44 @@ function StatItem({ value, suffix, label }) {
 /* ── FRAMER VARIANTS ────────────────────────────────────────── */
 const heroContainer = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.11, delayChildren: 0.05 } },
+  visible: { transition: { staggerChildren: 0.11, delayChildren: 0.7 } },
 };
 const heroItem = {
-  hidden:  { y: 64, opacity: 0 },
-  visible: { y: 0,  opacity: 1, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } },
+  hidden:  { y: 48, opacity: 0 },
+  visible: { y: 0,  opacity: 1, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 };
+const backdropVariant = {
+  hidden: { x: "-100%", opacity: 1 },
+  visible: { x: 0, opacity: 1, transition: { delay: 0.2, duration: 0.6, ease: "easeInOut" } },
+};
+
+/* ── HERO SLIDES CONFIG ──────────────────────────────────────── */
+const heroSlides = [
+  {
+    desktopImage: "/images/WhatsApp Image 2026-05-21 at 23.58.05.jpeg",
+    mobileImage: "/images/WhatsApp Image 2026-05-22 at 00.06.15.jpeg",
+    alt: "Premium seeds and healthy crop yield",
+    badge: "Trusted by 50,000+ farmers worldwide",
+    titleLight: "Pioneering the",
+    titleBold: "Future of Seeds.",
+  },
+  {
+    desktopImage: "/images/WhatsApp Image 2026-05-31 at 18.41.14 (1).jpeg",
+    mobileImage: "/images/WhatsApp Image 2026-05-31 at 18.41.14.jpeg",
+    alt: "Scientific crop cultivation and high-quality seeds",
+    badge: "Premium Hybrid Varieties",
+    titleLight: "Engineered for",
+    titleBold: "Maximum Yield.",
+  },
+  {
+    desktopImage: "/images/WhatsApp Image 2026-05-31 at 21.16.52.jpeg",
+    mobileImage: "/images/WhatsApp Image 2026-05-31 at 21.16.53.jpeg",
+    alt: "Golden crop harvests and agriculture excellence",
+    badge: "ISO 9001:2015 Certified Quality",
+    titleLight: "Nurturing Growth,",
+    titleBold: "Securing Harvests.",
+  },
+];
 
 /* ── HOME PAGE ──────────────────────────────────────────────── */
 export default function Home() {
@@ -213,19 +245,19 @@ export default function Home() {
   const videoRef       = useRef(null);
   const imageTimerRef  = useRef(null);
 
-  /* Slide changed → restart video on slide 0, start 6s timer on slide 1 */
+  /* Slide changed → restart video on slide (desktop only), start 6s timer on image slides */
   const handleSlideChange = (swiper) => {
     if (imageTimerRef.current) clearTimeout(imageTimerRef.current);
 
-    if (swiper.realIndex === 0) {
+    if (!isMobile && swiper.realIndex === heroSlides.length) {
       /* Back on video slide — rewind and play */
       const vid = videoRef.current;
       if (vid) { vid.currentTime = 0; vid.play().catch(() => {}); }
     } else {
-      /* On image slide — auto-advance after 6 s */
+      /* On image slide (or any slide on mobile) — auto-advance after 3.5 s */
       imageTimerRef.current = setTimeout(() => {
         swiperRef.current?.slideNext();
-      }, 6000);
+      }, 3500);
     }
   };
 
@@ -255,9 +287,64 @@ export default function Home() {
           onSlideChange={handleSlideChange}
           className={styles.heroSwiper}
         >
-          {/* Slide 1: Video — plays once, then advances (Excluded on Mobile) */}
+          {/* Dynamic Image Slides */}
+          {heroSlides.map((slide, index) => (
+            <SwiperSlide key={index}>
+              {({ isActive }) => (
+                <div className={styles.slideWrapper}>
+                  <motion.div className={styles.heroBgImg} aria-hidden style={{ y: yHero }}>
+                    <Image
+                      src={isMobile ? slide.mobileImage : slide.desktopImage}
+                      alt={slide.alt}
+                      fill
+                      priority={index === 0}
+                      className={styles.bgImageFull}
+                    />
+                    <div className={styles.heroGradientOverlay} />
+                  </motion.div>
+
+                  <div className={styles.heroContentWrapper}>
+                    <div className={styles.heroLayout}>
+                      <motion.div
+                        className={styles.heroContent}
+                        variants={heroContainer}
+                        initial="hidden"
+                        animate={isActive ? "visible" : "hidden"}
+                      >
+                        {/* Animated slider background plane */}
+                        <motion.div
+                          className={styles.heroBackdrop}
+                          variants={backdropVariant}
+                        />
+                        
+                        <div className={styles.heroContentInner}>
+                          <motion.div variants={heroItem} className={styles.heroBadge}>
+                            <span className={styles.badgeDot} />
+                            {slide.badge}
+                          </motion.div>
+
+                          <motion.h1 variants={heroItem} className={styles.heroTitle}>
+                            <span className={styles.heroLight}>{slide.titleLight}</span>
+                            <span className={styles.heroBold}>{slide.titleBold}</span>
+                          </motion.h1>
+
+                          <motion.div variants={heroItem} className={styles.heroCTAs}>
+                            <Link href="/products" className={styles.ctaSolidGreen}>
+                              Explore Our Seeds
+                            </Link>
+                          </motion.div>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </SwiperSlide>
+          ))}
+
+          {/* Slide: Video — plays once, then advances (Excluded on Mobile) */}
           {hasMounted && !isMobile && (
-            <SwiperSlide>
+            <SwiperSlide key="video">
               <div className={styles.slideWrapper}>
                 <motion.div className={styles.heroBgImg} aria-hidden style={{ y: yHero }}>
                   <video
@@ -267,56 +354,13 @@ export default function Home() {
                     muted
                     playsInline
                     onEnded={handleVideoEnded}
-                    className={styles.bgImageFull}
+                    className={`${styles.bgImageFull} ${styles.heroVideo}`}
                   />
                   <div className={styles.heroGradientOverlay} />
                 </motion.div>
               </div>
             </SwiperSlide>
           )}
-
-          {/* Slide 2: Image + Text */}
-          <SwiperSlide>
-            <div className={styles.slideWrapper}>
-              <motion.div className={styles.heroBgImg} aria-hidden style={{ y: yHero }}>
-                <Image
-                  src="/images/generated/hero_farmer.png"
-                  alt="Farmer holding fresh produce"
-                  fill
-                  priority
-                  className={styles.bgImageFull}
-                />
-                <div className={styles.heroGradientOverlay} />
-              </motion.div>
-
-              <div className="container" style={{ position: 'relative', zIndex: 10, height: '100%', display: 'flex', alignItems: 'center' }}>
-                <div className={styles.heroLayout}>
-                  <motion.div
-                    className={styles.heroContent}
-                    variants={heroContainer}
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <motion.div variants={heroItem} className={styles.heroBadge}>
-                      <span className={styles.badgeDot} />
-                      Trusted by 50,000+ farmers worldwide
-                    </motion.div>
-
-                    <motion.h1 variants={heroItem} className={styles.heroTitle}>
-                      <span className={styles.heroLight}>Pioneering the</span>
-                      <span className={styles.heroBold}>Future of Seeds.</span>
-                    </motion.h1>
-
-                    <motion.div variants={heroItem} className={styles.heroCTAs}>
-                      <Link href="/products" className={styles.ctaSolidGreen}>
-                        Explore Our Seeds
-                      </Link>
-                    </motion.div>
-                  </motion.div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
         </Swiper>
 
         {/* Wave divider */}
