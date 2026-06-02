@@ -18,6 +18,7 @@ const navLinks = [
       { name: "About Us", href: "/about#about-us" },
       { name: "Vision & Mission", href: "/about#vision-mission" },
       { name: "Values, Goals & Purpose", href: "/about#values-goals" },
+      { name: "Our Leadership", href: "/about#leadership" },
       { name: "Infrastructure", href: "/about#infrastructure" },
     ],
   },
