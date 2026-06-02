@@ -56,7 +56,7 @@ export default function AboutPage() {
       {/* Hero Banner */}
       <section className={styles.hero}>
         <Image 
-          src="/ChatGPT Image May 12, 2026, 03_08_08 PM.png"
+          src="/Maize 2025-08-12 at 11.55.12 AM.JPEG"
           alt="Agronica Seeds Fields"
           fill
           priority
@@ -297,11 +297,11 @@ export default function AboutPage() {
       </section>
 
       {/* Section 4: Our Leadership */}
-      <section className="section" id="leadership" style={{ background: "var(--bg-alt)" }}>
+      <section className="section section-dark" id="leadership">
         <div className="container">
-          <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "3rem" }}>
+          <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "4rem" }}>
             <span className="section-label">Our Leadership</span>
-            <h2>Meet Our <span className={styles.highlight}>Directors</span></h2>
+            <h2>Meet Our <span className={styles.highlightGold}>Directors</span></h2>
           </AnimatedSection>
 
           <div className={styles.leadershipGrid}>
@@ -312,9 +312,10 @@ export default function AboutPage() {
                     src="/ashok.jpeg" 
                     alt="Ashok Kumar Singh" 
                     fill 
-                    style={{ objectFit: 'cover', objectPosition: 'top' }} 
+                    className={styles.directorImage}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
+                  <div className={styles.directorImageOverlay}></div>
                 </div>
                 <div className={styles.directorContent}>
                   <h3>Ashok Kumar Singh</h3>
@@ -330,9 +331,10 @@ export default function AboutPage() {
                     src="/shivendra3.png" 
                     alt="Shivendra Pratap Singh" 
                     fill 
-                    style={{ objectFit: 'cover', objectPosition: 'top' }} 
+                    className={styles.directorImage}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
+                  <div className={styles.directorImageOverlay}></div>
                 </div>
                 <div className={styles.directorContent}>
                   <h3>Shivendra Pratap Singh</h3>

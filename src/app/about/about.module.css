@@ -603,53 +603,98 @@
 .leadershipGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
-  max-width: 800px;
+  gap: 4rem;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .directorCard {
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-2xl);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.directorCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-2xl);
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 10;
 }
 
 .directorCard:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--primary-200);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 176, 88, 0.15);
+  border-color: rgba(212, 176, 88, 0.3);
 }
 
 .directorImageWrap {
   position: relative;
   width: 100%;
   aspect-ratio: 4/5;
-  background: #f0f0f0;
+  background: #0a110d;
+  overflow: hidden;
+}
+
+.directorImage {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  object-fit: cover;
+  object-position: top;
+}
+
+.directorCard:hover .directorImage {
+  transform: scale(1.08);
+}
+
+.directorImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 26, 20, 1) 0%, rgba(15, 26, 20, 0) 50%);
+  z-index: 2;
 }
 
 .directorContent {
-  padding: 1.5rem;
+  padding: 1rem 2.5rem 2.5rem;
   text-align: center;
+  position: relative;
+  z-index: 3;
+  margin-top: -3rem; /* Pull up into the gradient */
 }
 
 .directorContent h3 {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
-  color: var(--text-primary);
-  margin-bottom: 0.25rem;
+  font-size: 1.75rem;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
 }
 
 .directorTitle {
-  font-size: 0.875rem;
-  color: var(--primary-600);
-  font-weight: 600;
+  display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--accent-400);
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.15em;
+  padding: 0.5rem 1.25rem;
+  background: rgba(212, 176, 88, 0.1);
+  border-radius: 100px;
+  border: 1px solid rgba(212, 176, 88, 0.2);
 }
 
 @media (max-width: 768px) {
-  .leadershipGrid { grid-template-columns: 1fr; }
+  .leadershipGrid { grid-template-columns: 1fr; gap: 3rem; }
+  .directorCard { margin: 0 1rem; }
 }
