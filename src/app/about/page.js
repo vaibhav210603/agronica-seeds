@@ -296,7 +296,55 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Section 4: Plant & Infrastructure */}
+      {/* Section 4: Our Leadership */}
+      <section className="section" id="leadership" style={{ background: "var(--bg-alt)" }}>
+        <div className="container">
+          <AnimatedSection direction="up" style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <span className="section-label">Our Leadership</span>
+            <h2>Meet Our <span className={styles.highlight}>Directors</span></h2>
+          </AnimatedSection>
+
+          <div className={styles.leadershipGrid}>
+            <AnimatedSection direction="up" delay={0.1}>
+              <div className={styles.directorCard}>
+                <div className={styles.directorImageWrap}>
+                  <Image 
+                    src="/ashok.jpeg" 
+                    alt="Ashok Kumar Singh" 
+                    fill 
+                    style={{ objectFit: 'cover', objectPosition: 'top' }} 
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className={styles.directorContent}>
+                  <h3>Ashok Kumar Singh</h3>
+                  <p className={styles.directorTitle}>Director</p>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection direction="up" delay={0.2}>
+              <div className={styles.directorCard}>
+                <div className={styles.directorImageWrap}>
+                  <Image 
+                    src="/shivendra3.png" 
+                    alt="Shivendra Pratap Singh" 
+                    fill 
+                    style={{ objectFit: 'cover', objectPosition: 'top' }} 
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className={styles.directorContent}>
+                  <h3>Shivendra Pratap Singh</h3>
+                  <p className={styles.directorTitle}>Director</p>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5: Plant & Infrastructure */}
       <section className="section" id="infrastructure" style={{ background: "var(--bg)" }}>
         <div className="container">
           <div className={styles.infraHeaderGrid}>
