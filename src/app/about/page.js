@@ -320,6 +320,7 @@ export default function AboutPage() {
                 <div className={styles.directorContent}>
                   <h3>Ashok Kumar Singh</h3>
                   <p className={styles.directorTitle}>Director</p>
+                  <p className={styles.directorBio}>Driving strategic vision and technological advancements to empower Indian farmers.</p>
                 </div>
               </div>
             </AnimatedSection>
@@ -339,6 +340,7 @@ export default function AboutPage() {
                 <div className={styles.directorContent}>
                   <h3>Shivendra Pratap Singh</h3>
                   <p className={styles.directorTitle}>Director</p>
+                  <p className={styles.directorBio}>Spearheading sustainable agricultural practices and expanding our global market presence.</p>
                 </div>
               </div>
             </AnimatedSection>
