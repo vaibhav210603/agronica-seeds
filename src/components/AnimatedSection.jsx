@@ -8,6 +8,7 @@ export default function AnimatedSection({
   delay = 0,
   duration = 0.6,
   className = "",
+  style = {},
   once = true,
   amount = 0.2,
 }) {
@@ -30,6 +31,7 @@ export default function AnimatedSection({
     <motion.div
       ref={ref}
       className={className}
+      style={style}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={variants[direction]}
