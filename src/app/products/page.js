@@ -11,7 +11,7 @@ import styles from "./products.module.css";
 const products = [
   {
     id: "maize",
-    name: "Maize",
+    name: "Premium Maize Seeds",
     emoji: "🌽",
     image: "/images/products_dl/pros1.jpg",
     category: "field",

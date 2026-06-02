@@ -9,45 +9,43 @@ const CATEGORIES = ["All", "Cultivation Guide", "Quality Assurance", "Climate Sm
 
 const BLOG_POSTS = [
   {
-    id: "tomato-harvest",
-    title: "Maximizing Tomato Harvests: Soil Prep, Disease Management & Hybrid Selection",
+    id: "wheat-harvest",
+    title: "Maximizing Wheat Yields: Soil Prep, Climate Resilience & Variety Selection",
     category: "Cultivation Guide",
     date: "May 25, 2026",
     readTime: "8 min read",
-    author: "Dr. Anand K. Kurien (Chief Horticulturalist)",
-    excerpt: "Unlock the secrets to bountiful greenhouse and hydroponic tomato yields. Learn advanced soil conditioning techniques, biological disease controls, and how choosing the right hybrid seeds can double your harvest.",
-    image: "/images/generated/blog_tomato_harvest.png",
+    author: "Dr. Anand K. Kurien (Chief Agronomist)",
+    excerpt: "Unlock the secrets to bountiful wheat harvests. Learn advanced soil conditioning techniques, climate-resilient farming practices, and how choosing the right wheat varieties can significantly boost your yield.",
+    image: "/images/pdf_image_page3_0.jpeg",
     cardBadge: "Popular",
-    icon: "tomato",
+    icon: "wheat",
     content: {
-      introduction: "Tomato cultivation in India is undergoing a massive transformation. Historically, farmers struggled with open-pollinated varieties that produced low yields and succumbed easily to unpredictable disease outbreaks. Today, using advanced greenhouse systems, automated hydroponic setups, and high-performance hybrid seeds, professional growers are achieving double and triple their historic outputs. This comprehensive guide covers the critical steps needed to prepare your soil, implement an airtight disease defense, and choose the ultimate hybrid seeds to maximize your fruit-to-vine ratios.",
+      introduction: "Wheat cultivation is a critical pillar of global food security. However, unpredictable weather patterns and rising temperatures are challenging traditional farming methods. To ensure a profitable and high-yielding harvest, farmers must adopt modern agronomic practices and utilize advanced, climate-resilient wheat varieties. This guide details the essential steps for optimizing your soil, managing environmental stress, and selecting the best seeds for your region.",
       sections: [
         {
-          title: "1. Advanced Soil Conditioning & Substrate Preparation",
+          title: "1. Optimal Soil Preparation & Nutrient Management",
           paragraphs: [
-            "A record-breaking tomato harvest begins underground. Tomatoes require a deeply aerated, loose, and biologically active medium. If planting in open fields or high-tunnel structures, ensure a well-drained sandy loam with a pH of 6.0 to 6.8. Soils outside this range restrict nutrient availability, particularly calcium, leading to the dreaded Blossom End Rot (BER).",
-            "Begin by deep plowing your soil (at least 30 cm) to break up hardpans. Incorporate high-grade organic compost or well-decomposed Farm Yard Manure (FYM) at 20-25 tonnes per hectare. Mix in cocopeat, vermicompost, and bio-fertilizers like Azotobacter and vesicular-arbuscular mycorrhiza (VAM). VAM fungi form a symbiotic relationship with tomato roots, extending their reach to mine deep water and phosphorus reserves.",
-            "For advanced hydroponic greenhouse systems, coco-coir bags or rockwool slabs are the gold standard. Keep your seedling coco-coir moist and maintain the Electrical Conductivity (EC) of the nutrient drain between 2.2 dS/m during early vegetative stages, gradually scaling up to 3.0-3.5 dS/m as the fruit begins to ripen. A higher EC at fruiting drives sugars directly into the tomatoes, boosting brix levels (sweetness) and producing a premium crop that commands top market pricing."
+            "A successful wheat crop starts with impeccable soil preparation. Wheat thrives in well-drained loamy to clay-loam soils with a pH between 6.0 and 7.5. Proper seedbed preparation is vital for uniform germination and strong root establishment.",
+            "Begin by deep plowing followed by harrowing to achieve a fine tilth. Incorporating organic matter, such as well-decomposed FYM, improves soil structure and moisture retention. A balanced application of basal fertilizers (NPK) is essential. Nitrogen promotes vigorous vegetative growth, while phosphorus is critical for early root development and uniform tillering. Applying a top dressing of nitrogen at the crown root initiation (CRI) stage further maximizes grain-filling potential."
           ]
         },
         {
-          title: "2. Integrated Disease Management (IDM) Protocols",
+          title: "2. Climate Resilience & Irrigation Strategies",
           paragraphs: [
-            "Tomato crops are highly sensitive to pathogens, which can destroy up to 80% of a crop in a matter of days under high humidity. The three major threats are Early Blight (Alternaria solani), Late Blight (Phytophthora infestans), and Tomato Leaf Curl Virus (ToLCV). Rather than relying solely on chemical sprays, employ an Integrated Disease Management protocol:",
-            "• Crop Rotation: Never plant tomatoes in a field that hosted Solanaceous crops (potatoes, eggplants, bell peppers) in the past 3 seasons. This breaks the lifecycle of soil-borne fungi and nematodes.",
-            "• Drip Irrigation & Canopy Airflow: Avoid overhead sprinklers. Wet leaves act as incubators for fungal spores. Drip irrigation delivers water directly to the roots, keeping the canopy dry. In greenhouses, prune lower leaves (up to the first cluster of fruit) to maximize airflow and sunlight penetration.",
-            "• Biological Soil Inoculation: Drench your nursery beds and transplant roots in a solution of Trichoderma viride and Pseudomonas fluorescens. These beneficial microbes colonize root surfaces, creating a physical and biological shield against soil-borne wilt pathogens like Fusarium and Ralstonia."
+            "Wheat is highly sensitive to moisture stress, especially during critical growth phases. Efficient water management is paramount to achieving maximum yield and grain quality.",
+            "• Strategic Irrigation: The Crown Root Initiation (CRI) stage (20-25 days after sowing) is the most critical period for irrigation. Ensuring adequate moisture during this stage, as well as during flowering and dough stages, significantly impacts the final harvest.",
+            "• Heat Stress Management: Terminal heat stress during the grain-filling period can prematurely ripen the crop, resulting in shriveled grains. Late-sown wheat is particularly vulnerable. Applying a light irrigation or foliar spray of potassium nitrate can help mitigate heat stress and prolong the grain-filling duration."
           ]
         },
         {
-          title: "3. Selection Criteria for High-Performance Hybrids",
+          title: "3. Selecting High-Performance Wheat Varieties",
           paragraphs: [
-            "Even the best soil and disease defense will fall short if your seeds lack genetic potential. When selecting a tomato hybrid, look for three vital genetic traits: disease resistance, heat tolerance, and transportability.",
-            "Agronica's hybrid seeds are bred specifically to thrive in challenging environments. The hybrid variety Agronica Red-Ruby offers native genetic resistance to ToLCV and Fusarium Wilt Race 1 & 2. Crucially, its thick pericarp (inner fruit wall) ensures the tomatoes remain firm and resist bruising during long-distance transportation. This thick-walled trait reduces post-harvest losses from the usual 30% down to under 5%, allowing you to ship to high-value urban markets without worrying about transit spoilage."
+            "The foundation of a record-breaking harvest is the genetic potential of your seed. Choosing the right variety depends on your sowing window, soil type, and regional climate conditions.",
+            "Agronica offers elite wheat varieties tailored for diverse environments. High-yielding varieties like HD-2967 and DBW-187 are renowned for their robust disease resistance—particularly against yellow rust—and excellent lodging tolerance. These varieties exhibit superior grain weight and adaptability, ensuring consistent performance whether sown early, timely, or late. By selecting scientifically bred seeds, farmers can secure a heavier, healthier harvest that commands premium market value."
           ]
         }
       ],
-      conclusion: "By marrying robust soil biology with strict disease prevention protocols and elite genetic hybrids, professional growers can unlock yields upwards of 80 to 100 tonnes per hectare. The path to a profitable tomato season lies in planning your inputs, safeguarding root health, and trusting quality-assured seed technology."
+      conclusion: "By combining meticulous soil preparation with strategic irrigation and selecting superior, climate-resilient varieties like HD-2967, farmers can consistently achieve exceptional wheat yields. The key to a highly profitable season lies in proactive field management and trusting proven, quality-assured seed technology."
     }
   },
   {
@@ -58,7 +56,7 @@ const BLOG_POSTS = [
     readTime: "6 min read",
     author: "Dr. Sunidhi Sharma (Lead QC Scientist)",
     excerpt: "Discover the rigorous science behind seed viability. We take you inside Agronica’s ISO-accredited testing facilities, detailing the cold-germination tests, purity assessments, and DNA fingerprinting that guarantee seed excellence.",
-    image: "/images/generated/blog_seed_lab_testing.png",
+    image: "/images/PHOTO-2026-06-02-12-26-23.jpg",
     cardBadge: "Science",
     icon: "lab",
     content: {

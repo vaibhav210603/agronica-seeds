@@ -16,6 +16,7 @@ import styles from "./page.module.css";
 import Certifications from "@/components/Certifications";
 import Blogs from "@/components/Blogs";
 import Faqs from "@/components/Faqs";
+import Gallery from "@/components/Gallery";
 
 /* ── PRODUCTS DATA ──────────────────────────────────────────── */
 const products = [
@@ -53,7 +54,7 @@ const products = [
   },
   {
     id: "maize",
-    name: "Maize — Agronica Max",
+    name: "Premium Maize Seeds",
     image: "/images/products_dl/pros1.jpg",
     shortDesc:
       "World's leading crop and queen of cereals, widely cultivated as cereal grain with highest genetic yield potential.",
@@ -61,13 +62,20 @@ const products = [
     gradient: "linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%)",
   },
   {
-    id: "wheat-dbw187",
-    name: "Wheat — DBW187",
-    image: "/images/products_dl/pros2.jpg",
-    shortDesc:
-      "Versatile high-yield variety with superior heat tolerance, delivering average yields of 61.28 q/ha under irrigated conditions.",
-    tags: ["Rabi", "120 Days"],
-    gradient: "linear-gradient(135deg, #FCD34D 0%, #D97706 100%)",
+    id: "paddy-premium",
+    name: "Premium Paddy Seeds",
+    image: "/images/PHOTO-2026-06-02-12-26-24%203.jpg",
+    shortDesc: "High-quality paddy seeds for excellent grain length and robust growth.",
+    tags: ["Kharif", "High Yield"],
+    gradient: "linear-gradient(135deg, #A3E635 0%, #4D7C0F 100%)",
+  },
+  {
+    id: "black-wheat",
+    name: "Black Wheat Seeds",
+    image: "/images/PHOTO-2026-06-02-12-26-25%202.jpg",
+    shortDesc: "Nutrient-rich black wheat seeds with high anthocyanin content.",
+    tags: ["Rabi", "Premium"],
+    gradient: "linear-gradient(135deg, #52525B 0%, #18181B 100%)",
   },
 ];
 
@@ -681,8 +689,9 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          8. FAQS
+          8. FAQS & GALLERY
           ═══════════════════════════════════════════ */}
+      <Gallery />
       <Faqs />
 
       {/* ═══════════════════════════════════════════
