@@ -132,7 +132,7 @@ export default function AboutPage() {
             <AnimatedSection direction="right">
               <div className={styles.overviewVisual} style={{ position: 'relative', width: '100%', maxWidth: '100%', aspectRatio: '1' }}>
                 <Image 
-                  src="/images/PHOTO-2026-06-02-12-26-23.jpg"
+                  src="/WhatsApp%20Image%202026-06-03%20at%2010.12.43.jpeg"
                   alt="Agricultural innovation" 
                   fill 
                   sizes="(max-width: 768px) 100vw, 50vw" 
