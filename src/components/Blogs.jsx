@@ -56,7 +56,7 @@ const BLOG_POSTS = [
     readTime: "6 min read",
     author: "Dr. Sunidhi Sharma (Lead QC Scientist)",
     excerpt: "Discover the rigorous science behind seed viability. We take you inside Agronica’s ISO-accredited testing facilities, detailing the cold-germination tests, purity assessments, and DNA fingerprinting that guarantee seed excellence.",
-    image: "/images/PHOTO-2026-06-02-12-26-23.jpg",
+    image: "/WhatsApp%20Image%202026-06-03%20at%2010.12.43.jpeg",
     cardBadge: "Science",
     icon: "lab",
     content: {
