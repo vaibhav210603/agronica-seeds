@@ -62,6 +62,32 @@ const products = [
     geography: "Uttar Pradesh, Andhra Pradesh, Bihar (North), Chhattisgarh, Gujarat, Haryana, Jharkhand, Madhya Pradesh, Maharashtra, Odisha, Telangana, West Bengal",
   },
   {
+    id: "kala-namak-kiran",
+    name: "Kala Namak Kiran Paddy Seeds",
+    emoji: "🌾",
+    image: "/kala_namak.png",
+    category: "field",
+    shortDesc: "Heritage aromatic paddy with hi-yield certified performance — superior grain aroma, strong tillering, and excellent germination.",
+    fullDesc: "Kala Namak Kiran bridges this gap: a hi-yield certified paddy seed that delivers the legendary aroma and grain quality of heritage Kala Namak with the agronomic performance modern farmers need. It thrives in the Indo-Gangetic Terai belt and preserves the signature 'screw-pine' (Pandanus) aroma.",
+    tags: ["Kharif", "Aromatic", "GI Variety"],
+    gradient: "linear-gradient(135deg, #A3E635 0%, #4D7C0F 100%)",
+    features: ["Superior Grain Aroma & Quality with >62% head-rice recovery", "Moderate field tolerance to blast and brown spot", "Requires minimum 1,200 mm of water over the crop cycle", "Short-day, photoperiod-sensitive variety"],
+    geography: "Indo-Gangetic Terai belt (Siddharth Nagar, Maharajganj, Gorakhpur, Balrampur, Basti in eastern UP)",
+  },
+  {
+    id: "khushboo-606",
+    name: "Khushbu 606 Paddy Seeds",
+    emoji: "🌾",
+    image: "/khushboo.png",
+    category: "field",
+    shortDesc: "Premium fragrant paddy variety with uniform crop growth, bold grains, and outstanding market value.",
+    fullDesc: "Khushbu 606 is a premium fragrant paddy variety known for its uniform crop growth, bold grains, and outstanding market value. Designed for high yield and excellent resilience, this variety provides farmers with an exceptional return on investment.",
+    tags: ["Kharif", "Fragrant", "High Yield"],
+    gradient: "linear-gradient(135deg, #86EFAC 0%, #15803D 100%)",
+    features: ["Uniform crop growth with bold, fragrant grains", "Excellent market value and high return on investment", "High tillering capacity", "Strong resistance to common paddy diseases"],
+    geography: "Uttar Pradesh, Bihar, Haryana, Punjab, and other major paddy-growing states",
+  },
+  {
     id: "mustard",
     name: "Mustard",
     emoji: "🌻",
@@ -151,6 +177,7 @@ const categories = [
 function ProductsContent() {
   const searchParams = useSearchParams();
   const catParam = searchParams.get("category");
+  const productParam = searchParams.get("product");
 
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -159,7 +186,16 @@ function ProductsContent() {
     if (catParam) {
       setActiveCategory(catParam);
     }
-  }, [catParam]);
+    if (productParam) {
+      const prod = products.find((p) => p.id === productParam);
+      if (prod) {
+        setSelectedProduct(prod);
+        if (prod.category) {
+          setActiveCategory(prod.category);
+        }
+      }
+    }
+  }, [catParam, productParam]);
 
   const filtered =
     activeCategory === "all"

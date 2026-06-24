@@ -24,11 +24,27 @@ const navLinks = [
   },
   {
     name: "Crop Seeds",
-    href: "/products",
+    href: "/products?category=field",
+    dropdown: [
+      { name: "Premium Maize", href: "/products?product=maize" },
+      { name: "Wheat (DBW187)", href: "/products?product=wheat-dbw187" },
+      { name: "Wheat (HD2967)", href: "/products?product=wheat-hd2967" },
+      { name: "Paddy", href: "/products?product=paddy" },
+      { name: "Kala Namak Kiran Paddy", href: "/products?product=kala-namak-kiran" },
+      { name: "Khushbu 606 Paddy", href: "/products?product=khushboo-606" },
+      { name: "Mustard", href: "/products?product=mustard" },
+      { name: "Cotton (Agronica BGII)", href: "/products?product=cotton" },
+    ]
   },
   {
     name: "Vegetable Seeds",
-    href: "/products",
+    href: "/products?category=vegetable",
+    dropdown: [
+      { name: "Premium Tomato Seeds", href: "/products?product=tomato" },
+      { name: "Spicy Chili Pepper", href: "/products?product=chili" },
+      { name: "Golden Onion Seeds", href: "/products?product=onion" },
+      { name: "Sugar Watermelon", href: "/products?product=watermelon" },
+    ]
   },
   { name: "Contact", href: "/contact" },
 ];
