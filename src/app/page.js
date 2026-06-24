@@ -64,7 +64,7 @@ const products = [
   {
     id: "kala-namak-kiran",
     name: "Kala Namak Kiran Paddy Seeds",
-    image: "/images/kala-namak-kiran-paddy.jpeg",
+    image: "/kala_namak.png",
     shortDesc: "Heritage aromatic paddy with hi-yield certified performance — superior grain aroma, strong tillering, and excellent germination.",
     tags: ["Kharif", "Aromatic", "GI Variety"],
     gradient: "linear-gradient(135deg, #A3E635 0%, #4D7C0F 100%)",
@@ -72,7 +72,7 @@ const products = [
   {
     id: "khushboo-606",
     name: "Khushbu 606 Paddy Seeds",
-    image: "/images/khushboo-606.jpeg",
+    image: "/khushboo.png",
     shortDesc: "Premium fragrant paddy variety with uniform crop growth, bold grains, and outstanding market value.",
     tags: ["Kharif", "Fragrant", "High Yield"],
     gradient: "linear-gradient(135deg, #86EFAC 0%, #15803D 100%)",
