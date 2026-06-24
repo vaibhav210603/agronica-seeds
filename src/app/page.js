@@ -62,20 +62,20 @@ const products = [
     gradient: "linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%)",
   },
   {
-    id: "paddy-premium",
-    name: "Premium Paddy Seeds",
-    image: "/images/PHOTO-2026-06-02-12-26-24%203.jpg",
-    shortDesc: "High-quality paddy seeds for excellent grain length and robust growth.",
-    tags: ["Kharif", "High Yield"],
+    id: "kala-namak-kiran",
+    name: "Kala Namak Kiran Paddy Seeds",
+    image: "/images/kala-namak-kiran-paddy.jpeg",
+    shortDesc: "Heritage aromatic paddy with hi-yield certified performance — superior grain aroma, strong tillering, and excellent germination.",
+    tags: ["Kharif", "Aromatic", "GI Variety"],
     gradient: "linear-gradient(135deg, #A3E635 0%, #4D7C0F 100%)",
   },
   {
-    id: "black-wheat",
-    name: "Black Wheat Seeds",
-    image: "/images/PHOTO-2026-06-02-12-26-25%202.jpg",
-    shortDesc: "Nutrient-rich black wheat seeds with high anthocyanin content.",
-    tags: ["Rabi", "Premium"],
-    gradient: "linear-gradient(135deg, #52525B 0%, #18181B 100%)",
+    id: "khushboo-606",
+    name: "Khushbu 606 Paddy Seeds",
+    image: "/images/khushboo-606.jpeg",
+    shortDesc: "Premium fragrant paddy variety with uniform crop growth, bold grains, and outstanding market value.",
+    tags: ["Kharif", "Fragrant", "High Yield"],
+    gradient: "linear-gradient(135deg, #86EFAC 0%, #15803D 100%)",
   },
 ];
 
@@ -105,6 +105,7 @@ const categories = [
     count: "12+ Varieties",
     image: "/images/generated/cat_vegetables.png",
   },
+  
   {
     name: "Field Crops",
     subtitle: "Maize · Wheat · Paddy",

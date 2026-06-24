@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { Calendar, Clock, X, ArrowRight, BookOpen, Sparkles, ChevronRight, Award, ShieldCheck, Leaf } from "lucide-react";
+import { Calendar, Clock, X, ArrowRight, BookOpen, Sparkles, ChevronRight, Award, ShieldCheck, Leaf, Star } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Blogs.module.css";
 
-const CATEGORIES = ["All", "Cultivation Guide", "Quality Assurance", "Climate Smart Agri"];
+const CATEGORIES = ["All", "Cultivation Guide", "Quality Assurance", "Climate Smart Agri", "Product Spotlight"];
 
 const BLOG_POSTS = [
   {
@@ -141,6 +141,72 @@ const BLOG_POSTS = [
       ],
       conclusion: "Climate change is an undeniable reality, but crop failure does not have to be. By combining Agronica’s deep-rooting, flood-tolerant hybrid seeds with modern precision farming techniques, Indian farmers can build a resilient, highly profitable agricultural business that stands firm against whatever the skies bring."
     }
+  },
+  {
+    id: "kala-namak-kiran-paddy",
+    title: "Kala Namak Kiran: Cultivating India’s Prized Aromatic Paddy with Hi-Yield Certified Seeds",
+    category: "Product Spotlight",
+    date: "June 24, 2026",
+    readTime: "7 min read",
+    author: "Dr. Anand K. Kurien (Chief Agronomist)",
+    excerpt: "Discover Kala Namak Kiran — Agronica’s premium hi-yield certified paddy seed that marries the legendary aroma of Kala Namak rice with modern agronomic performance. Learn cultivation tips, soil requirements, and why this variety is transforming paddy farming across the Terai belt.",
+    image: "/images/kala-namak-kiran-paddy-seed.jpeg",
+    cardBadge: "New",
+    icon: "paddy",
+    content: {
+      introduction: "Kala Namak rice — known as the ‘Black Salt’ rice of the Buddha — has been cultivated in the Terai and Bhabhar regions of Uttar Pradesh and Nepal for over 3,000 years. Prized by connoisseurs for its unique violet-black husk, exquisite floral aroma, and soft texture, it commands a significant premium in domestic and export markets alike. However, traditional Kala Namak landraces are tall, lodging-prone, and low-yielding — a major constraint for commercial farming. Agronica’s Kala Namak Kiran bridges this gap: a hi-yield certified paddy seed (developed under license from MRC Agrotech Ltd.) that delivers the legendary aroma and grain quality of heritage Kala Namak with the agronomic performance modern farmers need.",
+      sections: [
+        {
+          title: "1. What Makes Kala Namak Kiran Different",
+          paragraphs: [
+            "Kala Namak Kiran is not a generic high-yield hybrid — it is a purpose-bred improved variety that retains the full genetic identity of authentic Kala Namak rice. The signature ‘screw-pine’ (Pandanus) aroma comes from elevated 2-acetyl-1-pyrroline (2-AP) content in the grain, and Kiran preserves this trait completely while correcting the weaknesses of traditional landraces.",
+            "• Premium Quality: Grains exhibit the characteristic dark husk, slender profile, and aromatic potency that fetch a premium of ₹8–15 per kg above standard paddy in regulated markets and GI-certified supply chains.",
+            "• Excellent Germination: Certified under ISO-accredited protocols, each batch carries a guaranteed germination rate of 90%+, ensuring uniform field establishment and predictable plant populations.",
+            "• Uniform Crop Growth: Improved plant architecture delivers consistent internode length and heading date, making harvesting with mechanical reapers practical — a first for this traditionally hand-harvested variety.",
+            "• Strong Tillering Ability: Kiran produces 12–16 effective tillers per hill under optimum management, significantly higher than the 6–9 tillers typical of old landraces, directly translating into more panicles per square meter.",
+            "• Superior Grain Aroma & Quality: Head-rice recovery exceeds 62% and milling outturn is consistent — qualities that matter greatly to premium rice millers and exporters targeting the GI Kala Namak niche."
+          ]
+        },
+        {
+          title: "2. Ideal Agro-Climatic Conditions & Soil Requirements",
+          paragraphs: [
+            "Kala Namak Kiran thrives in the Indo-Gangetic Terai belt — the districts of Siddharth Nagar, Maharajganj, Gorakhpur, Balrampur, and Basti in eastern UP — where the unique combination of alluvial soil, morning mist, and moderate humidity during grain filling naturally amplifies the 2-AP aroma compound.",
+            "Soil: Well-drained clay-loam to silty-loam soils with a pH of 5.5–6.5 are ideal. Waterlogged heavy clays without drainage management can reduce tillering and increase the risk of sheath blight. Incorporate well-composted FYM (5–6 t/ha) at the time of puddling to improve organic matter and moisture retention.",
+            "Water: Kala Namak Kiran requires a minimum of 1,200 mm of water over the crop cycle. Maintain 5 cm of standing water during active tillering and panicle initiation. Allow fields to dry before harvesting to facilitate mechanical cutting."
+          ]
+        },
+        {
+          title: "3. Nursery, Transplanting & Crop Calendar",
+          paragraphs: [
+            "Getting the nursery timing right is critical to capturing the correct photoperiod response for Kala Namak Kiran, which is a short-day, photoperiod-sensitive variety that initiates flowering when day length falls below 13 hours in October.",
+            "• Nursery Sowing: Mid-June to early July. Use raised wet nursery beds. Seed rate: 30 kg/ha. Treat seed with Trichoderma viride (4 g/kg seed) before sowing to protect against seed-borne pathogens.",
+            "• Transplanting: 25–30 day old seedlings (late July to early August). Transplant 2 seedlings per hill at a spacing of 20 × 15 cm to allow optimal light interception and air circulation.",
+            "• Panicle Initiation: Late September (coincides with shortening days post-equinox).",
+            "• Flowering: Mid-October — the critical window where morning temperatures of 22–26°C maximize pollen viability and fertilization.",
+            "• Harvest: November (120–130 days after transplanting). Harvest when 80–85% of grains are mature and the husk has turned its characteristic dark straw-to-violet colour."
+          ]
+        },
+        {
+          title: "4. Nutrition Management for Maximum Yield & Aroma",
+          paragraphs: [
+            "Balanced nutrition is essential to simultaneously maximise yield and preserve the premium grain aroma that commands market value. Over-application of nitrogen is the single biggest mistake — it pushes vegetative growth, increases lodging risk, and dilutes 2-AP concentration in the grain.",
+            "Recommended NPK: 90:40:30 kg/ha. Split nitrogen into three doses — 30 kg at basal (before transplanting), 30 kg at active tillering (21 DAT), and the final 30 kg at panicle initiation (45 DAT). Apply zinc sulphate (25 kg/ha) as a basal dose on zinc-deficient soils — a common deficiency in the Terai belt that suppresses tillering.",
+            "Organic supplementation with well-composted neem cake (250 kg/ha) at transplanting suppresses soil-borne nematodes and provides a slow-release nitrogen source that supports steady vegetative growth without lodging."
+          ]
+        },
+        {
+          title: "5. Integrated Pest & Disease Management",
+          paragraphs: [
+            "Kala Namak Kiran carries moderate field tolerance to blast (Pyricularia oryzae) and brown spot, but proactive IPM is essential — particularly in high-humidity, high-density crop conditions of the Terai.",
+            "• Sheath Blight: The primary disease threat. Maintain field hygiene, avoid excess nitrogen, and apply Validamycin or Hexaconazole at the onset of symptoms at tillering.",
+            "• Stem Borer & Leaf Folder: Scout fields weekly from tillering onwards. Release Trichogramma japonicum egg parasitoids (1.5 lakh/ha) at 30 and 45 DAT as a biological first line of defence.",
+            "• Brown Plant Hopper (BPH): Avoid prophylactic insecticide sprays that disrupt natural BPH predators. If populations exceed 5 hoppers per hill, apply Buprofezin or Dinotefuran as a targeted basal spray.",
+            "• Seed Treatment: Kiran seeds from Agronica are supplied pre-coated with a bio-fungicide protective layer, significantly reducing early-stage blast and damping-off risk in the nursery."
+          ]
+        }
+      ],
+      conclusion: "Kala Namak Kiran represents the finest synthesis of heritage and science: the irreplaceable aroma and cultural legacy of India’s ancient ‘Buddha rice’ combined with the certified performance that today’s commercial farmer demands. With strong tillering, excellent germination, and superior grain quality, Kiran gives Terai-belt farmers a competitive product for premium paddy markets, GI-tagged supply chains, and export. Agronica’s hi-yield certified seeds ensure that every hill you plant is backed by laboratory-verified quality — giving you the confidence to grow more, earn more, and preserve an irreplaceable agricultural tradition."
+    }
   }
 ];
 
@@ -200,6 +266,7 @@ export default function Blogs() {
               {category === "Cultivation Guide" && <Leaf size={14} className={styles.btnIcon} />}
               {category === "Quality Assurance" && <ShieldCheck size={14} className={styles.btnIcon} />}
               {category === "Climate Smart Agri" && <Award size={14} className={styles.btnIcon} />}
+              {category === "Product Spotlight" && <Star size={14} className={styles.btnIcon} />}
               {category}
             </button>
           ))}
