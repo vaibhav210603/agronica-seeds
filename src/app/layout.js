@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NewsPopup from "@/components/NewsPopup";
 
 export const metadata = {
   title: "Agronica Seeds Spark Pvt. Ltd. — Empowering the Future of Agriculture",
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Navbar />
+        <NewsPopup />
         <main>{children}</main>
         <Footer />
       </body>
