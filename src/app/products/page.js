@@ -3,6 +3,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import FitImage from "@/components/FitImage";
 import AnimatedSection from "@/components/AnimatedSection";
 import ProductCard from "@/components/ProductCard";
 import { Leaf, Filter, X, FileText } from "lucide-react";
@@ -315,11 +316,9 @@ function ProductsContent() {
                 style={{ background: selectedProduct.gradient }}
               >
                 {selectedProduct.image ? (
-                  <Image
+                  <FitImage
                     src={selectedProduct.image}
                     alt={selectedProduct.name}
-                    fill
-                    style={{ objectFit: 'cover' }}
                     sizes="600px"
                   />
                 ) : (

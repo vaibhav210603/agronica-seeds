@@ -1,0 +1,16 @@
+.wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.backdrop {
+  object-fit: cover;
+  filter: blur(18px) saturate(1.15);
+  transform: scale(1.2);
+  opacity: 0.9;
+}
+
+.image {
+  object-fit: contain;
+}

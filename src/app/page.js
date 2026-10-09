@@ -9,6 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import Link from "next/link";
 import Image from "next/image";
+import FitImage from "@/components/FitImage";
 import { ArrowRight, CheckCircle2, Leaf } from "lucide-react";
 import styles from "./page.module.css";
 
@@ -527,10 +528,9 @@ export default function Home() {
               >
                 <div className={styles.cardAccent} style={{ background: product.gradient }} />
                 <div className={styles.cardImageWrap}>
-                  <Image
+                  <FitImage
                     src={product.image}
                     alt={product.name}
-                    fill
                     className={styles.cardImage}
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
